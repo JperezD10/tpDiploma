@@ -1,0 +1,13 @@
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\BLL.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\BLL.pdb
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\BE.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\DAL.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\BE.pdb
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\DAL.pdb
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\obj\Debug\BLL.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\obj\Debug\BLL.pdb
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\SEGURIDAD.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BLL\bin\Debug\SEGURIDAD.pdb

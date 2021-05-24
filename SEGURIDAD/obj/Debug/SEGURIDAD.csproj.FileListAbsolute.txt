@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.pdb
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.dll
+C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.pdb
