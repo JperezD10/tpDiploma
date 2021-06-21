@@ -4,3 +4,9 @@ C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BE\obj\Debug\BE.cs
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BE\obj\Debug\BE.dll
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\BE\obj\Debug\BE.pdb
+C:\Users\Usuario\Desktop\tpDiploma\BE\bin\Debug\BE.dll
+C:\Users\Usuario\Desktop\tpDiploma\BE\bin\Debug\BE.pdb
+C:\Users\Usuario\Desktop\tpDiploma\BE\obj\Debug\BE.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\tpDiploma\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\tpDiploma\BE\obj\Debug\BE.dll
+C:\Users\Usuario\Desktop\tpDiploma\BE\obj\Debug\BE.pdb

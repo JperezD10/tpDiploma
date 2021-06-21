@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
 using BLL;
 using SEGURIDAD;
 
@@ -14,10 +15,12 @@ namespace tpDiploma
 {
     public partial class LogIn : Form, IObserver<string>
     {
+        List<Bitacora> listaBitacora = new List<Bitacora>();
         UsuarioBLL gestor = new UsuarioBLL();
         Encriptacion seguridad = new Encriptacion();
         IdiomaBLL GetIdioma = new IdiomaBLL();
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
+        DigitoVerificadorBLL servicioDigitosVerificadores = new DigitoVerificadorBLL();
         public string idioma;
         private string contraIncorrecta, avisoInexistente, AvisoBloqueo = "";
         public LogIn()
@@ -30,6 +33,12 @@ namespace tpDiploma
             cmbIdioma.DataSource = GetIdioma.CargarIdiomas();
             cmbIdioma.DisplayMember = "Idioma";
             cmbIdioma.SelectedIndex = 0;
+            listaBitacora = servicioDigitosVerificadores.validarDV();
+            if (listaBitacora.Count > 0)
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma));
+                Application.Exit();
+            }
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)

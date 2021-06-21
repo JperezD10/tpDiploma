@@ -60,7 +60,7 @@ namespace tpDiploma
             try
             {
                 gestor.crearUsuario(newUser);
-                MessageBox.Show("Usuario creado con exito", "Usuario Creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioCreado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

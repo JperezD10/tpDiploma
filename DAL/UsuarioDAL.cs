@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using BE;
 using SEGURIDAD;
 
 namespace DAL
@@ -70,27 +71,34 @@ namespace DAL
             DataTable dataTable = acceso.Leer("IniciarSesion", parametro);
             if (dataTable.Rows.Count > 0)
             {
-                BE.Usuario_Sesion usuario_Sesion = BE.Usuario_Sesion.Instance;
-                usuario_Sesion.Username = Username;
-                usuario_Sesion.Contraseña = contraseña;
+                ObtenerUsuarioLogin(Username);
                 ReestablecerContadorLog(Username);
-                BitacoraDAL accesoBitacora = new BitacoraDAL();
-                BE.Bitacora bitacora = new BE.Bitacora()
-                {
-                    Accion = "Inicio de sesión",
-                    Criticidad = "Baja",
-                    Descripcion = encriptado.encriptar($"El usuario {encriptado.desencriptar(usuario_Sesion.Username)} ha iniciado sesion"),
-                    Usuario = usuario_Sesion.Username
-                };
-                accesoBitacora.CrearBitacora(bitacora);
+                
                 return true;
             }
             else return false;
         }
 
-        public string CrearUsuario(BE.Usuario newUser)
+        private void ObtenerUsuarioLogin(string username)
         {
-            SqlParameter[] parametro = new SqlParameter[8];
+            Usuario_Sesion usuario = Usuario_Sesion.Instance;
+            SqlParameter[] parametros = new SqlParameter[1];
+            parametros[0] = new SqlParameter("@username", username);
+            DataTable tabla = acceso.Leer("ObtenerUsuarioLogin", parametros);
+            foreach(DataRow fila in tabla.Rows)
+            {
+                usuario.ID_Usuario = (int)fila["ID_Usuario"];
+                usuario.Nombre = fila["Nombre"].ToString();
+                usuario.Apellido = fila["Apellido"].ToString();
+                usuario.Email = fila["Email"].ToString();
+                usuario.DNI = fila["DNI"].ToString();
+                usuario.Username = fila["Username"].ToString();
+            }
+        }
+
+        public int CrearUsuario(BE.Usuario newUser)
+        {
+            SqlParameter[] parametro = new SqlParameter[9];
             parametro[0] = new SqlParameter("@Nombre", newUser.Nombre);
             parametro[1] = new SqlParameter("@Apellido", newUser.Apellido);
             parametro[2] = new SqlParameter("@Dni", newUser.DNI);
@@ -99,7 +107,13 @@ namespace DAL
             parametro[5] = new SqlParameter("@Email", newUser.Email);
             parametro[6] = new SqlParameter("@FechaNacimiento", newUser.FechaNacimiento);
             parametro[7] = new SqlParameter("@Direccion", newUser.Direccion);
-            return acceso.Escribir("CrearUsuario",parametro);
+            parametro[8] = new SqlParameter
+            {
+                ParameterName = "@returnValue",
+                Direction = ParameterDirection.ReturnValue
+            };
+            acceso.Escribir("CrearUsuario",parametro);
+            return (int)parametro[8].Value;
         }
         
         

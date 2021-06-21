@@ -9,15 +9,20 @@ namespace BLL
     public class BitacoraBLL
     {
         DAL.BitacoraDAL mapper = new DAL.BitacoraDAL();
-
-        public void crearBitacora(BE.Bitacora b)
+        DigitoVerificadorBLL digitosVerificadores = new DigitoVerificadorBLL();
+        public int crearBitacora(BE.Bitacora b)
         {
-            mapper.CrearBitacora(b);
+            int id = mapper.CrearBitacora(b);
+            digitosVerificadores.recalcularDV(id, "Bitacora", true);
+            digitosVerificadores.recalcularDVV("Bitacora");
+            return id;
         }
 
         public List<BE.Bitacora> listarBitacora(DateTime fechaDesde, DateTime fechaHasta, string criticidad, string usuario)
         {
-            return mapper.listarBitacora(fechaDesde,fechaHasta,criticidad,usuario);
+            SEGURIDAD.Encriptacion c = new SEGURIDAD.Encriptacion();
+            if (usuario != string.Empty) return mapper.listarBitacora(fechaDesde,fechaHasta,criticidad,c.encriptar(usuario));
+            else return mapper.listarBitacora(fechaDesde, fechaHasta, criticidad, usuario);
         }
     }
 }

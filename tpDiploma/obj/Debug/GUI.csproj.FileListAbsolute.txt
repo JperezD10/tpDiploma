@@ -23,3 +23,28 @@ C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\tpDiploma\bin\Debu
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.LogIn.de.resources
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\tpDiploma\obj\Debug\de\tpDiploma.resources.dll
 C:\Users\Usuario\Desktop\UAI\3°\Trabajo de Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ListBitacora.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\tpDiploma.exe.config
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\tpDiploma.exe
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\tpDiploma.pdb
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\de\tpDiploma.resources.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\BE.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\BLL.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\SEGURIDAD.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\DAL.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\BE.pdb
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\BLL.pdb
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\SEGURIDAD.pdb
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\bin\Debug\DAL.pdb
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\GUI.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.CrearUsuario.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ListBitacora.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.LogIn.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.MenuPrincipal.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Properties.Resources.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.LogIn.de.resources
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\de\tpDiploma.resources.dll
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.exe
+C:\Users\Usuario\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.pdb

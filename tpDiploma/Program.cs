@@ -16,6 +16,9 @@ namespace tpDiploma
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //LogIn l = new LogIn();
+            //l.idioma = "Español";
+            //MenuPrincipal m = new MenuPrincipal(l);
             Application.Run(new LogIn());
         }
     }

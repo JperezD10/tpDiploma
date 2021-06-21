@@ -12,7 +12,7 @@ namespace DAL
     {
         Acceso acceso = Acceso.Instance;
         SEGURIDAD.Encriptacion seguridad = new SEGURIDAD.Encriptacion();
-        public void CrearBitacora(BE.Bitacora bitacora)
+        public int CrearBitacora(BE.Bitacora bitacora)
         {
             SqlParameter[] parametros = 
             {
@@ -20,8 +20,14 @@ namespace DAL
                 new SqlParameter("@Descripcion", bitacora.Descripcion),
                 new SqlParameter("@Criticidad", bitacora.Criticidad),
                 new SqlParameter("@usuario", bitacora.Usuario),
+                new SqlParameter
+                {
+                    ParameterName="@returnValue",
+                    Direction= ParameterDirection.ReturnValue
+                }
             };
             acceso.Escribir("RegistrarBitacora", parametros);
+            return (int)parametros[4].Value;
         }
 
         public List<BE.Bitacora> listarBitacora(DateTime fechaDesde, DateTime fechaHasta, string criticidad, string usuario)
