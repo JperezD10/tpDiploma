@@ -52,11 +52,11 @@
     <Compile Include="ABMFamilia.Designer.cs">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
     </Compile>
-    <Compile Include="AsignarPermisos.cs">
+    <Compile Include="PatenteFamilia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsignarPermisos.Designer.cs">
-      <DependentUpon>AsignarPermisos.cs</DependentUpon>
+    <Compile Include="PatenteFamilia.Designer.cs">
+      <DependentUpon>PatenteFamilia.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearUsuario.cs">
       <SubType>Form</SubType>
@@ -87,8 +87,8 @@
     <EmbeddedResource Include="ABMFamilia.resx">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AsignarPermisos.resx">
-      <DependentUpon>AsignarPermisos.cs</DependentUpon>
+    <EmbeddedResource Include="PatenteFamilia.resx">
+      <DependentUpon>PatenteFamilia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>

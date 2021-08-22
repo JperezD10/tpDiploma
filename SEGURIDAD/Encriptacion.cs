@@ -16,7 +16,18 @@ namespace SEGURIDAD
             byte[] hash = sha256.ComputeHash(bytes);
             return transformarByte(hash);
         }
-        
+
+        public static byte[] FromHex(string hex)
+        {
+            hex = hex.Replace("-", "");
+            byte[] raw = new byte[hex.Length / 2];
+            for (int i = 0; i < raw.Length; i++)
+            {
+                raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+            }
+            return raw;
+        }
+
         public string transformarByte(byte[] hash)
         {
             StringBuilder hex = new StringBuilder(hash.Length * 2);
@@ -24,14 +35,14 @@ namespace SEGURIDAD
             return hex.ToString();
         }
         DESCryptoServiceProvider des = new DESCryptoServiceProvider();
-        byte[] llave = Encoding.Default.GetBytes("1DC9DC24"); //Pones la llave que vos quieras aca pero que sean 8 caraceteres.
+        byte[] llave = Encoding.UTF8.GetBytes("1DC9DC24"); //Pones la llave que vos quieras aca pero que sean 8 caraceteres.
 
         //Nota a tener en cuenta. El algoritmo DES (Data Encryption Standard) utiliza/espera una llave de 56 bits (64 en total pero 8 son usados para igualar y complementar).
         //Por ende, 64 bits de llave ---> 8 bytes ---> 8 caracteres.
 
         public string encriptar(string mensajePlano)
         {
-            byte[] bytesEncriptados = Encoding.Default.GetBytes(mensajePlano); //Se pasa el texto sin encriptar a byte[].
+            byte[] bytesEncriptados = Encoding.UTF8.GetBytes(mensajePlano); //Se pasa el texto sin encriptar a byte[].
             byte[] mensajeEncriptado = null;
             using (var MemoryStream = new MemoryStream())
             {
@@ -42,12 +53,13 @@ namespace SEGURIDAD
                 stream.Close();
                 mensajeEncriptado = MemoryStream.ToArray(); //Se llenan los bytes con el array de la memoria del stream.
             }
-            return Encoding.Default.GetString(mensajeEncriptado); //Retornas los bytes pasados a String.
+            var hexString = BitConverter.ToString(mensajeEncriptado);
+            return hexString.Replace("-", ""); //Retornas los bytes pasados a String.
         }
 
         public string desencriptar(string mensajeEncriptado) //Lo mismo pero para desencriptar
         {
-            byte[] bytesEncriptados = Encoding.Default.GetBytes(mensajeEncriptado);
+            byte[] bytesEncriptados = FromHex(mensajeEncriptado);
             byte[] mensajeDesencriptado = null;
             using (var MemoryStream = new MemoryStream())
             {
@@ -58,7 +70,7 @@ namespace SEGURIDAD
                 stream.Close();
                 mensajeDesencriptado = MemoryStream.ToArray();
             }
-            return Encoding.Default.GetString(mensajeDesencriptado);
+            return Encoding.UTF8.GetString(mensajeDesencriptado);
         }
     }
 }

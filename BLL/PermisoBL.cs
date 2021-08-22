@@ -72,5 +72,41 @@ namespace BLL
             }
             return listaPatentes;
         }
+
+        public List<Permiso> listarPatentesTodasOPorUsuario(Usuario user)
+        {
+            List<Permiso> listaPatentes = new List<Permiso>();
+            try
+            {
+                listaPatentes = permisomapper.listarPatentesTodasOPorUsuario(user);
+                foreach (Permiso p in listaPatentes)
+                {
+                    p.nombre = encriptacion.desencriptar(p.nombre);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return listaPatentes;
+        }
+
+        public List<Permiso> obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
+        {
+            List<Permiso> listaPermisos = new List<Permiso>();
+            try
+            {
+                listaPermisos = permisomapper.listarPermisosQuitandoPermisosDeUsuario(user, isFamilia);
+                foreach (Permiso p in listaPermisos)
+                {
+                    p.nombre = encriptacion.desencriptar(p.nombre);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return listaPermisos;
+        }
     }
 }

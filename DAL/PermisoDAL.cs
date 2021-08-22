@@ -92,13 +92,13 @@ namespace DAL
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@isFamilia", false);
                 sqlParameters[1] = new SqlParameter("@user", user.Username);
-                dataTable = Acceso.Leer("SP_PERMISO_GET_X_USER", sqlParameters);
+                dataTable = Acceso.Leer("OBTENER_PERMISOS_X_USUARIO", sqlParameters);
             }
             else
             {
                 SqlParameter[] sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@isFamilia", false);
-                dataTable = Acceso.Leer("SP_PERMISO_GET_ALL", sqlParameters);
+                dataTable = Acceso.Leer("OBTENER_PERMISOS_GENERAL", sqlParameters);
             }
             foreach (DataRow dataRow in dataTable.Rows)
             {
@@ -107,14 +107,14 @@ namespace DAL
             return listaPatentes;
         }
 
-        public DataTable getPermisosQuitandoPermisosUsuario(Usuario user, bool isFamilia)
+        public DataTable obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
         {
             try
             {
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@username", user.Username);
                 sqlParameters[1] = new SqlParameter("@isFamilia", isFamilia);
-                return Acceso.Leer("SP_PERMISO_GET_ALL_QUITANDO_PERMISOS_USER", sqlParameters);
+                return Acceso.Leer("OBTENER_PERMISOS_EXLUYENTES_AL_USUARIO", sqlParameters);
             }
             catch (Exception)
             {
@@ -125,7 +125,7 @@ namespace DAL
         public List<Permiso> listarPermisosQuitandoPermisosDeUsuario(Usuario user, bool isFamilia)
         {
             List<Permiso> listaPermisos = new List<Permiso>();
-            DataTable dataTable = getPermisosQuitandoPermisosUsuario(user, isFamilia);
+            DataTable dataTable = obtenerPermisosExluyentesAlUsuario(user, isFamilia);
             if (isFamilia == true)
             {
                 foreach (DataRow dataRow in dataTable.Rows)

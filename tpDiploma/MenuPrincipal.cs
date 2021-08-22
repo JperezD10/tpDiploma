@@ -109,7 +109,7 @@ namespace tpDiploma
 
         private void asignarPermisosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new AsignarPermisos(this));
+            AbrirFormInPanel(new PatenteFamilia(this));
         }
     }
 }
