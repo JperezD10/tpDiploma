@@ -9,14 +9,14 @@ namespace SEGURIDAD
 {
     public class Encriptacion
     {
-        public string generarSHA256(string contraseña)
+        public string EncriptadoPermanente(string contraseña)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(contraseña);
             SHA256Managed sha256 = new SHA256Managed();
             byte[] hash = sha256.ComputeHash(bytes);
             return transformarByte(hash);
         }
-
+        
         public string transformarByte(byte[] hash)
         {
             StringBuilder hex = new StringBuilder(hash.Length * 2);

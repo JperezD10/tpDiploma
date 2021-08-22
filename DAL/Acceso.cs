@@ -37,7 +37,7 @@ namespace DAL
                 //String strFilePath = Path.Combine(strAppPath, "SalaEnsayo");
                 //String strFullFilename = Path.Combine(strFilePath, "SalaEnsayo.mdf");
                 //sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";Integrated Security=True");
-                sqlConnection.ConnectionString = @"Data Source=MSI;Initial Catalog=DIPLOMA;Integrated Security=True";
+                sqlConnection.ConnectionString = @"Data Source=.;Initial Catalog=DIPLOMA;Integrated Security=True";
                 sqlConnection.Open();
             }
             catch (Exception ex)

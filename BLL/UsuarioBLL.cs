@@ -38,11 +38,28 @@ namespace BLL
             username = encriptado.encriptar(username);
             return mapper.MostrarIntentosRestantes(username);
         }
+        public List<Usuario> listarUsuario()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            try
+            {
+                listaUsuarios = mapper.listarUsuario();
+                foreach (Usuario usuario in listaUsuarios)
+                {
+                    usuario.Username = encriptado.desencriptar(usuario.Username);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return listaUsuarios;
+        }
 
         public bool IniciarSesion(string username,string contraseña)
         {
             username = encriptado.encriptar(username);
-            contraseña = encriptado.generarSHA256(contraseña);
+            contraseña = encriptado.EncriptadoPermanente(contraseña);
             bool inicio = mapper.IniciarSesion(username, contraseña);
             BitacoraBLL servicioBitacora = new BitacoraBLL();
             BE.Bitacora bitacora = new BE.Bitacora()
@@ -60,7 +77,7 @@ namespace BLL
             string contraseñaRandom = newUser.Contraseña;
             newUser.Username = encriptado.encriptar(newUser.Username);
             newUser.Direccion = encriptado.encriptar(newUser.Direccion);
-            newUser.Contraseña = encriptado.generarSHA256(newUser.Contraseña);
+            newUser.Contraseña = encriptado.EncriptadoPermanente(newUser.Contraseña);
             int idNuevoUsuario= mapper.CrearUsuario(newUser);
             digitosVerificadores.recalcularDV(idNuevoUsuario,"Usuario", true);
             digitosVerificadores.recalcularDVV("Usuario");

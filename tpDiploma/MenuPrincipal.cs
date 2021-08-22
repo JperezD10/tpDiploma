@@ -24,6 +24,7 @@ namespace tpDiploma
             Properties.Settings.Default.Idioma = l.idioma;
             serviceObservable.AddObserver(this);
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
+            this.FormClosing += new FormClosingEventHandler(this.MenuPrincipal_FormClosing);
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -34,6 +35,11 @@ namespace tpDiploma
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void MenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void AbrirFormInPanel(object formHijo)
@@ -78,7 +84,10 @@ namespace tpDiploma
         {
             btnRegistrarUsuario.Text = gestoriIdioma.buscarTexto(btnRegistrarUsuario.Name, idioma);
             btnCerrarSesion.Text = gestoriIdioma.buscarTexto(btnCerrarSesion.Name, idioma);
+            btnListBitacora.Text = gestoriIdioma.buscarTexto(btnListBitacora.Name, idioma);
             baseDeDatosToolStripMenuItem.Text = gestoriIdioma.buscarTexto(baseDeDatosToolStripMenuItem.Name, idioma);
+            crearFamiliaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(crearFamiliaToolStripMenuItem.Name, idioma);
+            crearFamiliaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(crearFamiliaToolStripMenuItem.Name, idioma);
             generarBackUpToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarBackUpToolStripMenuItem.Name, idioma);
             generarRestoreToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarRestoreToolStripMenuItem.Name, idioma);
         }
@@ -86,6 +95,21 @@ namespace tpDiploma
         private void btnListBitacora_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new ListBitacora(this));
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void crearFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new ABMFamilia(this));
+        }
+
+        private void asignarPermisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new AsignarPermisos(this));
         }
     }
 }

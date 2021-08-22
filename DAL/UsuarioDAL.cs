@@ -29,6 +29,32 @@ namespace DAL
             parametro[0] = new SqlParameter("@Username", Username);
             acceso.Escribir("SumarIntentoDeLog", parametro);
         }
+
+        public List<Usuario> listarUsuario()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            DataTable dataTable = new DataTable();
+            try
+            {
+                dataTable = acceso.Leer("OBTENER_USUARIOS", null);
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.ID_Usuario = (int)dataRow["ID_Usuario"];
+                    usuario.Nombre = dataRow["Nombre"].ToString();
+                    usuario.Apellido = dataRow["Apellido"].ToString();
+                    usuario.Email = dataRow["Email"].ToString();
+                    usuario.DNI = dataRow["DNI"].ToString();
+                    usuario.Username = dataRow["Username"].ToString();
+                    listaUsuarios.Add(usuario);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return listaUsuarios;
+        }
         public void BloquearUsuario(string Username)
         {
             SqlParameter[] parametro = new SqlParameter[1];
