@@ -19,6 +19,8 @@ namespace tpDiploma
         BLL.UsuarioBLL servicioUsuario = new BLL.UsuarioBLL();
         BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
         public string idioma;
+        Permiso familiaOtorgada;
+        Permiso familiaSinOtorgar;
 
         public PatenteFamilia(MenuPrincipal m)
         {
@@ -33,6 +35,8 @@ namespace tpDiploma
             lblUsuarioAsignar.Text = GetIdioma.buscarTexto(lblUsuarioAsignar.Name, idioma);
             lblPermisosNoAsignados.Text = GetIdioma.buscarTexto(lblPermisosNoAsignados.Name, idioma);
             lblPermisosAsignados.Text = GetIdioma.buscarTexto(lblPermisosAsignados.Name, idioma);
+            lblFamiliasNoAsignadas.Text = GetIdioma.buscarTexto(lblFamiliasNoAsignadas.Name, idioma);
+            lblFamiliasAsignadas.Text = GetIdioma.buscarTexto(lblFamiliasAsignadas.Name, idioma);
         }
 
         public void OnError(Exception error)
@@ -63,7 +67,9 @@ namespace tpDiploma
         private void cmbUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
             listarPatentesPorUsuario();
+            listarFamiliasPorUsuario();
             obtenerPermisosExluyentesAlUsuario(false, GrillaPermisosNoAsignados);
+            obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
         }
 
         private void listarPatentesPorUsuario()
@@ -75,6 +81,16 @@ namespace tpDiploma
             };
             List<Permiso> listaPatentesUsuario = servicioPermiso.listarPatentesTodasOPorUsuario(usuarioPatente);
             setDataGridPermisos(listaPatentesUsuario, GrillaPermisosAsignados);
+        }
+        private void listarFamiliasPorUsuario()
+        {
+            Encriptacion encriptado = new Encriptacion();
+            Usuario usuarioFamilia = new Usuario
+            {
+                Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
+            };
+            List<Permiso> listaFamiliasUsuario = servicioPermiso.listarFamiliasTodasOPorUsuario(usuarioFamilia);
+            setDataGridPermisos(listaFamiliasUsuario, GrillaFamiliasAsignadas);
         }
         private void obtenerPermisosExluyentesAlUsuario(bool isFamilia, DataGridView dataGridView)
         {
@@ -105,6 +121,126 @@ namespace tpDiploma
         private void changeHeaderText(DataGridView dataGridView, string column, string name)
         {
             dataGridView.Columns[column].HeaderText = name;
+        }
+
+        private void btnAsignarFamilia_Click(object sender, EventArgs e)
+        {
+            asignarFamilia();
+        }
+
+        private void asignarFamilia()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
+                //{
+                if (familiaSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
+                {
+                    if (familiaSinOtorgar is Familia)
+                    {
+                        Encriptacion encriptacion = new Encriptacion();
+                        Usuario usuario = new Usuario()
+                        {
+                            Username = encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
+                        };
+                        servicioPermiso.asignarPermisoAUsuario(familiaSinOtorgar, usuario, true);
+                        listarFamiliasPorUsuario();
+                        obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
+                        familiaSinOtorgar = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma));
+                }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void GrillaFamiliasNoAsignadas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                familiaSinOtorgar = (Familia)GrillaFamiliasNoAsignadas.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void btnDesasignarFamilia_Click(object sender, EventArgs e)
+        {
+            desasignarFamiliaAUsuario();
+        }
+
+        private void desasignarFamiliaAUsuario()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
+                //{
+                if (familiaOtorgada != null && cmbUsuarios.SelectedIndex != -1)
+                {
+                    if (familiaOtorgada is Familia)
+                    {
+                        Encriptacion encriptado = new Encriptacion();
+                        Usuario usuario = new Usuario()
+                        {
+                            Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
+                        };
+                        string result = servicioPermiso.desasignarPermisoAUsuario(familiaOtorgada, usuario, true, idioma);
+                        if (result != "")
+                        {
+                            MessageBox.Show(result);
+                        }
+                        listarFamiliasPorUsuario();
+                        obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
+                        familiaOtorgada = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma));
+                }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void GrillaFamiliasAsignadas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                familiaOtorgada = (Familia)GrillaFamiliasAsignadas.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

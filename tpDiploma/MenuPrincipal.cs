@@ -24,7 +24,6 @@ namespace tpDiploma
             Properties.Settings.Default.Idioma = l.idioma;
             serviceObservable.AddObserver(this);
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
-            this.FormClosing += new FormClosingEventHandler(this.MenuPrincipal_FormClosing);
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -90,6 +89,7 @@ namespace tpDiploma
             crearFamiliaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(crearFamiliaToolStripMenuItem.Name, idioma);
             generarBackUpToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarBackUpToolStripMenuItem.Name, idioma);
             generarRestoreToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarRestoreToolStripMenuItem.Name, idioma);
+            asignarPermisosToolStripMenuItem.Text = gestoriIdioma.buscarTexto(asignarPermisosToolStripMenuItem.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)

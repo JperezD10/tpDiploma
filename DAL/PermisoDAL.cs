@@ -68,7 +68,7 @@ namespace DAL
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@isFamilia", true);
                 sqlParameters[1] = new SqlParameter("@user", user.Username);
-                dataTable = Acceso.Leer("OBTENER_PERMISO_X_USUARIO", sqlParameters);
+                dataTable = Acceso.Leer("OBTENER_PERMISOS_X_USUARIO", sqlParameters);
             }
             else
             {
@@ -106,7 +106,6 @@ namespace DAL
             }
             return listaPatentes;
         }
-
         public DataTable obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
         {
             try
@@ -200,21 +199,22 @@ namespace DAL
         {
             try
             {
-                SqlParameter[] sqlParameters = new SqlParameter[3];
+                SqlParameter[] sqlParameters = new SqlParameter[4];
                 sqlParameters[0] = new SqlParameter("@nombrePermiso", permiso.nombre);
                 sqlParameters[1] = new SqlParameter("@username", usuario.Username);
                 sqlParameters[2] = new SqlParameter("@isFamilia", isFamilia);
-                DataTable dataTable = Acceso.Leer("SP_PERMISO_ASIGNAR_A_USUARIO", sqlParameters);
-                foreach (DataRow dataRow in dataTable.Rows)
+                sqlParameters[3] = new SqlParameter
                 {
-                    return int.Parse(dataRow["ID_Usuario_Permiso"].ToString());
-                }
+                    ParameterName = "@returnValue",
+                    Direction = ParameterDirection.ReturnValue
+                };
+                Acceso.Escribir("ASIGNAR_PERMISO_A_USUARIO", sqlParameters);
+                return (int)sqlParameters[3].Value;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                throw e;
             }
-            return -1;
         }
 
         public string desasignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia)
@@ -225,7 +225,7 @@ namespace DAL
                 sqlParameters[0] = new SqlParameter("@nombrePermiso", permiso.nombre);
                 sqlParameters[1] = new SqlParameter("@username", usuario.Username);
                 sqlParameters[2] = new SqlParameter("@isFamilia", isFamilia);
-                return Acceso.Escribir("SP_PERMISO_DESASIGNAR_A_USUARIO", sqlParameters);
+                return Acceso.Escribir("DESASIGNAR_PERMISO_A_USUARIO", sqlParameters);
             }
             catch (Exception e)
             {
@@ -240,7 +240,7 @@ namespace DAL
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@username", usuario.Username);
                 sqlParameters[1] = new SqlParameter("@patente", permiso.nombre);
-                DataTable dataTable = Acceso.Leer("SP_PATENTE_COMPROBAR_QUITAR_A_USUARIO", sqlParameters);
+                DataTable dataTable = Acceso.Leer("COMPROBAR_PATENTE_A_QUITAR_USUARIO", sqlParameters);
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     return (int)dataRow["Contador"];
@@ -260,7 +260,7 @@ namespace DAL
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@familia", permiso.nombre);
                 sqlParameters[1] = new SqlParameter("@user", usuario.Username);
-                DataTable dataTable = Acceso.Leer("SP_USUARIO_COMPROBAR_QUITAR_FAMILIA", sqlParameters);
+                DataTable dataTable = Acceso.Leer("COMPROBAR_FAMILIA_A_QUITAR_USUARIO", sqlParameters);
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     return (int)dataRow["Contador"];

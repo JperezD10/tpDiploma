@@ -90,7 +90,6 @@ namespace BLL
             }
             return listaPatentes;
         }
-
         public List<Permiso> obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
         {
             List<Permiso> listaPermisos = new List<Permiso>();
@@ -107,6 +106,66 @@ namespace BLL
 
             }
             return listaPermisos;
+        }
+
+        public void asignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia)
+        {
+            permiso.nombre = encriptacion.encriptar(permiso.nombre);
+            int lastID = permisomapper.asignarPermisoAUsuario(permiso, usuario, isFamilia);
+            servicioDigitoVerificador.recalcularDV(lastID, "UsuarioPermiso", true);
+            Bitacora b = new Bitacora
+            {
+                Accion = "Asignación de permiso",
+                Criticidad = "Alta",
+                Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(permiso.nombre)}  ha sido asignado al usuario {encriptacion.desencriptar(usuario.Username)}"),
+                Usuario = session_User.Username
+            };
+            ServicioBitacora.crearBitacora(b);
+        }
+
+        public string desasignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia, string idioma)
+        {
+            permiso.nombre = encriptacion.encriptar(permiso.nombre);
+            int flag = -2;
+            if (permiso is Patente)
+            {
+                flag = permisomapper.comprobarQuitarPatenteAUsuario(permiso, usuario);
+            }
+            else
+            {
+                flag = permisomapper.comprobarQuitarFamiliaAUsuario(permiso, usuario);
+            }
+            return desasignarPermisoAUsuarioPasoFinal(permiso, usuario, isFamilia, flag, idioma);
+        }
+
+        public string desasignarPermisoAUsuarioPasoFinal(Permiso permiso, Usuario usuario, bool isFamilia, int flag, string idioma)
+        {
+            if (flag >= 0)
+            {
+                if (flag > 0)
+                {
+                    permisomapper.desasignarPermisoAUsuario(permiso, usuario, isFamilia);
+                    servicioDigitoVerificador.recalcularDVV("UsuarioPermiso");
+                    Bitacora b = new Bitacora
+                    {
+                        Accion = "Desasignación de permiso",
+                        Criticidad = "Alta",
+                        Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(permiso.nombre)}  ha sido desasignado del usuario {encriptacion.desencriptar(usuario.Username)}"),
+                        Usuario = session_User.Username
+                    };
+                    ServicioBitacora.crearBitacora(b);
+                    return "";
+                }
+                else
+                {
+                    BLL.IdiomaBLL servicioIdioma = new IdiomaBLL();
+                    return servicioIdioma.buscarTexto("mensajeNoSePuedeDesasignar", idioma);
+                }
+            }
+            else
+            {
+                return "Failed comprobacion";
+            }
         }
     }
 }

@@ -91,6 +91,7 @@ namespace DAL
             DataTable dataTable = db.Leer("DVH_OBTENER_SUMA_TABLA", sqlParameters);
             foreach (DataRow dataRow in dataTable.Rows)
             {
+                if (dataRow["DVH"].ToString() == "") return 0;
                 return long.Parse(dataRow["DVH"].ToString());
             }
             return 0;
