@@ -150,12 +150,12 @@ namespace tpDiploma
                     }
                     else
                     {
-                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma));
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma));
+                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 //}
                 //else
@@ -212,12 +212,12 @@ namespace tpDiploma
                     }
                     else
                     {
-                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma));
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma));
+                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 //}
                 //else

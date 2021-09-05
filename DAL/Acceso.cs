@@ -50,11 +50,11 @@ namespace DAL
         {
             try
             {
-                //String strAppPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                //String strFilePath = Path.Combine(strAppPath, "SalaEnsayo");
-                //String strFullFilename = Path.Combine(strFilePath, "SalaEnsayo.mdf");
-                //sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";Integrated Security=True");
-                sqlConnection.ConnectionString = @"Data Source=DESKTOP-TLDQ719\MSSQLSERVER19;Initial Catalog=SalaEnsayo;Integrated Security=True";
+                String strAppPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                String strFilePath = Path.Combine(strAppPath, "DIPLOMA");
+                String strFullFilename = Path.Combine(strFilePath, "DIPLOMA.mdf");
+                sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";Integrated Security=True");
+                sqlConnection.ConnectionString = @"Data Source=.;Initial Catalog=DIPLOMA;Integrated Security=True";
                 sqlConnection.Open();
                 return sqlConnection;
             }

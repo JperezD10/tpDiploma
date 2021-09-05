@@ -111,5 +111,15 @@ namespace tpDiploma
         {
             AbrirFormInPanel(new PatenteFamilia(this));
         }
+
+        private void generarBackUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new BackUp(this));
+        }
+
+        private void generarRestoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new Restore(this));
+        }
     }
 }

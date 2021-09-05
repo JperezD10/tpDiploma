@@ -84,9 +84,8 @@ namespace BLL
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
-            return null;
         }
 
         public void recalcularDVTotal()

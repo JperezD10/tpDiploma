@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackUpRestore.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="Criticidad.cs" />
     <Compile Include="Familia.cs" />

@@ -29,6 +29,7 @@ namespace tpDiploma
         {
             btnCrearFamilia.Text = GetIdioma.buscarTexto(btnCrearFamilia.Name, idioma);
             lblNombreFamiliaCrear.Text = GetIdioma.buscarTexto(lblNombreFamiliaCrear.Name, idioma);
+            lblFamiliaListar.Text = GetIdioma.buscarTexto(lblFamiliaListar.Name, idioma);
             btnEliminarFamilia.Text = GetIdioma.buscarTexto(btnEliminarFamilia.Name, idioma);
         }
 
@@ -52,6 +53,7 @@ namespace tpDiploma
                 };
                 servicioPermiso.agregarFamilia(familia);
                 MessageBox.Show(GetIdioma.buscarTexto("msbFamiliaAgregada", idioma),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                cargarFamilias();
             }
             else
             {

@@ -75,3 +75,5 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ex
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.pdb
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ABMFamilia.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.PatenteFamilia.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.BackUp.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Restore.resources

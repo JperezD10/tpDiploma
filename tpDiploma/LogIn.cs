@@ -36,7 +36,7 @@ namespace tpDiploma
             listaBitacora = servicioDigitosVerificadores.validarDV();
             if (listaBitacora.Count > 0)
             {
-                MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma));
+                MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

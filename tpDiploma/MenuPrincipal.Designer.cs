@@ -155,16 +155,18 @@
             this.generarBackUpToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.generarBackUpToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.generarBackUpToolStripMenuItem.Name = "generarBackUpToolStripMenuItem";
-            this.generarBackUpToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.generarBackUpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.generarBackUpToolStripMenuItem.Text = "Generar BackUp";
+            this.generarBackUpToolStripMenuItem.Click += new System.EventHandler(this.generarBackUpToolStripMenuItem_Click);
             // 
             // generarRestoreToolStripMenuItem
             // 
             this.generarRestoreToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.generarRestoreToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.generarRestoreToolStripMenuItem.Name = "generarRestoreToolStripMenuItem";
-            this.generarRestoreToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.generarRestoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.generarRestoreToolStripMenuItem.Text = "Generar Restore";
+            this.generarRestoreToolStripMenuItem.Click += new System.EventHandler(this.generarRestoreToolStripMenuItem_Click);
             // 
             // crearFamiliaToolStripMenuItem
             // 

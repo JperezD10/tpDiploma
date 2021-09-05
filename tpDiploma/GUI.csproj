@@ -52,6 +52,12 @@
     <Compile Include="ABMFamilia.Designer.cs">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackUp.Designer.cs">
+      <DependentUpon>BackUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatenteFamilia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,8 +90,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Restore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restore.Designer.cs">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ABMFamilia.resx">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackUp.resx">
+      <DependentUpon>BackUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatenteFamilia.resx">
       <DependentUpon>PatenteFamilia.cs</DependentUpon>
@@ -114,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Restore.resx">
+      <DependentUpon>Restore.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
