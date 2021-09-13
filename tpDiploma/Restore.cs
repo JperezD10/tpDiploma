@@ -51,22 +51,25 @@ namespace tpDiploma
 
         private void btnPathRestore_Click(object sender, EventArgs e)
         {
-            openFolderDialog();
+            openFileDialog();
         }
-        private void openFolderDialog()
+        private void openFileDialog()
         {
             try
             {
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-                if (folderBrowserDialog.ShowDialog().Equals(DialogResult.OK))
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Multiselect = false;
+                openFileDialog.Filter = "bak files (*.bak)|*.bak";
+                if (openFileDialog.ShowDialog().Equals(DialogResult.OK))
                 {
-                    txtRutaRestore.Text = folderBrowserDialog.SelectedPath;
+                    txtRutaRestore.Text = openFileDialog.FileName;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void realizarRestore()
@@ -81,7 +84,7 @@ namespace tpDiploma
                 else
                 {
                     txtRutaRestore.Clear();
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeRestoreExitoso", idioma));
+                    MessageBox.Show(GetIdioma.buscarTexto("mensajeRestoreExitoso", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
