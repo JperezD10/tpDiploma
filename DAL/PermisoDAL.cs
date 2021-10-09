@@ -277,20 +277,21 @@ namespace DAL
         {
             try
             {
-                SqlParameter[] sqlParameters = new SqlParameter[2];
+                SqlParameter[] sqlParameters = new SqlParameter[3];
                 sqlParameters[0] = new SqlParameter("@patente", patente.nombre);
                 sqlParameters[1] = new SqlParameter("@familia", familia.nombre);
-                DataTable dataTable = Acceso.Leer("SP_FAMILIA_AGREGAR_PATENTE", sqlParameters);
-                foreach (DataRow dataRow in dataTable.Rows)
+                sqlParameters[2] = new SqlParameter
                 {
-                    return int.Parse(dataRow["ID_Compuesto"].ToString());
-                }
+                    ParameterName = "@returnValue",
+                    Direction = ParameterDirection.ReturnValue
+                };
+                Acceso.Escribir("SP_FAMILIA_AGREGAR_PATENTE", sqlParameters);
+                return (int)sqlParameters[2].Value;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
-            return -1;
         }
 
         public int comprobarQuitarPatenteAFamilia(Permiso patente, Permiso familia)
@@ -348,13 +349,32 @@ namespace DAL
             }
         }
 
+        public int agregarPermiso(Permiso familia)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@familia", familia.nombre);
+                sqlParameters[1] = new SqlParameter
+                {
+                    ParameterName = "@returnValue",
+                    Direction = ParameterDirection.ReturnValue
+                };
+                Acceso.Escribir("AGREGAR_PERMISO", sqlParameters);
+                return (int)sqlParameters[1].Value;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public int comprobarPatentePorUsuario(Permiso patente, Usuario_Sesion usuario_Sesion)
         {
             try
             {
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@patente", patente.nombre);
-                sqlParameters[1] = new SqlParameter("@username", usuario_Sesion.Username);
+                sqlParameters[1] = new SqlParameter("@id_usuario", usuario_Sesion.ID_Usuario);
                 DataTable dataTable = Acceso.Leer("SP_PATENTE_COMPROBAR_USUARIO", sqlParameters);
                 foreach (DataRow dataRow in dataTable.Rows)
                 {

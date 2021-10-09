@@ -66,8 +66,8 @@ namespace DAL
             {
                 Accion = "Bloqueo de usuario",
                 Criticidad = "Media",
-                Descripcion = encriptado.encriptar($"El usuario {encriptado.desencriptar(usuario_Sesion.Username)} ha sido bloqueado"),
-                Usuario = usuario_Sesion.Username
+                Descripcion = encriptado.encriptar($"El usuario {usuario_Sesion.Username} ha sido bloqueado"),
+                Usuario = encriptado.encriptar(usuario_Sesion.Username)
             };
             accesoBitacora.CrearBitacora(bitacora);
         }

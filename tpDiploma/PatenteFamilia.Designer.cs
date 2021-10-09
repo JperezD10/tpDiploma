@@ -103,6 +103,7 @@ namespace tpDiploma
             this.GrillaPermisosNoAsignados.ReadOnly = true;
             this.GrillaPermisosNoAsignados.Size = new System.Drawing.Size(288, 157);
             this.GrillaPermisosNoAsignados.TabIndex = 57;
+            this.GrillaPermisosNoAsignados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaPermisosNoAsignados_CellClick);
             // 
             // GrillaPermisosAsignados
             // 
@@ -112,6 +113,7 @@ namespace tpDiploma
             this.GrillaPermisosAsignados.ReadOnly = true;
             this.GrillaPermisosAsignados.Size = new System.Drawing.Size(288, 157);
             this.GrillaPermisosAsignados.TabIndex = 57;
+            this.GrillaPermisosAsignados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaPermisosAsignados_CellClick);
             // 
             // lblPermisosNoAsignados
             // 
@@ -122,9 +124,9 @@ namespace tpDiploma
             this.lblPermisosNoAsignados.Location = new System.Drawing.Point(124, 87);
             this.lblPermisosNoAsignados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPermisosNoAsignados.Name = "lblPermisosNoAsignados";
-            this.lblPermisosNoAsignados.Size = new System.Drawing.Size(86, 16);
+            this.lblPermisosNoAsignados.Size = new System.Drawing.Size(188, 16);
             this.lblPermisosNoAsignados.TabIndex = 47;
-            this.lblPermisosNoAsignados.Text = "Username";
+            this.lblPermisosNoAsignados.Text = "Permisos no asignados";
             // 
             // lblPermisosAsignados
             // 
@@ -135,9 +137,9 @@ namespace tpDiploma
             this.lblPermisosAsignados.Location = new System.Drawing.Point(524, 87);
             this.lblPermisosAsignados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPermisosAsignados.Name = "lblPermisosAsignados";
-            this.lblPermisosAsignados.Size = new System.Drawing.Size(86, 16);
+            this.lblPermisosAsignados.Size = new System.Drawing.Size(162, 16);
             this.lblPermisosAsignados.TabIndex = 47;
-            this.lblPermisosAsignados.Text = "Username";
+            this.lblPermisosAsignados.Text = "Permisos asignados";
             // 
             // lblFamiliasNoAsignadas
             // 
@@ -148,9 +150,9 @@ namespace tpDiploma
             this.lblFamiliasNoAsignadas.Location = new System.Drawing.Point(124, 306);
             this.lblFamiliasNoAsignadas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFamiliasNoAsignadas.Name = "lblFamiliasNoAsignadas";
-            this.lblFamiliasNoAsignadas.Size = new System.Drawing.Size(86, 16);
+            this.lblFamiliasNoAsignadas.Size = new System.Drawing.Size(182, 16);
             this.lblFamiliasNoAsignadas.TabIndex = 47;
-            this.lblFamiliasNoAsignadas.Text = "Username";
+            this.lblFamiliasNoAsignadas.Text = "Familias no asignadas";
             // 
             // GrillaFamiliasNoAsignadas
             // 
@@ -171,9 +173,9 @@ namespace tpDiploma
             this.lblFamiliasAsignadas.Location = new System.Drawing.Point(524, 306);
             this.lblFamiliasAsignadas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFamiliasAsignadas.Name = "lblFamiliasAsignadas";
-            this.lblFamiliasAsignadas.Size = new System.Drawing.Size(86, 16);
+            this.lblFamiliasAsignadas.Size = new System.Drawing.Size(156, 16);
             this.lblFamiliasAsignadas.TabIndex = 47;
-            this.lblFamiliasAsignadas.Text = "Username";
+            this.lblFamiliasAsignadas.Text = "Familias asignadas";
             // 
             // GrillaFamiliasAsignadas
             // 

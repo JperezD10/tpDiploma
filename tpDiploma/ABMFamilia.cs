@@ -17,6 +17,8 @@ namespace tpDiploma
         BLL.IdiomaBLL GetIdioma = new BLL.IdiomaBLL();
         BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
         public string idioma;
+        Permiso patenteOtorgada;
+        Permiso patenteSinOtorgar;
         public ABMFamilia(MenuPrincipal m)
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace tpDiploma
             lblNombreFamiliaCrear.Text = GetIdioma.buscarTexto(lblNombreFamiliaCrear.Name, idioma);
             lblFamiliaListar.Text = GetIdioma.buscarTexto(lblFamiliaListar.Name, idioma);
             btnEliminarFamilia.Text = GetIdioma.buscarTexto(btnEliminarFamilia.Name, idioma);
+            lblPatentesDeLaFamilia.Text = GetIdioma.buscarTexto(lblPatentesDeLaFamilia.Name, idioma);
+            lblPatentesSinOtorgar.Text = GetIdioma.buscarTexto(lblPatentesSinOtorgar.Name, idioma);
         }
 
         public void OnError(Exception error)
@@ -114,6 +118,110 @@ namespace tpDiploma
         private void changeHeaderText(DataGridView dataGridView, string column, string name)
         {
             dataGridView.Columns[column].HeaderText = name;
+        }
+
+        private void btnDesasignarPermiso_Click(object sender, EventArgs e)
+        {
+            desasignarPatenteAFamilia();
+        }
+
+        private void btnAsignarPermiso_Click(object sender, EventArgs e)
+        {
+            asignarPatenteAFamilia();
+        }
+
+        private void asignarPatenteAFamilia()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
+                //{
+                    if (patenteSinOtorgar != null && cmbFamilias.SelectedIndex != -1)
+                    {
+                        Permiso familia = new Familia()
+                        {
+                            nombre = cmbFamilias.SelectedItem.ToString()
+                        };
+                        servicioPermiso.asignarPatenteAFamilia(patenteSinOtorgar, familia, idioma);
+                        listarPatentesPorFamilia();
+                        listarPatentesQueNoSeanDeLaFamilia();
+                        patenteSinOtorgar = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeSeleccionarFamiliaOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void desasignarPatenteAFamilia()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
+                //{
+                    if (patenteOtorgada != null && cmbFamilias.SelectedIndex != -1)
+                    {
+                        Permiso familia = new Familia()
+                        {
+                            nombre = cmbFamilias.SelectedItem.ToString() //encriptar luego
+                        };
+                        string result = servicioPermiso.desasignarPatenteAFamilia(patenteOtorgada, familia, idioma);
+                        if (result != "")
+                        {
+                            MessageBox.Show(result);
+                        }
+                        listarPatentesPorFamilia();
+                        listarPatentesQueNoSeanDeLaFamilia();
+                        patenteOtorgada = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeSeleccionarFamiliaOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void GrillaPatenteFamilia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                patenteOtorgada = (Patente)GrillaPatenteFamilia.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void GrillaPatentesSinOtorgar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                patenteSinOtorgar = (Patente)GrillaPatentesSinOtorgar.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -30,15 +30,27 @@ namespace tpDiploma
 
         private void LogIn_Load(object sender, EventArgs e)
         {
-            List<string> permisos = new List<string>
-            {
-                "Generar Restore", "Generar Backup", "Crear Usuario","Asignar familia a usuario","Asignar patente a usuario"
-            };
-            List<string> encriptados = new List<string>();
-            foreach (var p in permisos)
-            {
-                encriptados.Add(seguridad.encriptar(p));
-            }
+            //List<string> PermisosSinEncriptar = new List<string>
+            //{
+            //    "Realizar backUp",
+            //    "Realistar restore",
+            //    "Agregar familia",
+            //    "Eliminar familia",
+            //    "Registrar usuario",
+            //    "Modificar usuario",
+            //    "Asignar patente a familia",
+            //    "Inactivar usuario",
+            //    "Asignar patente a usuario",
+            //    "Listar bitacora",
+            //    "Asignar familia a usuario",
+            //};
+            //PermisoBL agregar = new PermisoBL();
+            //foreach (var permiso in PermisosSinEncriptar)
+            //{
+            //    Permiso p = new Familia();
+            //    p.nombre = permiso;
+            //    agregar.agregarPermiso(p);
+            //}
             cmbIdioma.DataSource = GetIdioma.CargarIdiomas();
             cmbIdioma.DisplayMember = "Idioma";
             cmbIdioma.SelectedIndex = 0;

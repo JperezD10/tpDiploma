@@ -15,6 +15,7 @@ namespace BLL
         PermisoDAL permisomapper = new PermisoDAL();
         DigitoVerificadorBLL servicioDigitoVerificador = new DigitoVerificadorBLL();
         BitacoraBLL ServicioBitacora = new BitacoraBLL();
+        IdiomaBLL servicioIdioma = new IdiomaBLL();
         Usuario_Sesion session_User = Usuario_Sesion.Instance;
         public void agregarFamilia(Permiso familia)
         {
@@ -30,9 +31,22 @@ namespace BLL
                 Accion = "Registro de familia",
                 Criticidad = "Media",
                 Descripcion = encriptacion.encriptar($"Se ha registrado la familia {nombreFamiliaPreCifrado}"),
-                Usuario = session_User.Username
+                Usuario = encriptacion.encriptar(session_User.Username)
             };
             ServicioBitacora.crearBitacora(bitacora);
+            //}
+            //return ServicioIdioma.ObtenerTexto("mensajeFamiliaYaExiste", idioma);
+        }
+
+        public void agregarPermiso(Permiso familia)
+        {
+            string nombreFamiliaPreCifrado = familia.nombre;
+            familia.nombre = encriptacion.encriptar(familia.nombre);
+            //int flag = PermisoDAL.comprobarExistenciaFamilia(familia, true);
+            //if (flag < 1)
+            //{
+            int lastID = permisomapper.agregarPermiso(familia);
+            servicioDigitoVerificador.recalcularDV(lastID, "Permiso", true);
             //}
             //return ServicioIdioma.ObtenerTexto("mensajeFamiliaYaExiste", idioma);
         }
@@ -108,6 +122,16 @@ namespace BLL
             return listaPermisos;
         }
 
+        public bool comprobarPatentePorUsuario(Permiso patente, Usuario_Sesion usuario)
+        {
+            patente.nombre = encriptacion.encriptar(patente.nombre);
+            int flag = permisomapper.comprobarPatentePorUsuario(patente, usuario);
+            if (flag > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         public void asignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia)
         {
             permiso.nombre = encriptacion.encriptar(permiso.nombre);
@@ -118,7 +142,7 @@ namespace BLL
                 Accion = "Asignación de permiso",
                 Criticidad = "Alta",
                 Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(permiso.nombre)}  ha sido asignado al usuario {encriptacion.desencriptar(usuario.Username)}"),
-                Usuario = session_User.Username
+                Usuario = encriptacion.encriptar(session_User.Username)
             };
             ServicioBitacora.crearBitacora(b);
         }
@@ -151,7 +175,7 @@ namespace BLL
                         Accion = "Desasignación de permiso",
                         Criticidad = "Alta",
                         Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(permiso.nombre)}  ha sido desasignado del usuario {encriptacion.desencriptar(usuario.Username)}"),
-                        Usuario = session_User.Username
+                        Usuario = encriptacion.encriptar(session_User.Username)
                     };
                     ServicioBitacora.crearBitacora(b);
                     return "";
@@ -166,6 +190,56 @@ namespace BLL
             {
                 return "Failed comprobacion";
             }
+        }
+
+        public string asignarPatenteAFamilia(Permiso patente, Permiso familia, string idioma)
+        {
+            patente.nombre = encriptacion.encriptar(patente.nombre);
+            familia.nombre = encriptacion.encriptar(familia.nombre);
+            int lastID = permisomapper.asignarPatenteAFamilia(patente, familia);
+            servicioDigitoVerificador.recalcularDV(lastID, "Compuesto", true);
+            Bitacora b = new Bitacora
+            {
+                Accion = "Asignación de patente",
+                Criticidad = "Alta",
+                Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(patente.nombre)}  ha sido asignada a la familia {encriptacion.desencriptar(familia.nombre)}"),
+                Usuario = encriptacion.encriptar(session_User.Username)
+            };
+            ServicioBitacora.crearBitacora(b);
+            return "";
+        }
+
+        public string desasignarPatenteAFamilia(Permiso patente, Permiso familia, string idioma)
+        {
+            patente.nombre = encriptacion.encriptar(patente.nombre);
+            familia.nombre = encriptacion.encriptar(familia.nombre);
+            int flag = permisomapper.comprobarQuitarPatenteAFamilia(patente, familia);
+            if (flag >= 0)
+            {
+                if (flag > 0)
+                {
+                    permisomapper.desasignarPatenteAFamilia(patente, familia);
+                    servicioDigitoVerificador.recalcularDVV("Compuesto");
+                    Bitacora b = new Bitacora
+                    {
+                        Accion = "Desasignación de patente",
+                        Criticidad = "Media",
+                        Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(patente.nombre)}  ha sido asignada a la familia {encriptacion.desencriptar(familia.nombre)}"),
+                        Usuario = encriptacion.encriptar(session_User.Username)
+                    };
+                    ServicioBitacora.crearBitacora(b);
+                    return "";
+                }
+                else
+                {
+                    return servicioIdioma.buscarTexto("mensajeNoSePuedeDesasignar", idioma);
+                }
+            }
+            else
+            {
+                return "Failed comprobacion";
+            }
+
         }
     }
 }

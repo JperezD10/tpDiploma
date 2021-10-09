@@ -1,4 +1,5 @@
 ﻿using BE;
+using BLL;
 using SEGURIDAD;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,16 @@ namespace tpDiploma
 {
     public partial class PatenteFamilia : Form, IObserver<string>
     {
-        BLL.PermisoBL servicioPermiso = new BLL.PermisoBL();
-        BLL.IdiomaBLL GetIdioma = new BLL.IdiomaBLL();
-        BLL.UsuarioBLL servicioUsuario = new BLL.UsuarioBLL();
-        BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
+        PermisoBL servicioPermiso = new PermisoBL();
+        IdiomaBLL GetIdioma = new IdiomaBLL();
+        UsuarioBLL servicioUsuario = new UsuarioBLL();
+        Encriptacion Encriptacion = new Encriptacion();
+        IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         public string idioma;
         Permiso familiaOtorgada;
+        Permiso patenteOtorgada;
         Permiso familiaSinOtorgar;
-
+        Permiso patenteSinOtorgar;
         public PatenteFamilia(MenuPrincipal m)
         {
             InitializeComponent();
@@ -245,12 +248,119 @@ namespace tpDiploma
 
         private void btnAsignarPermiso_Click(object sender, EventArgs e)
         {
+            asignarPatenteAUsuario();
+        }
 
+        private void asignarPatenteAUsuario()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
+                //{
+                    if (patenteSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
+                    {
+                        if (patenteSinOtorgar is Patente)
+                        {
+                            Usuario usuario = new Usuario()
+                            {
+                                Username = Encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
+                            };
+                            servicioPermiso.asignarPermisoAUsuario(patenteSinOtorgar, usuario, false);
+                            listarPatentesPorUsuario();
+                            obtenerPermisosExluyentesAlUsuario(false, GrillaPermisosNoAsignados);
+                            patenteSinOtorgar = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaFamilia", idioma),"", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOPatente",idioma),"", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void btnDesasignarPermiso_Click(object sender, EventArgs e)
         {
+            desasignarPatenteAUsuario();
+        }
 
+        private void desasignarPatenteAUsuario()
+        {
+            try
+            {
+                //if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
+                //{
+                    if (patenteOtorgada != null && cmbUsuarios.SelectedIndex != -1)
+                    {
+                        if (patenteOtorgada is Patente)
+                        {
+                            Usuario usuario = new Usuario()
+                            {
+                                Username = Encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
+                            };
+                            string result = servicioPermiso.desasignarPermisoAUsuario(patenteOtorgada, usuario, false, idioma);
+                            if (result != "")
+                            {
+                                MessageBox.Show(result);
+                            }
+                            listarPatentesPorUsuario();
+                            obtenerPermisosExluyentesAlUsuario(false, GrillaPermisosNoAsignados);
+                            patenteOtorgada = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                //}
+                //else
+                //{
+                //    showPermisoInsuficiente();
+                //}
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        private void GrillaPermisosNoAsignados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                patenteSinOtorgar = (Patente)GrillaPermisosNoAsignados.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void GrillaPermisosAsignados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                patenteOtorgada = (Patente)GrillaPermisosAsignados.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
