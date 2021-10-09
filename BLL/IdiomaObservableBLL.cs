@@ -24,10 +24,5 @@ namespace BLL
             if (listaObservers.Contains(observer)) return;
             listaObservers.Add(observer);
         }
-
-        public void RemoveObserver(IObserver<string> observer)
-        {
-            listaObservers.Remove(observer);
-        }
     }
 }

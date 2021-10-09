@@ -49,6 +49,7 @@
     <Compile Include="Permiso.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioCambios.cs" />
     <Compile Include="Usuario_Sesion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

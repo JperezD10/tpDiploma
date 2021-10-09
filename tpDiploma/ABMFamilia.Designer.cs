@@ -149,6 +149,7 @@ namespace tpDiploma
             this.GrillaPatenteFamilia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaPatenteFamilia.Location = new System.Drawing.Point(138, 197);
             this.GrillaPatenteFamilia.Name = "GrillaPatenteFamilia";
+            this.GrillaPatenteFamilia.ReadOnly = true;
             this.GrillaPatenteFamilia.Size = new System.Drawing.Size(288, 222);
             this.GrillaPatenteFamilia.TabIndex = 56;
             // 
@@ -157,6 +158,7 @@ namespace tpDiploma
             this.GrillaPatentesSinOtorgar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaPatentesSinOtorgar.Location = new System.Drawing.Point(589, 197);
             this.GrillaPatentesSinOtorgar.Name = "GrillaPatentesSinOtorgar";
+            this.GrillaPatentesSinOtorgar.ReadOnly = true;
             this.GrillaPatentesSinOtorgar.Size = new System.Drawing.Size(278, 222);
             this.GrillaPatentesSinOtorgar.TabIndex = 56;
             // 

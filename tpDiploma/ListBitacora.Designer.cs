@@ -49,9 +49,10 @@
             this.lblUsernameBitacora.AutoSize = true;
             this.lblUsernameBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblUsernameBitacora.Location = new System.Drawing.Point(187, 100);
+            this.lblUsernameBitacora.Location = new System.Drawing.Point(140, 81);
+            this.lblUsernameBitacora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsernameBitacora.Name = "lblUsernameBitacora";
-            this.lblUsernameBitacora.Size = new System.Drawing.Size(84, 20);
+            this.lblUsernameBitacora.Size = new System.Drawing.Size(69, 16);
             this.lblUsernameBitacora.TabIndex = 50;
             this.lblUsernameBitacora.Text = "Nombre";
             this.lblUsernameBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,9 +60,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -18);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 147);
+            this.pictureBox1.Size = new System.Drawing.Size(112, 119);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
@@ -71,9 +73,10 @@
             this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
             this.txtUsername.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.txtUsername.Location = new System.Drawing.Point(353, 98);
+            this.txtUsername.Location = new System.Drawing.Point(265, 80);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(149, 27);
+            this.txtUsername.Size = new System.Drawing.Size(113, 23);
             this.txtUsername.TabIndex = 48;
             // 
             // lblCriticidadBitacora
@@ -81,9 +84,10 @@
             this.lblCriticidadBitacora.AutoSize = true;
             this.lblCriticidadBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriticidadBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblCriticidadBitacora.Location = new System.Drawing.Point(582, 100);
+            this.lblCriticidadBitacora.Location = new System.Drawing.Point(436, 81);
+            this.lblCriticidadBitacora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCriticidadBitacora.Name = "lblCriticidadBitacora";
-            this.lblCriticidadBitacora.Size = new System.Drawing.Size(84, 20);
+            this.lblCriticidadBitacora.Size = new System.Drawing.Size(69, 16);
             this.lblCriticidadBitacora.TabIndex = 50;
             this.lblCriticidadBitacora.Text = "Nombre";
             this.lblCriticidadBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -93,25 +97,28 @@
             this.lblFechaDesdeBitacora.AutoSize = true;
             this.lblFechaDesdeBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaDesdeBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblFechaDesdeBitacora.Location = new System.Drawing.Point(187, 40);
+            this.lblFechaDesdeBitacora.Location = new System.Drawing.Point(140, 32);
+            this.lblFechaDesdeBitacora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaDesdeBitacora.Name = "lblFechaDesdeBitacora";
-            this.lblFechaDesdeBitacora.Size = new System.Drawing.Size(84, 20);
+            this.lblFechaDesdeBitacora.Size = new System.Drawing.Size(69, 16);
             this.lblFechaDesdeBitacora.TabIndex = 50;
             this.lblFechaDesdeBitacora.Text = "Nombre";
             this.lblFechaDesdeBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtFechaDesde
             // 
-            this.txtFechaDesde.Location = new System.Drawing.Point(353, 40);
+            this.txtFechaDesde.Location = new System.Drawing.Point(265, 32);
+            this.txtFechaDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechaDesde.Name = "txtFechaDesde";
-            this.txtFechaDesde.Size = new System.Drawing.Size(149, 22);
+            this.txtFechaDesde.Size = new System.Drawing.Size(113, 20);
             this.txtFechaDesde.TabIndex = 51;
             // 
             // txtFechaHasta
             // 
-            this.txtFechaHasta.Location = new System.Drawing.Point(759, 40);
+            this.txtFechaHasta.Location = new System.Drawing.Point(569, 32);
+            this.txtFechaHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFechaHasta.Name = "txtFechaHasta";
-            this.txtFechaHasta.Size = new System.Drawing.Size(149, 22);
+            this.txtFechaHasta.Size = new System.Drawing.Size(113, 20);
             this.txtFechaHasta.TabIndex = 51;
             // 
             // lblFechaHastaBitacora
@@ -119,9 +126,10 @@
             this.lblFechaHastaBitacora.AutoSize = true;
             this.lblFechaHastaBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaHastaBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblFechaHastaBitacora.Location = new System.Drawing.Point(582, 40);
+            this.lblFechaHastaBitacora.Location = new System.Drawing.Point(436, 32);
+            this.lblFechaHastaBitacora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaHastaBitacora.Name = "lblFechaHastaBitacora";
-            this.lblFechaHastaBitacora.Size = new System.Drawing.Size(84, 20);
+            this.lblFechaHastaBitacora.Size = new System.Drawing.Size(69, 16);
             this.lblFechaHastaBitacora.TabIndex = 50;
             this.lblFechaHastaBitacora.Text = "Nombre";
             this.lblFechaHastaBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -135,9 +143,10 @@
             this.btnListarBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListarBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListarBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnListarBitacora.Location = new System.Drawing.Point(944, 59);
+            this.btnListarBitacora.Location = new System.Drawing.Point(708, 48);
+            this.btnListarBitacora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnListarBitacora.Name = "btnListarBitacora";
-            this.btnListarBitacora.Size = new System.Drawing.Size(126, 30);
+            this.btnListarBitacora.Size = new System.Drawing.Size(94, 24);
             this.btnListarBitacora.TabIndex = 52;
             this.btnListarBitacora.Text = "Crear";
             this.btnListarBitacora.UseVisualStyleBackColor = false;
@@ -146,11 +155,13 @@
             // gridBitacora
             // 
             this.gridBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridBitacora.Location = new System.Drawing.Point(156, 188);
+            this.gridBitacora.Location = new System.Drawing.Point(117, 153);
+            this.gridBitacora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridBitacora.Name = "gridBitacora";
+            this.gridBitacora.ReadOnly = true;
             this.gridBitacora.RowHeadersWidth = 51;
             this.gridBitacora.RowTemplate.Height = 24;
-            this.gridBitacora.Size = new System.Drawing.Size(959, 368);
+            this.gridBitacora.Size = new System.Drawing.Size(719, 299);
             this.gridBitacora.TabIndex = 53;
             // 
             // cmbCriticidad
@@ -164,17 +175,18 @@
             "Baja",
             "Media",
             "Alta"});
-            this.cmbCriticidad.Location = new System.Drawing.Point(759, 98);
+            this.cmbCriticidad.Location = new System.Drawing.Point(569, 80);
+            this.cmbCriticidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCriticidad.Name = "cmbCriticidad";
-            this.cmbCriticidad.Size = new System.Drawing.Size(149, 27);
+            this.cmbCriticidad.Size = new System.Drawing.Size(113, 24);
             this.cmbCriticidad.TabIndex = 54;
             // 
             // ListBitacora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(1232, 602);
+            this.ClientSize = new System.Drawing.Size(924, 489);
             this.Controls.Add(this.cmbCriticidad);
             this.Controls.Add(this.gridBitacora);
             this.Controls.Add(this.btnListarBitacora);
@@ -187,6 +199,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ListBitacora";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

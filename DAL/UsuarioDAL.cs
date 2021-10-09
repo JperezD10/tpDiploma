@@ -116,9 +116,11 @@ namespace DAL
                 usuario.ID_Usuario = (int)fila["ID_Usuario"];
                 usuario.Nombre = fila["Nombre"].ToString();
                 usuario.Apellido = fila["Apellido"].ToString();
+                usuario.FechaNacimiento = (DateTime)fila["FechaNacimiento"];
                 usuario.Email = fila["Email"].ToString();
                 usuario.DNI = fila["DNI"].ToString();
-                usuario.Username = fila["Username"].ToString();
+                usuario.Direccion = fila["Direccion"].ToString();
+                usuario.Username = encriptado.desencriptar(fila["Username"].ToString());
             }
         }
 
@@ -141,7 +143,19 @@ namespace DAL
             acceso.Escribir("CrearUsuario",parametro);
             return (int)parametro[8].Value;
         }
-        
-        
+
+        public int ModificarUsuario(Usuario usuario)
+        {
+            SqlParameter[] parametro = new SqlParameter[6];
+            parametro[0] = new SqlParameter("@Nombre", usuario.Nombre);
+            parametro[1] = new SqlParameter("@Apellido", usuario.Apellido);
+            parametro[2] = new SqlParameter("@Dni", usuario.DNI);
+            parametro[3] = new SqlParameter("@Email", usuario.Email);
+            parametro[4] = new SqlParameter("@FechaNacimiento", usuario.FechaNacimiento);
+            parametro[5] = new SqlParameter("@Direccion", usuario.Direccion);
+            acceso.Escribir("ModificarUsuario", parametro);
+            return usuario.ID_Usuario;
+        }
+
     }
 }

@@ -242,5 +242,15 @@ namespace tpDiploma
 
             }
         }
+
+        private void btnAsignarPermiso_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDesasignarPermiso_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

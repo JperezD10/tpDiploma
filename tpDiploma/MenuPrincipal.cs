@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
 
 namespace tpDiploma
 {
@@ -15,7 +16,7 @@ namespace tpDiploma
         LogIn login = new LogIn();
         BLL.IdiomaBLL gestoriIdioma = new BLL.IdiomaBLL();
         BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
-
+        Usuario_Sesion Usuario_Sesion = Usuario_Sesion.Instance;
         public string idioma;
         public MenuPrincipal(LogIn l)
         {
@@ -56,7 +57,7 @@ namespace tpDiploma
         }
         private void btnRegistrarUsuario_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new CrearUsuario(this));
+            AbrirFormInPanel(new CrearUsuario(this, null));
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
@@ -90,6 +91,9 @@ namespace tpDiploma
             generarBackUpToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarBackUpToolStripMenuItem.Name, idioma);
             generarRestoreToolStripMenuItem.Text = gestoriIdioma.buscarTexto(generarRestoreToolStripMenuItem.Name, idioma);
             asignarPermisosToolStripMenuItem.Text = gestoriIdioma.buscarTexto(asignarPermisosToolStripMenuItem.Name, idioma);
+            lblSaludoUsername.Text = $"{gestoriIdioma.buscarTexto(lblSaludoUsername.Name, idioma)} {Usuario_Sesion.Username}";
+            editarPerfilToolStripMenuItem.Text = gestoriIdioma.buscarTexto(editarPerfilToolStripMenuItem.Name, idioma);
+            restaurarInformacionToolStripMenuItem.Text = gestoriIdioma.buscarTexto(restaurarInformacionToolStripMenuItem.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)
@@ -120,6 +124,16 @@ namespace tpDiploma
         private void generarRestoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new Restore(this));
+        }
+
+        private void editarPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new CrearUsuario(this, Usuario_Sesion));
+        }
+
+        private void restaurarInformacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new RestaurarCambio(this));
         }
     }
 }

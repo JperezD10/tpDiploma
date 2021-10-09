@@ -30,7 +30,7 @@ namespace BLL
                     Accion = "Backup",
                     Criticidad = "Alta",
                     Descripcion = encriptacion.encriptar("Se ha realizado un backup de la base de datos"),
-                    Usuario = Usuario_Sesion.Username
+                    Usuario = encriptacion.encriptar(Usuario_Sesion.Username)
                 };
                 ServicioBitacora.crearBitacora(bitacora);
                 return "";
@@ -54,7 +54,7 @@ namespace BLL
                         Accion = "Restore",
                         Criticidad = "Alta",
                         Descripcion = encriptacion.encriptar("Se ha realizado un restore de la base de datos"),
-                        Usuario = Usuario_Sesion.Username
+                        Usuario = encriptacion.encriptar(Usuario_Sesion.Username)
                     };
                     ServicioBitacora.crearBitacora(bitacora);
                     return "";

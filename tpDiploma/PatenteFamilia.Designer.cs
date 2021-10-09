@@ -100,6 +100,7 @@ namespace tpDiploma
             this.GrillaPermisosNoAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaPermisosNoAsignados.Location = new System.Drawing.Point(127, 124);
             this.GrillaPermisosNoAsignados.Name = "GrillaPermisosNoAsignados";
+            this.GrillaPermisosNoAsignados.ReadOnly = true;
             this.GrillaPermisosNoAsignados.Size = new System.Drawing.Size(288, 157);
             this.GrillaPermisosNoAsignados.TabIndex = 57;
             // 
@@ -108,6 +109,7 @@ namespace tpDiploma
             this.GrillaPermisosAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaPermisosAsignados.Location = new System.Drawing.Point(527, 124);
             this.GrillaPermisosAsignados.Name = "GrillaPermisosAsignados";
+            this.GrillaPermisosAsignados.ReadOnly = true;
             this.GrillaPermisosAsignados.Size = new System.Drawing.Size(288, 157);
             this.GrillaPermisosAsignados.TabIndex = 57;
             // 
@@ -155,6 +157,7 @@ namespace tpDiploma
             this.GrillaFamiliasNoAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaFamiliasNoAsignadas.Location = new System.Drawing.Point(127, 343);
             this.GrillaFamiliasNoAsignadas.Name = "GrillaFamiliasNoAsignadas";
+            this.GrillaFamiliasNoAsignadas.ReadOnly = true;
             this.GrillaFamiliasNoAsignadas.Size = new System.Drawing.Size(288, 158);
             this.GrillaFamiliasNoAsignadas.TabIndex = 57;
             this.GrillaFamiliasNoAsignadas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaFamiliasNoAsignadas_CellClick);
@@ -177,6 +180,7 @@ namespace tpDiploma
             this.GrillaFamiliasAsignadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaFamiliasAsignadas.Location = new System.Drawing.Point(527, 343);
             this.GrillaFamiliasAsignadas.Name = "GrillaFamiliasAsignadas";
+            this.GrillaFamiliasAsignadas.ReadOnly = true;
             this.GrillaFamiliasAsignadas.Size = new System.Drawing.Size(288, 158);
             this.GrillaFamiliasAsignadas.TabIndex = 57;
             this.GrillaFamiliasAsignadas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaFamiliasAsignadas_CellClick);
@@ -192,12 +196,13 @@ namespace tpDiploma
             this.btnAsignarPermiso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.btnAsignarPermiso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnAsignarPermiso.Location = new System.Drawing.Point(441, 141);
-            this.btnAsignarPermiso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAsignarPermiso.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsignarPermiso.Name = "btnAsignarPermiso";
             this.btnAsignarPermiso.Size = new System.Drawing.Size(52, 45);
             this.btnAsignarPermiso.TabIndex = 58;
             this.btnAsignarPermiso.Text = "=>";
             this.btnAsignarPermiso.UseVisualStyleBackColor = false;
+            this.btnAsignarPermiso.Click += new System.EventHandler(this.btnAsignarPermiso_Click);
             // 
             // btnDesasignarPermiso
             // 
@@ -216,6 +221,7 @@ namespace tpDiploma
             this.btnDesasignarPermiso.TabIndex = 58;
             this.btnDesasignarPermiso.Text = "<=";
             this.btnDesasignarPermiso.UseVisualStyleBackColor = false;
+            this.btnDesasignarPermiso.Click += new System.EventHandler(this.btnDesasignarPermiso_Click);
             // 
             // btnAsignarFamilia
             // 

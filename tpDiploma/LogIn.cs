@@ -30,6 +30,15 @@ namespace tpDiploma
 
         private void LogIn_Load(object sender, EventArgs e)
         {
+            List<string> permisos = new List<string>
+            {
+                "Generar Restore", "Generar Backup", "Crear Usuario","Asignar familia a usuario","Asignar patente a usuario"
+            };
+            List<string> encriptados = new List<string>();
+            foreach (var p in permisos)
+            {
+                encriptados.Add(seguridad.encriptar(p));
+            }
             cmbIdioma.DataSource = GetIdioma.CargarIdiomas();
             cmbIdioma.DisplayMember = "Idioma";
             cmbIdioma.SelectedIndex = 0;

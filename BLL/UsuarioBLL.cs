@@ -87,12 +87,38 @@ namespace BLL
                 Accion = "Registro de usuario",
                 Criticidad = "Media",
                 Descripcion = encriptado.encriptar($"Se ha registrado a {newUser.Nombre} {newUser.Apellido}"),
-                Usuario = session_User.Username
+                Usuario = encriptado.encriptar(session_User.Username)
             };
             int idBitacora = servicioBitacora.crearBitacora(bitacora);
-            digitosVerificadores.recalcularDV(idBitacora, "Bitacora", true);
-            digitosVerificadores.recalcularDVV("Bitacora");
             return idNuevoUsuario;
+        }
+
+        public int ModificarUsuario(Usuario usuario)
+        {
+            mapper.ModificarUsuario(usuario);
+            digitosVerificadores.recalcularDV(usuario.ID_Usuario, "Usuario", true);
+            digitosVerificadores.recalcularDVV("Usuario");
+            actualizarUsuarioSession(usuario);
+            Bitacora bitacora = new Bitacora()
+            {
+                Accion = "Modificacion de usuario",
+                Criticidad = "Media",
+                Descripcion = encriptado.encriptar($"Se ha modificado a {usuario.Nombre} {usuario.Apellido}"),
+                Usuario = encriptado.encriptar(session_User.Username)
+            };
+            servicioBitacora.crearBitacora(bitacora);
+            UsuarioCambiosBLL.crearUsuarioCambios(usuario);
+            return usuario.ID_Usuario;
+        }
+
+        private void actualizarUsuarioSession(Usuario usuario)
+        {
+            session_User.Nombre = usuario.Nombre;
+            session_User.Apellido = usuario.Apellido;
+            session_User.DNI = usuario.DNI;
+            session_User.Direccion = usuario.Direccion;
+            session_User.FechaNacimiento = usuario.FechaNacimiento;
+            session_User.Email = usuario.Email;
         }
         private Random _random = new Random();
         public string GenerarContraseña()
