@@ -19,6 +19,7 @@ namespace tpDiploma
         IdiomaBLL GetIdioma = new IdiomaBLL();
         UsuarioBLL servicioUsuario = new UsuarioBLL();
         Encriptacion Encriptacion = new Encriptacion();
+        Usuario_Sesion Usuario_Sesion = Usuario_Sesion.Instance;
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         public string idioma;
         Permiso familiaOtorgada;
@@ -135,36 +136,36 @@ namespace tpDiploma
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
-                //{
-                if (familiaSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
+                if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
                 {
-                    if (familiaSinOtorgar is Familia)
+                    if (familiaSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        Encriptacion encriptacion = new Encriptacion();
-                        Usuario usuario = new Usuario()
+                        if (familiaSinOtorgar is Familia)
                         {
-                            Username = encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
-                        };
-                        servicioPermiso.asignarPermisoAUsuario(familiaSinOtorgar, usuario, true);
-                        listarFamiliasPorUsuario();
-                        obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
-                        familiaSinOtorgar = null;
+                            Encriptacion encriptacion = new Encriptacion();
+                            Usuario usuario = new Usuario()
+                            {
+                                Username = encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
+                            };
+                            servicioPermiso.asignarPermisoAUsuario(familiaSinOtorgar, usuario, true);
+                            listarFamiliasPorUsuario();
+                            obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
+                            familiaSinOtorgar = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    showPermisoInsuficiente();
                 }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
             }
             catch (Exception e)
             {
@@ -189,44 +190,50 @@ namespace tpDiploma
             desasignarFamiliaAUsuario();
         }
 
+        private bool comprobarPatentePorUsuario(string nombrePatente)
+        {
+            Permiso patente = new Patente();
+            patente.nombre = nombrePatente;
+            return servicioPermiso.comprobarPatentePorUsuario(patente, Usuario_Sesion);
+        }
         private void desasignarFamiliaAUsuario()
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
-                //{
-                if (familiaOtorgada != null && cmbUsuarios.SelectedIndex != -1)
+                if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
                 {
-                    if (familiaOtorgada is Familia)
+                    if (familiaOtorgada != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        Encriptacion encriptado = new Encriptacion();
-                        Usuario usuario = new Usuario()
+                        if (familiaOtorgada is Familia)
                         {
-                            Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
-                        };
-                        string result = servicioPermiso.desasignarPermisoAUsuario(familiaOtorgada, usuario, true, idioma);
-                        if (result != "")
-                        {
-                            MessageBox.Show(result);
+                            Encriptacion encriptado = new Encriptacion();
+                            Usuario usuario = new Usuario()
+                            {
+                                Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
+                            };
+                            string result = servicioPermiso.desasignarPermisoAUsuario(familiaOtorgada, usuario, true, idioma);
+                            if (result != "")
+                            {
+                                MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            listarFamiliasPorUsuario();
+                            obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
+                            familiaOtorgada = null;
                         }
-                        listarFamiliasPorUsuario();
-                        obtenerPermisosExluyentesAlUsuario(true, GrillaFamiliasNoAsignadas);
-                        familiaOtorgada = null;
+                        else
+                        {
+                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    showPermisoInsuficiente();
                 }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
             }
             catch (Exception e)
             {
@@ -234,6 +241,10 @@ namespace tpDiploma
             }
         }
 
+        private void showPermisoInsuficiente()
+        {
+            MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma));
+        }
         private void GrillaFamiliasAsignadas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -255,8 +266,8 @@ namespace tpDiploma
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
-                //{
+                if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
+                {
                     if (patenteSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
                     {
                         if (patenteSinOtorgar is Patente)
@@ -279,11 +290,11 @@ namespace tpDiploma
                     {
                         MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOPatente",idioma),"", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
             }
             catch (Exception e)
             {
@@ -300,8 +311,8 @@ namespace tpDiploma
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
-                //{
+                if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
+                {
                     if (patenteOtorgada != null && cmbUsuarios.SelectedIndex != -1)
                     {
                         if (patenteOtorgada is Patente)
@@ -328,11 +339,11 @@ namespace tpDiploma
                     {
                         MessageBox.Show(GetIdioma.buscarTexto("mensajeDebeSeleccionarUsuarioOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
             }
             catch (Exception e)
             {

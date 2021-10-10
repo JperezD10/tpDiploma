@@ -23,11 +23,17 @@ namespace DAL
             if (dataTable.Rows.Count > 0) return true;
             else return false;
         }
-        public void SumarIntentosLog(string Username)
+        public int SumarIntentosLog(string Username)
         {
-            SqlParameter[] parametro = new SqlParameter[1];
+            SqlParameter[] parametro = new SqlParameter[2];
             parametro[0] = new SqlParameter("@Username", Username);
+            parametro[1] = new SqlParameter
+            {
+                ParameterName = "@returnValue",
+                Direction = ParameterDirection.ReturnValue
+            };
             acceso.Escribir("SumarIntentoDeLog", parametro);
+            return (int)parametro[1].Value; //retorno el id del usuario modificado para volver a calcular los DV
         }
 
         public List<Usuario> listarUsuario()

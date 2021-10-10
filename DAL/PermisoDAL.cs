@@ -149,7 +149,7 @@ namespace DAL
                 SqlParameter[] sqlParameters = new SqlParameter[2];
                 sqlParameters[0] = new SqlParameter("@nombrePermiso", familia.nombre);
                 sqlParameters[1] = new SqlParameter("@isFamilia", isFamilia);
-                DataTable dataTable = Acceso.Leer("SP_PERMISO_COMPROBAR_EXISTENCIA", sqlParameters);
+                DataTable dataTable = Acceso.Leer("PERMISO_COMPROBAR_EXISTENCIA", sqlParameters);
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     return (int)dataRow["Contador"];
@@ -187,7 +187,7 @@ namespace DAL
             {
                 SqlParameter[] sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@familia", familia.nombre);
-                return Acceso.Escribir("SP_FAMILIA_ELIMINAR", sqlParameters);
+                return Acceso.Escribir("FAMILIA_ELIMINAR", sqlParameters);
             }
             catch (Exception ex)
             {

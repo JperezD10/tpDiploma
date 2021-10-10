@@ -16,6 +16,7 @@ namespace tpDiploma
         BLL.PermisoBL servicioPermiso = new BLL.PermisoBL();
         BLL.IdiomaBLL GetIdioma = new BLL.IdiomaBLL();
         BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
+        Usuario_Sesion usuario_Sesion = Usuario_Sesion.Instance;
         public string idioma;
         Permiso patenteOtorgada;
         Permiso patenteSinOtorgar;
@@ -46,6 +47,10 @@ namespace tpDiploma
         {
             idioma = value;
         }
+        private void limpiarGrilla( DataGridView grilla)
+        {
+            grilla.DataSource = null;
+        }
 
         private void btnCrearFamilia_Click(object sender, EventArgs e)
         {
@@ -55,8 +60,14 @@ namespace tpDiploma
                 {
                     nombre = txtNombreFamilia.Text
                 };
-                servicioPermiso.agregarFamilia(familia);
-                MessageBox.Show(GetIdioma.buscarTexto("msbFamiliaAgregada", idioma),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                string result = servicioPermiso.agregarFamilia(familia, idioma);
+                if (result != "")
+                {
+                    MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                txtNombreFamilia.Clear();
+                limpiarGrilla(GrillaPatenteFamilia);
+                limpiarGrilla(GrillaPatentesSinOtorgar);
                 cargarFamilias();
             }
             else
@@ -134,8 +145,8 @@ namespace tpDiploma
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
-                //{
+                if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
+                {
                     if (patenteSinOtorgar != null && cmbFamilias.SelectedIndex != -1)
                     {
                         Permiso familia = new Familia()
@@ -151,11 +162,11 @@ namespace tpDiploma
                     {
                         MessageBox.Show(GetIdioma.buscarTexto("mensajeSeleccionarFamiliaOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
             }
             catch (Exception e)
             {
@@ -167,13 +178,13 @@ namespace tpDiploma
         {
             try
             {
-                //if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
-                //{
+                if (comprobarPatentePorUsuario("Asignar patente a familia"))
+                {
                     if (patenteOtorgada != null && cmbFamilias.SelectedIndex != -1)
                     {
                         Permiso familia = new Familia()
                         {
-                            nombre = cmbFamilias.SelectedItem.ToString() //encriptar luego
+                            nombre = cmbFamilias.SelectedItem.ToString()
                         };
                         string result = servicioPermiso.desasignarPatenteAFamilia(patenteOtorgada, familia, idioma);
                         if (result != "")
@@ -188,11 +199,11 @@ namespace tpDiploma
                     {
                         MessageBox.Show(GetIdioma.buscarTexto("mensajeSeleccionarFamiliaOPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                //}
-                //else
-                //{
-                //    showPermisoInsuficiente();
-                //}
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
             }
             catch (Exception e)
             {
@@ -221,6 +232,58 @@ namespace tpDiploma
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void btnEliminarFamilia_Click(object sender, EventArgs e)
+        {
+            eliminarFamilia();
+        }
+        private bool comprobarPatentePorUsuario(string nombrePatente)
+        {
+            Permiso patente = new Patente();
+            patente.nombre = nombrePatente;
+            return servicioPermiso.comprobarPatentePorUsuario(patente, usuario_Sesion);
+        }
+        private void showPermisoInsuficiente()
+        {
+            MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma));
+        }
+        private void eliminarFamilia()
+        {
+            try
+            {
+                if (comprobarPatentePorUsuario("Eliminar familia"))
+                {
+                    if (txtNombreFamilia.Text != "")
+                    {
+                        Permiso familia = new Familia
+                        {
+                            nombre = txtNombreFamilia.Text
+                        };
+                        string result = servicioPermiso.eliminarFamilia(familia, true, idioma);
+                        if (result != "")
+                        {
+                            MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        txtNombreFamilia.Clear();
+                        limpiarGrilla(GrillaPatenteFamilia);
+                        limpiarGrilla(GrillaPatentesSinOtorgar);
+                        cargarFamilias();
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

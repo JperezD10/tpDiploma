@@ -96,10 +96,14 @@ namespace tpDiploma
                         gestor.BloquearUsuario(txtNombreUsuario.Text);
                         MessageBox.Show(AvisoBloqueo, "", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                     }
-                    else MessageBox.Show(contraIncorrecta + ingresoNumero, "", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                    else MessageBox.Show($"{contraIncorrecta} {ingresoNumero}", "", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                 }
             }
-            else MessageBox.Show(avisoInexistente, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                MessageBox.Show(avisoInexistente, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombreUsuario.Clear(); txtPassword.Clear();
+            }
         }
 
         private void txtNombreUsuario_KeyDown(object sender, KeyEventArgs e)

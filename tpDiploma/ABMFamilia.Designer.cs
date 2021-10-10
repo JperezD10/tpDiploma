@@ -114,8 +114,9 @@ namespace tpDiploma
             this.btnEliminarFamilia.Name = "btnEliminarFamilia";
             this.btnEliminarFamilia.Size = new System.Drawing.Size(147, 26);
             this.btnEliminarFamilia.TabIndex = 7;
-            this.btnEliminarFamilia.Text = "CREAR FAMILIA";
+            this.btnEliminarFamilia.Text = "Eliminar familia";
             this.btnEliminarFamilia.UseVisualStyleBackColor = false;
+            this.btnEliminarFamilia.Click += new System.EventHandler(this.btnEliminarFamilia_Click);
             // 
             // lblFamiliaListar
             // 

@@ -17,38 +17,74 @@ namespace BLL
         BitacoraBLL ServicioBitacora = new BitacoraBLL();
         IdiomaBLL servicioIdioma = new IdiomaBLL();
         Usuario_Sesion session_User = Usuario_Sesion.Instance;
-        public void agregarFamilia(Permiso familia)
+        public string agregarFamilia(Permiso familia, string idioma)
         {
             string nombreFamiliaPreCifrado = familia.nombre;
             familia.nombre = encriptacion.encriptar(familia.nombre);
-            //int flag = PermisoDAL.comprobarExistenciaFamilia(familia, true);
-            //if (flag < 1)
-            //{
-            int lastID = permisomapper.agregarFamilia(familia);
-            servicioDigitoVerificador.recalcularDV(lastID, "Permiso", true);
-            Bitacora bitacora = new Bitacora()
+            int flag = permisomapper.comprobarExistenciaFamilia(familia, true);
+            if (flag < 1)
             {
-                Accion = "Registro de familia",
-                Criticidad = "Media",
-                Descripcion = encriptacion.encriptar($"Se ha registrado la familia {nombreFamiliaPreCifrado}"),
-                Usuario = encriptacion.encriptar(session_User.Username)
-            };
-            ServicioBitacora.crearBitacora(bitacora);
-            //}
-            //return ServicioIdioma.ObtenerTexto("mensajeFamiliaYaExiste", idioma);
+                int lastID = permisomapper.agregarFamilia(familia);
+                servicioDigitoVerificador.recalcularDV(lastID, "Permiso", true);
+                Bitacora bitacora = new Bitacora()
+                {
+                    Accion = "Registro de familia",
+                    Criticidad = "Media",
+                    Descripcion = encriptacion.encriptar($"Se ha registrado la familia {nombreFamiliaPreCifrado}"),
+                    Usuario = encriptacion.encriptar(session_User.Username)
+                };
+                ServicioBitacora.crearBitacora(bitacora);
+                return servicioIdioma.buscarTexto("mensajeFamiliaCreada", idioma);
+            }
+            return servicioIdioma.buscarTexto("mensajeFamiliaYaExiste", idioma);
         }
 
-        public void agregarPermiso(Permiso familia)
+        public string eliminarFamilia(Permiso familia, bool isFamilia, string idioma)
         {
-            string nombreFamiliaPreCifrado = familia.nombre;
             familia.nombre = encriptacion.encriptar(familia.nombre);
-            //int flag = PermisoDAL.comprobarExistenciaFamilia(familia, true);
-            //if (flag < 1)
-            //{
-            int lastID = permisomapper.agregarPermiso(familia);
-            servicioDigitoVerificador.recalcularDV(lastID, "Permiso", true);
-            //}
-            //return ServicioIdioma.ObtenerTexto("mensajeFamiliaYaExiste", idioma);
+            int flagExistencia = permisomapper.comprobarExistenciaFamilia(familia, true);
+            if (flagExistencia >= 0)
+            {
+                if (flagExistencia > 0)
+                {
+                    int flag = permisomapper.comprobarEliminacionFamilia(familia);
+                    if (flag >= 0)
+                    {
+                        if (flag > 0)
+                        {
+                            permisomapper.eliminarFamilia(familia);
+                            servicioDigitoVerificador.recalcularDVV("UsuarioPermiso");
+                            servicioDigitoVerificador.recalcularDVV("Compuesto");
+                            servicioDigitoVerificador.recalcularDVV("Permiso");
+                            Bitacora bitacora = new Bitacora()
+                            {
+                                Accion = "Eliminación de familia",
+                                Criticidad = "Alta",
+                                Descripcion = encriptacion.encriptar($"La familia {encriptacion.desencriptar(familia.nombre)} ha sido eliminada"),
+                                Usuario = encriptacion.encriptar(session_User.Username)
+                            };
+                            ServicioBitacora.crearBitacora(bitacora);
+                            return servicioIdioma.buscarTexto("mensajeFamiliaEliminada", idioma);
+                        }
+                        else
+                        {
+                            return servicioIdioma.buscarTexto("mensajeNoSePuedeEliminarFamilia", idioma);
+                        }
+                    }
+                    else
+                    {
+                        return "Failed comprobacion eliminacion";
+                    }
+                }
+                else
+                {
+                    return servicioIdioma.buscarTexto("mensajeNoExisteFamilia", idioma);
+                }
+            }
+            else
+            {
+                return "Failed comprobacion existencia";
+            }
         }
 
         public List<Permiso> listarFamiliasTodasOPorUsuario(Usuario user)
@@ -126,11 +162,12 @@ namespace BLL
         {
             patente.nombre = encriptacion.encriptar(patente.nombre);
             int flag = permisomapper.comprobarPatentePorUsuario(patente, usuario);
+            bool result = false;
             if (flag > 0)
             {
-                return true;
+                result = true;
             }
-            return false;
+            return result;
         }
         public void asignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia)
         {

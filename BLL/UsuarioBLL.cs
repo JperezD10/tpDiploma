@@ -26,7 +26,8 @@ namespace BLL
         public void SumarIntentosLog(string username)
         {
             username = encriptado.encriptar(username);
-            mapper.SumarIntentosLog(username);
+            int id = mapper.SumarIntentosLog(username);
+            digitosVerificadores.recalcularDV(id, "Usuario", true);
         }
         public void BloquearUsuario(string username)
         {
@@ -56,11 +57,13 @@ namespace BLL
             return listaUsuarios;
         }
 
-        public bool IniciarSesion(string username,string contraseña)
+        public bool IniciarSesion(string username, string contraseña)
         {
             username = encriptado.encriptar(username);
             contraseña = encriptado.EncriptadoPermanente(contraseña);
             bool inicio = mapper.IniciarSesion(username, contraseña);
+            Usuario_Sesion usuario = Usuario_Sesion.Instance;
+            digitosVerificadores.recalcularDV(usuario.ID_Usuario, "Usuario", true);
             BitacoraBLL servicioBitacora = new BitacoraBLL();
             BE.Bitacora bitacora = new BE.Bitacora()
             {
