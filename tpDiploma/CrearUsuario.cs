@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
@@ -62,17 +63,60 @@ namespace tpDiploma
 
         private void btnIngresar_Click(object sender, EventArgs e)//crear o modificar
         {
-            if(_usuario == null)
+            bool salida = validarCampos(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text, txtDireccion.Text, txtFechaNacimiento.Value);
+            if (salida)
             {
-                RegistrarNuevoUsuario();
+                if (_usuario == null)
+                {
+                    RegistrarNuevoUsuario();
+                }
+                else
+                {
+                    EditarUsuarioSession();
+                }
             }
-            else
-            {
-                EditarUsuarioSession();
-            }
-            
         }
 
+        private bool validarCampos(string nombre, string apellido, string dni, string email, string direccion, DateTime nacimiento)
+        {
+            bool salida = true;
+            string _patronDNI = @"\d{7,8}";
+            Regex regex = new Regex(_patronDNI);
+            int edad = DateTime.Today.Year - nacimiento.Year;
+            MatchCollection matchDNI = regex.Matches(dni);
+
+            if (string.IsNullOrEmpty(nombre))
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbNombreVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            if (string.IsNullOrEmpty(apellido))
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbApellidoVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            if (matchDNI.Count < 1)
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            if (string.IsNullOrEmpty(direccion))
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbDireccionVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            if (edad<18)
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbMenorDeEdad", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
+            return salida;
+        }
         private void RegistrarNuevoUsuario()
         {
             BE.Usuario newUser = new BE.Usuario()
