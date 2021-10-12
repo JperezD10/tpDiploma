@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace tpDiploma
 {
     public partial class BackUp : Form, IObserver<string>
     {
-        BLL.IdiomaBLL GetIdioma = new BLL.IdiomaBLL();
-        BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
-        BLL.ServicioBackupRestore servicioBackupRestore = new BLL.ServicioBackupRestore();
+        IdiomaBLL GetIdioma = new IdiomaBLL();
+        PermisoBL servicioPermiso = new PermisoBL();
+        IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
+        ServicioBackupRestore servicioBackupRestore = new ServicioBackupRestore();
+        Usuario_Sesion usuario_Sesion = Usuario_Sesion.Instance;
         public string idioma;
         public BackUp(MenuPrincipal m)
         {
@@ -67,21 +71,37 @@ namespace tpDiploma
 
         private void realizarBackup()
         {
-            if (txtRutaBackUp.Text != "")
+            if (comprobarPatentePorUsuario("Realizar backUp"))
             {
-                string result = servicioBackupRestore.realizarBackup(txtRutaBackUp.Text);
-                if (result != "")
+                if (txtRutaBackUp.Text != "")
                 {
-                    MessageBox.Show(result);
-                }
-                else
-                {
-                    txtRutaBackUp.Clear();
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeBackupExitoso", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string result = servicioBackupRestore.realizarBackup(txtRutaBackUp.Text);
+                    if (result != "")
+                    {
+                        MessageBox.Show(result);
+                    }
+                    else
+                    {
+                        txtRutaBackUp.Clear();
+                        MessageBox.Show(GetIdioma.buscarTexto("mensajeBackupExitoso", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
+            else
+            {
+                showPermisoInsuficiente();
+            }
         }
-
+        private bool comprobarPatentePorUsuario(string nombrePatente)
+        {
+            Permiso patente = new Patente();
+            patente.nombre = nombrePatente;
+            return servicioPermiso.comprobarPatentePorUsuario(patente, usuario_Sesion);
+        }
+        private void showPermisoInsuficiente()
+        {
+            MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void btnBackUp_Click(object sender, EventArgs e)
         {
             realizarBackup();
