@@ -17,5 +17,7 @@ namespace BE
         List<Materia> Materias;
 
         public void SetMaterias(List<Materia> materias) => this.Materias = materias;
+
+        public List<Materia> GetMaterias() => Materias;
     }
 }

@@ -42,7 +42,7 @@ namespace tpDiploma
             limpiarFormulario();
         }
 
-        private void limpiarFormulario()
+        public void limpiarFormulario()
         {
             txtApellido.Clear();
             txtNombre.Clear();

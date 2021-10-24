@@ -37,6 +37,7 @@ namespace tpDiploma
             this.lblMateriasSinAsignar = new System.Windows.Forms.Label();
             this.GrillaMateriasAsignadas = new System.Windows.Forms.DataGridView();
             this.GrillaMateriasSinAsignar = new System.Windows.Forms.DataGridView();
+            this.btnConfirmarProfesor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaMateriasAsignadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaMateriasSinAsignar)).BeginInit();
@@ -70,6 +71,7 @@ namespace tpDiploma
             this.btnDesAsignarMateria.TabIndex = 66;
             this.btnDesAsignarMateria.Text = "<=";
             this.btnDesAsignarMateria.UseVisualStyleBackColor = false;
+            this.btnDesAsignarMateria.Click += new System.EventHandler(this.btnDesAsignarMateria_Click);
             // 
             // btnAsignarMateria
             // 
@@ -124,6 +126,7 @@ namespace tpDiploma
             this.GrillaMateriasAsignadas.ReadOnly = true;
             this.GrillaMateriasAsignadas.Size = new System.Drawing.Size(433, 288);
             this.GrillaMateriasAsignadas.TabIndex = 61;
+            this.GrillaMateriasAsignadas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaMateriasAsignadas_CellClick);
             // 
             // GrillaMateriasSinAsignar
             // 
@@ -135,12 +138,32 @@ namespace tpDiploma
             this.GrillaMateriasSinAsignar.TabIndex = 62;
             this.GrillaMateriasSinAsignar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaMateriasSinAsignar_CellClick);
             // 
+            // btnConfirmarProfesor
+            // 
+            this.btnConfirmarProfesor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
+            this.btnConfirmarProfesor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConfirmarProfesor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnConfirmarProfesor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnConfirmarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F);
+            this.btnConfirmarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnConfirmarProfesor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnConfirmarProfesor.Location = new System.Drawing.Point(408, 433);
+            this.btnConfirmarProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConfirmarProfesor.Name = "btnConfirmarProfesor";
+            this.btnConfirmarProfesor.Size = new System.Drawing.Size(284, 48);
+            this.btnConfirmarProfesor.TabIndex = 66;
+            this.btnConfirmarProfesor.Text = "Confirmar";
+            this.btnConfirmarProfesor.UseVisualStyleBackColor = false;
+            this.btnConfirmarProfesor.Click += new System.EventHandler(this.btnConfirmarProfesor_Click);
+            // 
             // ProfesorMaterias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(1109, 473);
+            this.ClientSize = new System.Drawing.Size(1109, 503);
+            this.Controls.Add(this.btnConfirmarProfesor);
             this.Controls.Add(this.btnDesAsignarMateria);
             this.Controls.Add(this.btnAsignarMateria);
             this.Controls.Add(this.lblMateriasAsignadas);
@@ -170,5 +193,6 @@ namespace tpDiploma
         private System.Windows.Forms.Label lblMateriasSinAsignar;
         private System.Windows.Forms.DataGridView GrillaMateriasAsignadas;
         private System.Windows.Forms.DataGridView GrillaMateriasSinAsignar;
+        private System.Windows.Forms.Button btnConfirmarProfesor;
     }
 }

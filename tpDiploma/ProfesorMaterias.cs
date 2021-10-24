@@ -15,19 +15,23 @@ namespace tpDiploma
     public partial class ProfesorMaterias : Form, IObserver<string>
     {
         MateriaBLL gestorMateria = new MateriaBLL();
+        ProfesorBLL gestorProfesor = new ProfesorBLL();
         IdiomaBLL GetIdioma = new IdiomaBLL();
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         public string idioma;
         Materia materia;
+        Materia _materiaDesasignar;
         private Profesor _profesor;
         private List<Materia> MateriasAsignadas;
         private List<Materia> MateriasNoAsignadas;
+        AgregarProfesor _FormAgregarProfesor;
         public ProfesorMaterias(AgregarProfesor a, Profesor profesor)
         {
             InitializeComponent();
             Properties.Settings.Default.Idioma = a.idioma;
             serviceObservable.AddObserver(this);
             _profesor = profesor;
+            _FormAgregarProfesor = a;
             MateriasAsignadas = new List<Materia>();
             MateriasNoAsignadas = gestorMateria.listarMateriasSinProfesor();
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
@@ -47,6 +51,7 @@ namespace tpDiploma
         {
             lblMateriasSinAsignar.Text = GetIdioma.buscarTexto(lblMateriasSinAsignar.Name, idioma);
             lblMateriasAsignadas.Text = GetIdioma.buscarTexto(lblMateriasAsignadas.Name, idioma);
+            btnConfirmarProfesor.Text = GetIdioma.buscarTexto(btnConfirmarProfesor.Name, idioma);
         }
 
         private void ProfesorMaterias_Load(object sender, EventArgs e)
@@ -92,16 +97,68 @@ namespace tpDiploma
         private void AsignarMateria(Materia materia)
         {
             MateriasNoAsignadas.Remove(materia);
+            rellenarGrillas();
+        }
+
+        private void rellenarGrillas()
+        {
             limpiarGrilla(GrillaMateriasSinAsignar);
             limpiarGrilla(GrillaMateriasAsignadas);
             GrillaMateriasSinAsignar.DataSource = MateriasNoAsignadas;
             GrillaMateriasAsignadas.DataSource = MateriasAsignadas;
-            hideColumn(GrillaMateriasAsignadas, "ID_Materia");
+            if(MateriasAsignadas.Count > 0)
+            {
+                hideColumn(GrillaMateriasAsignadas, "ID_Materia");
+            }
+            if(MateriasNoAsignadas.Count > 0)
+            {
+                hideColumn(GrillaMateriasSinAsignar, "ID_Materia");
+            }
             GrillaMateriasAsignadas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GrillaMateriasSinAsignar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private void GrillaMateriasSinAsignar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             materia = (Materia)GrillaMateriasSinAsignar.Rows[e.RowIndex].DataBoundItem;
+        }
+
+        private void btnConfirmarProfesor_Click(object sender, EventArgs e)
+        {
+            if (MateriasAsignadas.Count > 0)
+            {
+                this._profesor.SetMaterias(MateriasAsignadas);
+                try
+                {
+                    gestorProfesor.AgregarProfesor(_profesor);
+                    MessageBox.Show(GetIdioma.buscarTexto("msbProfesorAgregado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                    this._FormAgregarProfesor.limpiarFormulario();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            else
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbMateriasNoAsignadas", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void GrillaMateriasAsignadas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _materiaDesasignar = (Materia)GrillaMateriasAsignadas.Rows[e.RowIndex].DataBoundItem;
+        }
+
+        private void btnDesAsignarMateria_Click(object sender, EventArgs e)
+        {
+            if(_materiaDesasignar != null)
+            {
+                MateriasAsignadas.Remove(_materiaDesasignar);
+                MateriasNoAsignadas.Add(_materiaDesasignar);
+                rellenarGrillas();
+                _materiaDesasignar = null;
+            }
         }
     }
 }
