@@ -52,6 +52,12 @@
     <Compile Include="ABMFamilia.Designer.cs">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarProfesor.Designer.cs">
+      <DependentUpon>AgregarProfesor.cs</DependentUpon>
+    </Compile>
     <Compile Include="BackUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfesorMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorMaterias.Designer.cs">
+      <DependentUpon>ProfesorMaterias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurarCambio.cs">
@@ -104,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="ABMFamilia.resx">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarProfesor.resx">
+      <DependentUpon>AgregarProfesor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackUp.resx">
       <DependentUpon>BackUp.cs</DependentUpon>
@@ -125,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorMaterias.resx">
+      <DependentUpon>ProfesorMaterias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

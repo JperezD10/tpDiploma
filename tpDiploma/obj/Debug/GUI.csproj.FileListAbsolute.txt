@@ -78,3 +78,5 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Pa
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.BackUp.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Restore.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RestaurarCambio.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.AgregarProfesor.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ProfesorMaterias.resources

@@ -94,6 +94,7 @@ namespace tpDiploma
             lblSaludoUsername.Text = $"{gestoriIdioma.buscarTexto(lblSaludoUsername.Name, idioma)} {Usuario_Sesion.Username}";
             editarPerfilToolStripMenuItem.Text = gestoriIdioma.buscarTexto(editarPerfilToolStripMenuItem.Name, idioma);
             restaurarInformacionToolStripMenuItem.Text = gestoriIdioma.buscarTexto(restaurarInformacionToolStripMenuItem.Name, idioma);
+            btnRegistrarProfesor.Text = gestoriIdioma.buscarTexto(btnRegistrarProfesor.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)
@@ -134,6 +135,11 @@ namespace tpDiploma
         private void restaurarInformacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new RestaurarCambio(this));
+        }
+
+        private void btnRegistrarProfesor_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new AgregarProfesor(this));
         }
     }
 }

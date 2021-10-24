@@ -41,8 +41,9 @@
             this.crearFamiliaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.restaurarInformacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnRegistrarProfesor = new System.Windows.Forms.Button();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -53,6 +54,7 @@
             this.panelLateral.BackColor = System.Drawing.Color.Black;
             this.panelLateral.Controls.Add(this.lblSaludoUsername);
             this.panelLateral.Controls.Add(this.btnListBitacora);
+            this.panelLateral.Controls.Add(this.btnRegistrarProfesor);
             this.panelLateral.Controls.Add(this.btnRegistrarUsuario);
             this.panelLateral.Controls.Add(this.btnCerrarSesion);
             this.panelLateral.Dock = System.Windows.Forms.DockStyle.Left;
@@ -82,7 +84,7 @@
             this.btnListBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnListBitacora.Location = new System.Drawing.Point(11, 116);
+            this.btnListBitacora.Location = new System.Drawing.Point(11, 212);
             this.btnListBitacora.Margin = new System.Windows.Forms.Padding(2);
             this.btnListBitacora.Name = "btnListBitacora";
             this.btnListBitacora.Size = new System.Drawing.Size(107, 50);
@@ -208,6 +210,14 @@
             this.editarPerfilToolStripMenuItem.Text = "Editar perfil";
             this.editarPerfilToolStripMenuItem.Click += new System.EventHandler(this.editarPerfilToolStripMenuItem_Click);
             // 
+            // restaurarInformacionToolStripMenuItem
+            // 
+            this.restaurarInformacionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.restaurarInformacionToolStripMenuItem.Name = "restaurarInformacionToolStripMenuItem";
+            this.restaurarInformacionToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.restaurarInformacionToolStripMenuItem.Text = "Restaurar informacion";
+            this.restaurarInformacionToolStripMenuItem.Click += new System.EventHandler(this.restaurarInformacionToolStripMenuItem_Click);
+            // 
             // panelContenedor
             // 
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -218,13 +228,23 @@
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
-            // restaurarInformacionToolStripMenuItem
+            // btnRegistrarProfesor
             // 
-            this.restaurarInformacionToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.restaurarInformacionToolStripMenuItem.Name = "restaurarInformacionToolStripMenuItem";
-            this.restaurarInformacionToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
-            this.restaurarInformacionToolStripMenuItem.Text = "Restaurar informacion";
-            this.restaurarInformacionToolStripMenuItem.Click += new System.EventHandler(this.restaurarInformacionToolStripMenuItem_Click);
+            this.btnRegistrarProfesor.BackColor = System.Drawing.Color.Black;
+            this.btnRegistrarProfesor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrarProfesor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarProfesor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnRegistrarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarProfesor.Location = new System.Drawing.Point(11, 125);
+            this.btnRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistrarProfesor.Name = "btnRegistrarProfesor";
+            this.btnRegistrarProfesor.Size = new System.Drawing.Size(107, 50);
+            this.btnRegistrarProfesor.TabIndex = 7;
+            this.btnRegistrarProfesor.Text = "Registrar profesor";
+            this.btnRegistrarProfesor.UseVisualStyleBackColor = false;
+            this.btnRegistrarProfesor.Click += new System.EventHandler(this.btnRegistrarProfesor_Click);
             // 
             // MenuPrincipal
             // 
@@ -269,5 +289,6 @@
         private System.Windows.Forms.Label lblSaludoUsername;
         private System.Windows.Forms.ToolStripMenuItem editarPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarInformacionToolStripMenuItem;
+        private System.Windows.Forms.Button btnRegistrarProfesor;
     }
 }

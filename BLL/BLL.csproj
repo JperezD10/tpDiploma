@@ -45,6 +45,7 @@
     <Compile Include="DigitoVerificadorBLL.cs" />
     <Compile Include="IdiomaBLL.cs" />
     <Compile Include="IdiomaObservableBLL.cs" />
+    <Compile Include="MateriaBLL.cs" />
     <Compile Include="PermisoBL.cs" />
     <Compile Include="ServicioBackUpRestore.cs" />
     <Compile Include="UsuarioBLL.cs" />
