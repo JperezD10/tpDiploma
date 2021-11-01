@@ -15,5 +15,16 @@ namespace BLL
         {
             return mapper.listarMateriasSinProfesor();
         }
+
+        public bool ValidarHorarioNuevaMateria(Materia materia)
+        {
+            return mapper.ValidarHorarioNuevaMateria(materia);
+        }
+
+        public void CrearMateria(Materia materia, int IDCurso)
+        {
+            materia.HoraFin = materia.HoraInicio + 2;
+            mapper.CrearMateria(materia, IDCurso);
+        }
     }
 }

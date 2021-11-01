@@ -48,6 +48,7 @@
     <Compile Include="Curso.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Materia.cs" />
+    <Compile Include="Nota.cs" />
     <Compile Include="Patente.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Persona.cs" />

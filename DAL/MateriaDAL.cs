@@ -39,5 +39,40 @@ namespace DAL
                 acceso.Escribir("AsignarProfesorAMateria", parametros);
             }
         }
+
+        public bool ValidarHorarioNuevaMateria(Materia materia)
+        {
+            bool salida = false;
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@anio", materia.Anio),
+                new SqlParameter("@dia", materia.Dia),
+                new SqlParameter("@horaInicio", materia.HoraInicio),
+                new SqlParameter("@horaFin", materia.HoraFin),
+            };
+            DataTable tabla = acceso.Leer("ValidadHorarioNuevaMateria", parametro);
+            if (tabla.Rows.Count > 0)
+            {
+                salida = false;
+            }
+            else
+            {
+                salida = true;
+            }
+            return salida;
+        }
+        public void CrearMateria(Materia materia, int IDCurso)
+        {
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@Año", materia.Anio),
+                new SqlParameter("@descripcion", materia.Descripcion),
+                new SqlParameter("@dia", materia.Dia),
+                new SqlParameter("@horaInicio", materia.HoraInicio),
+                new SqlParameter("@horaFin", materia.HoraFin),
+                new SqlParameter("@idCurso", IDCurso)
+            };
+            acceso.Escribir("CrearMateria", parametro);
+        }
     }
 }

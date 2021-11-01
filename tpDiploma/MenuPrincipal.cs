@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BE;
+using BLL;
 
 namespace tpDiploma
 {
     public partial class MenuPrincipal : Form, IObserver<string>
     {
         LogIn login = new LogIn();
-        BLL.IdiomaBLL gestoriIdioma = new BLL.IdiomaBLL();
-        BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
+        IdiomaBLL gestoriIdioma = new IdiomaBLL();
+        IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
+        CursoBLL gestorCurso = new CursoBLL();
         Usuario_Sesion Usuario_Sesion = Usuario_Sesion.Instance;
+        
         public string idioma;
         public MenuPrincipal(LogIn l)
         {
@@ -95,6 +98,8 @@ namespace tpDiploma
             editarPerfilToolStripMenuItem.Text = gestoriIdioma.buscarTexto(editarPerfilToolStripMenuItem.Name, idioma);
             restaurarInformacionToolStripMenuItem.Text = gestoriIdioma.buscarTexto(restaurarInformacionToolStripMenuItem.Name, idioma);
             btnRegistrarProfesor.Text = gestoriIdioma.buscarTexto(btnRegistrarProfesor.Name, idioma);
+            btnCrearCursoPorAño.Text = gestoriIdioma.buscarTexto(btnCrearCursoPorAño.Name, idioma);
+            btnRegistrarMaterias.Text = gestoriIdioma.buscarTexto(btnRegistrarMaterias.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)
@@ -140,6 +145,20 @@ namespace tpDiploma
         private void btnRegistrarProfesor_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new AgregarProfesor(this));
+        }
+
+        private void btnCrearCursoPorAño_Click(object sender, EventArgs e)
+        {
+            bool salida = gestorCurso.CrearCursoPorAño();
+            if (!salida)
+                MessageBox.Show(gestoriIdioma.buscarTexto("msbCrearCursoPronto", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                MessageBox.Show(gestoriIdioma.buscarTexto("msbCrearCursoExito", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnRegistrarMaterias_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new Materias(this));
         }
     }
 }

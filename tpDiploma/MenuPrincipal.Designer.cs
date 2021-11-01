@@ -31,6 +31,8 @@
             this.panelLateral = new System.Windows.Forms.Panel();
             this.lblSaludoUsername = new System.Windows.Forms.Label();
             this.btnListBitacora = new System.Windows.Forms.Button();
+            this.btnCrearCursoPorAño = new System.Windows.Forms.Button();
+            this.btnRegistrarProfesor = new System.Windows.Forms.Button();
             this.btnRegistrarUsuario = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.panelSuperior = new System.Windows.Forms.Panel();
@@ -43,7 +45,7 @@
             this.editarPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarInformacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.btnRegistrarProfesor = new System.Windows.Forms.Button();
+            this.btnRegistrarMaterias = new System.Windows.Forms.Button();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -54,6 +56,8 @@
             this.panelLateral.BackColor = System.Drawing.Color.Black;
             this.panelLateral.Controls.Add(this.lblSaludoUsername);
             this.panelLateral.Controls.Add(this.btnListBitacora);
+            this.panelLateral.Controls.Add(this.btnCrearCursoPorAño);
+            this.panelLateral.Controls.Add(this.btnRegistrarMaterias);
             this.panelLateral.Controls.Add(this.btnRegistrarProfesor);
             this.panelLateral.Controls.Add(this.btnRegistrarUsuario);
             this.panelLateral.Controls.Add(this.btnCerrarSesion);
@@ -84,7 +88,7 @@
             this.btnListBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnListBitacora.Location = new System.Drawing.Point(11, 212);
+            this.btnListBitacora.Location = new System.Drawing.Point(11, 285);
             this.btnListBitacora.Margin = new System.Windows.Forms.Padding(2);
             this.btnListBitacora.Name = "btnListBitacora";
             this.btnListBitacora.Size = new System.Drawing.Size(107, 50);
@@ -92,6 +96,42 @@
             this.btnListBitacora.Text = "bitacora";
             this.btnListBitacora.UseVisualStyleBackColor = false;
             this.btnListBitacora.Click += new System.EventHandler(this.btnListBitacora_Click);
+            // 
+            // btnCrearCursoPorAño
+            // 
+            this.btnCrearCursoPorAño.BackColor = System.Drawing.Color.Black;
+            this.btnCrearCursoPorAño.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCrearCursoPorAño.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnCrearCursoPorAño.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnCrearCursoPorAño.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearCursoPorAño.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearCursoPorAño.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnCrearCursoPorAño.Location = new System.Drawing.Point(9, 361);
+            this.btnCrearCursoPorAño.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCrearCursoPorAño.Name = "btnCrearCursoPorAño";
+            this.btnCrearCursoPorAño.Size = new System.Drawing.Size(107, 46);
+            this.btnCrearCursoPorAño.TabIndex = 7;
+            this.btnCrearCursoPorAño.Text = "Crear Curso por año";
+            this.btnCrearCursoPorAño.UseVisualStyleBackColor = false;
+            this.btnCrearCursoPorAño.Click += new System.EventHandler(this.btnCrearCursoPorAño_Click);
+            // 
+            // btnRegistrarProfesor
+            // 
+            this.btnRegistrarProfesor.BackColor = System.Drawing.Color.Black;
+            this.btnRegistrarProfesor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrarProfesor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarProfesor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnRegistrarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarProfesor.Location = new System.Drawing.Point(11, 125);
+            this.btnRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistrarProfesor.Name = "btnRegistrarProfesor";
+            this.btnRegistrarProfesor.Size = new System.Drawing.Size(107, 50);
+            this.btnRegistrarProfesor.TabIndex = 7;
+            this.btnRegistrarProfesor.Text = "Registrar profesor";
+            this.btnRegistrarProfesor.UseVisualStyleBackColor = false;
+            this.btnRegistrarProfesor.Click += new System.EventHandler(this.btnRegistrarProfesor_Click);
             // 
             // btnRegistrarUsuario
             // 
@@ -228,23 +268,23 @@
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
-            // btnRegistrarProfesor
+            // btnRegistrarMaterias
             // 
-            this.btnRegistrarProfesor.BackColor = System.Drawing.Color.Black;
-            this.btnRegistrarProfesor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRegistrarProfesor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarProfesor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.btnRegistrarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarProfesor.Location = new System.Drawing.Point(11, 125);
-            this.btnRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRegistrarProfesor.Name = "btnRegistrarProfesor";
-            this.btnRegistrarProfesor.Size = new System.Drawing.Size(107, 50);
-            this.btnRegistrarProfesor.TabIndex = 7;
-            this.btnRegistrarProfesor.Text = "Registrar profesor";
-            this.btnRegistrarProfesor.UseVisualStyleBackColor = false;
-            this.btnRegistrarProfesor.Click += new System.EventHandler(this.btnRegistrarProfesor_Click);
+            this.btnRegistrarMaterias.BackColor = System.Drawing.Color.Black;
+            this.btnRegistrarMaterias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrarMaterias.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarMaterias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnRegistrarMaterias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarMaterias.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarMaterias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarMaterias.Location = new System.Drawing.Point(11, 207);
+            this.btnRegistrarMaterias.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistrarMaterias.Name = "btnRegistrarMaterias";
+            this.btnRegistrarMaterias.Size = new System.Drawing.Size(107, 50);
+            this.btnRegistrarMaterias.TabIndex = 7;
+            this.btnRegistrarMaterias.Text = "Registrar materias";
+            this.btnRegistrarMaterias.UseVisualStyleBackColor = false;
+            this.btnRegistrarMaterias.Click += new System.EventHandler(this.btnRegistrarMaterias_Click);
             // 
             // MenuPrincipal
             // 
@@ -290,5 +330,7 @@
         private System.Windows.Forms.ToolStripMenuItem editarPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarInformacionToolStripMenuItem;
         private System.Windows.Forms.Button btnRegistrarProfesor;
+        private System.Windows.Forms.Button btnCrearCursoPorAño;
+        private System.Windows.Forms.Button btnRegistrarMaterias;
     }
 }

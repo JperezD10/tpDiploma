@@ -8,7 +8,8 @@ namespace BE
 {
     public class Curso
     {
-        public DateTime AnioFecha { get; set; }
+        public int ID_Curso { get; set; }
+        public int AnioFecha { get; set; }
         public string AnioSecundaria { get; set; }
         public int Cupo { get; set; }
         public string Turno { get; set; }
@@ -16,7 +17,7 @@ namespace BE
         List<Alumno> Alumnos;
         List<Materia> Materias;
 
-        public Curso(DateTime anioFecha, string anioSecundaria, int cupo, string turno)
+        public Curso(int anioFecha, string anioSecundaria, int cupo, string turno)
         {
             this.AnioFecha = anioFecha;
             this.AnioSecundaria = anioSecundaria;

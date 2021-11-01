@@ -87,9 +87,16 @@ namespace tpDiploma
                 }
                 else
                 {
-                    MateriasAsignadas.Add(materia);
-                    AsignarMateria(materia);
-                    materia = null;
+                    if(MateriasAsignadas.Count >= 3)
+                    {
+                        MessageBox.Show(GetIdioma.buscarTexto("msbMaximoMateriasProfesor", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MateriasAsignadas.Add(materia);
+                        AsignarMateria(materia);
+                        materia = null;
+                    }
                 }
             }
         }
@@ -130,7 +137,7 @@ namespace tpDiploma
                 try
                 {
                     gestorProfesor.AgregarProfesor(_profesor);
-                    MessageBox.Show(GetIdioma.buscarTexto("msbProfesorAgregado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(GetIdioma.buscarTexto("msbProfesorAgregado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     this._FormAgregarProfesor.limpiarFormulario();
                 }
