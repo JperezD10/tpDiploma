@@ -31,3 +31,14 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\obj\Debug\DAL.csproj.CoreCom
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\obj\Debug\DAL.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\obj\Debug\DAL.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\DAL.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\DAL.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\BE.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\SEGURIDAD.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\BE.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\bin\Debug\SEGURIDAD.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.pdb

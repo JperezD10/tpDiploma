@@ -8,6 +8,7 @@ namespace BE
 {
     public class Alumno: Persona
     {
+        public int ID_Alumno { get; set; }
         public List<Nota> Notas { get; set; }
         public bool Activo { get; set; }
 

@@ -9,3 +9,9 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.pd
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csproj.CoreCompileInputs.cache
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csprojAssemblyReference.cache
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csproj.CoreCompileInputs.cache
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.dll
+C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.pdb
