@@ -91,7 +91,7 @@
             this.btnListBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnListBitacora.Location = new System.Drawing.Point(15, 444);
+            this.btnListBitacora.Location = new System.Drawing.Point(15, 548);
             this.btnListBitacora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnListBitacora.Name = "btnListBitacora";
             this.btnListBitacora.Size = new System.Drawing.Size(143, 62);
@@ -109,7 +109,7 @@
             this.btnCrearCursoPorAño.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearCursoPorAño.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearCursoPorAño.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnCrearCursoPorAño.Location = new System.Drawing.Point(12, 537);
+            this.btnCrearCursoPorAño.Location = new System.Drawing.Point(15, 451);
             this.btnCrearCursoPorAño.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCrearCursoPorAño.Name = "btnCrearCursoPorAño";
             this.btnCrearCursoPorAño.Size = new System.Drawing.Size(143, 57);

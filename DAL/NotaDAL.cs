@@ -12,13 +12,13 @@ namespace DAL
     {
         Acceso acceso = Acceso.Instance;
 
-        public void RegistrarNotasHistoricas(List<Nota> notas)
+        public void RegistrarNotasHistoricas(List<Nota> notas, int id_Alumno)
         {
             foreach (var nota in notas)
             {
                 SqlParameter[] parametros =
                 {
-                    new SqlParameter("@idAlumno",nota.Alumno.ID_Alumno),
+                    new SqlParameter("@idAlumno",id_Alumno),
                     new SqlParameter("@idMateria",nota.Materia.ID_Materia),
                     new SqlParameter("@notaNumerica",nota.NotaNumerica),
                     new SqlParameter("@previa",nota.Previa)

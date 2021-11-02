@@ -78,7 +78,15 @@ namespace tpDiploma
 
         private void grillaCursosDisponibles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _Curso = (Curso)grillaCursosDisponibles.Rows[e.RowIndex].DataBoundItem;
+            try
+            {
+                _Curso = (Curso)grillaCursosDisponibles.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnSaveMateria_Click(object sender, EventArgs e)

@@ -68,6 +68,16 @@ namespace DAL
             return (int)parametro[4].Value;
         }
 
+        public void AsignarAlumnoACurso(int id_Alumno, int id_Curso)
+        {
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@idAlumno", id_Alumno),
+                new SqlParameter("@idCurso", id_Curso),
+            };
+            acceso.Escribir("AsignarAlumnoACurso", parametro);
+        }
+
         public void BajaAlumno(int ID_Alumno)
         {
             SqlParameter[] parametro =

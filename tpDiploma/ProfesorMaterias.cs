@@ -126,7 +126,15 @@ namespace tpDiploma
         }
         private void GrillaMateriasSinAsignar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            materia = (Materia)GrillaMateriasSinAsignar.Rows[e.RowIndex].DataBoundItem;
+            try
+            {
+                materia = (Materia)GrillaMateriasSinAsignar.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnConfirmarProfesor_Click(object sender, EventArgs e)
@@ -154,7 +162,15 @@ namespace tpDiploma
 
         private void GrillaMateriasAsignadas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _materiaDesasignar = (Materia)GrillaMateriasAsignadas.Rows[e.RowIndex].DataBoundItem;
+            try
+            {
+                _materiaDesasignar = (Materia)GrillaMateriasAsignadas.Rows[e.RowIndex].DataBoundItem;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnDesAsignarMateria_Click(object sender, EventArgs e)

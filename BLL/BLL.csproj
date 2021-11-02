@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlumnoBLL.cs" />
     <Compile Include="BitacoraBLL.cs" />
     <Compile Include="CursoBLL.cs" />
     <Compile Include="DigitoVerificadorBLL.cs" />
