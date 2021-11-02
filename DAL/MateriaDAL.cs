@@ -20,7 +20,7 @@ namespace DAL
 
             foreach (DataRow row in dt.Rows)
             {
-                Materia materia = new Materia(row["Año"].ToString(), row["Descripcion"].ToString(), row["Dia"].ToString(), (int)row["HoraInicio"], (int)row["HoraFin"]);
+                Materia materia = new Materia((int)row["Año"], row["Descripcion"].ToString(), row["Dia"].ToString(), (int)row["HoraInicio"], (int)row["HoraFin"]);
                 materia.ID_Materia = (int)row["ID_Materia"];
                 materias.Add(materia);
             }
@@ -73,6 +73,25 @@ namespace DAL
                 new SqlParameter("@idCurso", IDCurso)
             };
             acceso.Escribir("CrearMateria", parametro);
+        }
+
+        public List<Materia> ListarMateriasParaIngresoAlumno(int cursoGrado, string turno)
+        {
+            List<Materia> materias = new List<Materia>();
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@curso",cursoGrado),
+                new SqlParameter("@turno",turno)
+            };
+
+            DataTable tabla = acceso.Leer("ListarMateriasParaIngresoAlumno", parametros);
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Materia materia = new Materia((int)fila["Año"], fila["Descripcion"].ToString(), fila["Dia"].ToString(), (int)fila["HoraInicio"], (int)fila["HoraFin"]);
+                materia.ID_Materia = (int)fila["ID_Materia"];
+                materias.Add(materia);
+            }
+            return materias;
         }
     }
 }

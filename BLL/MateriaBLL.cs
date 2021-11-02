@@ -38,5 +38,9 @@ namespace BLL
             };
             servicioBitacora.crearBitacora(b);
         }
+        public List<Materia> listarMateriasCalificar(int cursoGrado, string turno)
+        {
+            return mapper.ListarMateriasParaIngresoAlumno(cursoGrado, turno);
+        }
     }
 }

@@ -50,16 +50,22 @@ namespace DAL
             return alumno;
         }
 
-        public void RegistrarAlumno(Alumno alumno)
+        public int RegistrarAlumno(Alumno alumno)
         {
             SqlParameter[] parametro =
             {
                 new SqlParameter("@nombre", alumno.Nombre),
                 new SqlParameter("@apellido", alumno.Apellido),
                 new SqlParameter("@Email", alumno.Email),
-                new SqlParameter("@dni", alumno.DNI)
+                new SqlParameter("@dni", alumno.DNI),
+                new SqlParameter
+                {
+                    ParameterName = "@returnValue",
+                    Direction = ParameterDirection.ReturnValue
+                }
             };
             acceso.Escribir("RegistrarAlumno", parametro);
+            return (int)parametro[4].Value;
         }
 
         public void BajaAlumno(int ID_Alumno)

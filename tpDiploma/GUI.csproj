@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMAlumnos.Designer.cs">
+      <DependentUpon>ABMAlumnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABMFamilia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,12 @@
     </Compile>
     <Compile Include="Materias.Designer.cs">
       <DependentUpon>Materias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotasIncripcionAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotasIncripcionAlumno.Designer.cs">
+      <DependentUpon>NotasIncripcionAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="PatenteFamilia.cs">
       <SubType>Form</SubType>
@@ -120,6 +132,9 @@
     <Compile Include="Restore.Designer.cs">
       <DependentUpon>Restore.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ABMAlumnos.resx">
+      <DependentUpon>ABMAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABMFamilia.resx">
       <DependentUpon>ABMFamilia.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotasIncripcionAlumno.resx">
+      <DependentUpon>NotasIncripcionAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatenteFamilia.resx">
       <DependentUpon>PatenteFamilia.cs</DependentUpon>

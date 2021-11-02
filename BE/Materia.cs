@@ -9,13 +9,13 @@ namespace BE
     public class Materia
     {
         public int ID_Materia { get; set; }
-        public string Anio { get; set; }
+        public int Anio { get; set; }
         public string Descripcion { get; set; }
         public string Dia { get; set; }
         public int HoraInicio { get; set; }
         public int HoraFin { get; set; }
 
-        public Materia(string anio, string descripcion, string dia, int horainicio, int horaFin = 0)
+        public Materia(int anio, string descripcion, string dia, int horainicio, int horaFin = 0)
         {
             this.Anio = anio;
             this.Descripcion = descripcion;

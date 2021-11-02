@@ -114,3 +114,5 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\de\tpDiploma.resour
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.exe
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.pdb
+C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ABMAlumnos.resources
+C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.NotasIncripcionAlumno.resources

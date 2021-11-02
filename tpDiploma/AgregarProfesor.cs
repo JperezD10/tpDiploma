@@ -58,6 +58,7 @@ namespace tpDiploma
             Regex regexDNI = new Regex(_patronDNI);
             Regex regexSueldo = new Regex(_patronSueldo);
             MatchCollection matchDNI = regexDNI.Matches(DNI);
+            MatchCollection matchSueldo = regexSueldo.Matches(sueldo);
             bool result = true;
 
             if (string.IsNullOrEmpty(nombre))
@@ -80,7 +81,7 @@ namespace tpDiploma
                 MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;
             }
-            if (string.IsNullOrEmpty(sueldo))
+            if (matchSueldo.Count < 1)
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbSueldoVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;

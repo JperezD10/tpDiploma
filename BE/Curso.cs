@@ -10,14 +10,14 @@ namespace BE
     {
         public int ID_Curso { get; set; }
         public int AnioFecha { get; set; }
-        public string AnioSecundaria { get; set; }
+        public int AnioSecundaria { get; set; }
         public int Cupo { get; set; }
         public string Turno { get; set; }
 
         List<Alumno> Alumnos;
         List<Materia> Materias;
 
-        public Curso(int anioFecha, string anioSecundaria, int cupo, string turno)
+        public Curso(int anioFecha, int anioSecundaria, int cupo, string turno)
         {
             this.AnioFecha = anioFecha;
             this.AnioSecundaria = anioSecundaria;

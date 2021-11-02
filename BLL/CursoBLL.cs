@@ -20,5 +20,10 @@ namespace BLL
         {
             return mapper.CurosDisponiblesParaNuevaMateria();
         }
+
+        public List<Curso> cursosIngresoAlumno(int grado)
+        {
+            return mapper.cursosDisponiblesParaAlumnos(grado);
+        }
     }
 }

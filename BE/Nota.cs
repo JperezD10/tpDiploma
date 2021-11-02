@@ -9,13 +9,16 @@ namespace BE
     public class Nota
     {
         public Alumno Alumno { get; set; }
+        public Materia Materia { get; set; }
+        public decimal NotaNumerica { get; set; }
+        public bool Previa { get; set; }
 
-        public Dictionary<Materia, decimal> NotaHistorica { get; set; }
-
-        public Nota(Alumno alumno, Dictionary<Materia, decimal> notasMaterias)
+        public Nota(Alumno alumno, Materia materia, decimal nota,bool previa)
         {
             this.Alumno = alumno;
-            this.NotaHistorica = notasMaterias;
+            this.Materia = materia;
+            this.NotaNumerica = nota;
+            this.Previa = previa;
         }
     }
 }

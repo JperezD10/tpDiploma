@@ -49,6 +49,7 @@
     <Compile Include="DigitoVerificadorDAL.cs" />
     <Compile Include="IdiomaDAL.cs" />
     <Compile Include="MateriaDAL.cs" />
+    <Compile Include="NotaDAL.cs" />
     <Compile Include="PermisoDAL.cs" />
     <Compile Include="ProfesorDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

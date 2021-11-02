@@ -19,7 +19,7 @@ namespace DAL
 
             foreach (DataRow row in dt.Rows)
             {
-                Curso CursoDisponible = new Curso((int)row["AñoFecha"], row["AñoSecundaria"].ToString(),(int)row["Cupo"],row["Turno"].ToString());
+                Curso CursoDisponible = new Curso((int)row["AñoFecha"], (int)row["AñoSecundaria"],(int)row["Cupo"],row["Turno"].ToString());
                 CursoDisponible.ID_Curso = (int)row["ID_Curso"];
                 CursosDisponibles.Add(CursoDisponible);
             }
@@ -45,6 +45,26 @@ namespace DAL
             else 
                 salida = false;
             return salida;
+        }
+
+        public List<Curso> cursosDisponiblesParaAlumnos(int gradoCurso)
+        {
+            List<Curso> cursos = new List<Curso>();
+
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@gradoCurso", gradoCurso)
+            };
+            DataTable tabla = acceso.Leer("CursosCuposDisponibles", parametros);
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                Curso curso = new Curso((int)fila["AñoFecha"], (int)fila["AñoSecundaria"], (int)fila["Cupo"], fila["Turno"].ToString());
+                curso.ID_Curso = (int)fila["ID_Curso"];
+                cursos.Add(curso);
+            }
+
+            return cursos;
         }
     }
 }

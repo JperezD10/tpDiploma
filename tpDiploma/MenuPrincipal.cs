@@ -100,6 +100,7 @@ namespace tpDiploma
             btnRegistrarProfesor.Text = gestoriIdioma.buscarTexto(btnRegistrarProfesor.Name, idioma);
             btnCrearCursoPorAño.Text = gestoriIdioma.buscarTexto(btnCrearCursoPorAño.Name, idioma);
             btnRegistrarMaterias.Text = gestoriIdioma.buscarTexto(btnRegistrarMaterias.Name, idioma);
+            btnRegistrarAlumno.Text = gestoriIdioma.buscarTexto(btnRegistrarAlumno.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)
@@ -159,6 +160,11 @@ namespace tpDiploma
         private void btnRegistrarMaterias_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new Materias(this));
+        }
+
+        private void btnRegistrarAlumno_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new ABMAlumnos(this));
         }
     }
 }
