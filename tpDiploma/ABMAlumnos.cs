@@ -17,6 +17,7 @@ namespace tpDiploma
     {
         IdiomaBLL GetIdioma = new IdiomaBLL();
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
+        AlumnoBLL gestorAlumno = new AlumnoBLL();
         public string idioma;
         public ABMAlumnos(MenuPrincipal m)
         {
@@ -78,9 +79,17 @@ namespace tpDiploma
             bool salida = validarCampos(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text);
             if (salida)
             {
-                Alumno alumno = new Alumno(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtDNI.Text, true);
-                NotasIncripcionAlumno notas = new NotasIncripcionAlumno(this,alumno);
-                notas.ShowDialog();
+                bool alumnoDisponible = gestorAlumno.AlumnoDisponible(txtDNI.Text);
+                if (!alumnoDisponible)
+                {
+                    MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioActivo", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    Alumno alumno = new Alumno(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtDNI.Text, true);
+                    NotasIncripcionAlumno notas = new NotasIncripcionAlumno(this, alumno);
+                    notas.ShowDialog();
+                }
             }
         }
 

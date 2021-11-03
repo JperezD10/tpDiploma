@@ -211,8 +211,8 @@ namespace tpDiploma
             {
                 try
                 {
-                    gestorAlumno.RegistrarAlumno(this._alumno, _notasOtorgadas, _cursoIngreso.ID_Curso);
-                    MessageBox.Show(GetIdioma.buscarTexto("msbAlumnoRegistrado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string resultado = gestorAlumno.RegistrarAlumno(this._alumno, _notasOtorgadas, _cursoIngreso.ID_Curso, idioma);
+                    MessageBox.Show(resultado, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this._formPadre.limpiarFormulario();
                     this.Close();
                 }

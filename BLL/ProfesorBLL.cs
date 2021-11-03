@@ -28,7 +28,7 @@ namespace BLL
             MateriaMapper.AsignarProfesorAMateria(profe.GetMaterias(), lastID);
             Bitacora b = new Bitacora
             {
-                Accion = "Profesor agregado",
+                Accion = "Registro de profesor",
                 Criticidad = "Media",
                 Descripcion = encriptacion.encriptar($"El profesor {profe.Nombre} ha sido asignado ingresado en el sistema con {profe.GetMaterias().Count} materias"),
                 Usuario = encriptacion.encriptar(session_User.Username)

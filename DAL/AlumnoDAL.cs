@@ -33,6 +33,15 @@ namespace DAL
             return alumnos;
         }
 
+        public void ReactivarAlumno(int idAlumno)
+        {
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@idAlumno", idAlumno),
+            };
+            acceso.Escribir("ReactivarAlumno", parametro);
+        }
+
         public Alumno VerificarExistenciaAlumno(string dni)
         {
             Alumno alumno = null;
