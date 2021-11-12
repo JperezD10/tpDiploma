@@ -53,12 +53,7 @@ namespace tpDiploma
             //    agregar.agregarPermiso(p);
             //}
             ListarIdiomas();
-            listaBitacora = servicioDigitosVerificadores.validarDV();
-            if (listaBitacora.Count > 0)
-            {
-                BaseCorrompida=true;
-                MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ValidarIntegridadBD();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -78,6 +73,16 @@ namespace tpDiploma
             Properties.Settings.Default.Idioma = cmbIdioma.SelectedItem.ToString();
             serviceObservable.AddObserver(this);
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
+        }
+
+        public void ValidarIntegridadBD()
+        {
+            listaBitacora = servicioDigitosVerificadores.validarDV();
+            if (listaBitacora.Count > 0)
+            {
+                BaseCorrompida = true;
+                MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void iniciarSesion()

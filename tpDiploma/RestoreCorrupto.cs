@@ -83,6 +83,7 @@ namespace tpDiploma
                     {
                         MessageBox.Show(result);
                         this.Close();
+                        this.login.ValidarIntegridadBD();
                         this.login.Show();
                     }
                     else
@@ -106,6 +107,11 @@ namespace tpDiploma
         private void showPermisoInsuficiente()
         {
             MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnRestore_Click_1(object sender, EventArgs e)
+        {
+            realizarRestore();
         }
     }
 }
