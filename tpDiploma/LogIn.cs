@@ -21,6 +21,7 @@ namespace tpDiploma
         IdiomaBLL GetIdioma = new IdiomaBLL();
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         DigitoVerificadorBLL servicioDigitosVerificadores = new DigitoVerificadorBLL();
+        private bool BaseCorrompida = false;
         public string idioma;
         private string contraIncorrecta, avisoInexistente, AvisoBloqueo = "";
         public LogIn()
@@ -57,8 +58,8 @@ namespace tpDiploma
             listaBitacora = servicioDigitosVerificadores.validarDV();
             if (listaBitacora.Count > 0)
             {
+                BaseCorrompida=true;
                 MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
             }
         }
 
@@ -82,10 +83,19 @@ namespace tpDiploma
             {
                 if (gestor.IniciarSesion(txtNombreUsuario.Text, txtPassword.Text))
                 {
-                    MenuPrincipal m = new MenuPrincipal(this);
-                    m.Show();
-                    this.Hide();
-                    txtNombreUsuario.Text = txtPassword.Text = "";
+                    if (BaseCorrompida)
+                    {
+                        RestoreCorrupto r = new RestoreCorrupto();
+                        r.ShowDialog();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MenuPrincipal m = new MenuPrincipal(this);
+                        m.Show();
+                        this.Hide();
+                        txtNombreUsuario.Text = txtPassword.Text = "";
+                    }
                 }
                 else
                 {

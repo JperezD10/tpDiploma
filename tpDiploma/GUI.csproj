@@ -70,6 +70,12 @@
     <Compile Include="BackUp.Designer.cs">
       <DependentUpon>BackUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompletarIdioma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompletarIdioma.Designer.cs">
+      <DependentUpon>CompletarIdioma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Materias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     <Compile Include="Restore.Designer.cs">
       <DependentUpon>Restore.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestoreCorrupto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestoreCorrupto.Designer.cs">
+      <DependentUpon>RestoreCorrupto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ABMAlumnos.resx">
       <DependentUpon>ABMAlumnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BackUp.resx">
       <DependentUpon>BackUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompletarIdioma.resx">
+      <DependentUpon>CompletarIdioma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
@@ -185,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Restore.resx">
       <DependentUpon>Restore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestoreCorrupto.resx">
+      <DependentUpon>RestoreCorrupto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

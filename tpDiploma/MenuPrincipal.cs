@@ -166,5 +166,10 @@ namespace tpDiploma
         {
             AbrirFormInPanel(new ABMAlumnos(this));
         }
+
+        private void completarIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new CompletarIdioma(this));
+        }
     }
 }

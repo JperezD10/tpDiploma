@@ -116,3 +116,8 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.exe
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.pdb
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ABMAlumnos.resources
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.NotasIncripcionAlumno.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\GUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.ABMAlumnos.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.CompletarIdioma.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.NotasIncripcionAlumno.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RestoreCorrupto.resources
