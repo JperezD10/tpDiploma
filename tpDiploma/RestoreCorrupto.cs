@@ -113,5 +113,10 @@ namespace tpDiploma
         {
             realizarRestore();
         }
+
+        private void btnPathRestore_Click_1(object sender, EventArgs e)
+        {
+            openFileDialog();
+        }
     }
 }

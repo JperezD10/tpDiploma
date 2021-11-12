@@ -36,7 +36,7 @@ namespace BLL
             Bitacora bitacora = new Bitacora()
             {
                 Accion = "Nueva traduccion",
-                Criticidad = "Medio",
+                Criticidad = "Media",
                 Descripcion = encriptacion.encriptar($"Se ha traducido el control {control.NombreControl}"),
                 Usuario = encriptacion.encriptar(Usuario_Sesion.Username)
             };

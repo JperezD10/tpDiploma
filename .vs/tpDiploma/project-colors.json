@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9": {
+      "ProjectGuid": "a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9",
+      "DisplayName": "GUI",
+      "ColorIndex": 0
+    },
+    "e802b299-3618-4429-a911-8411f463eb25": {
+      "ProjectGuid": "e802b299-3618-4429-a911-8411f463eb25",
+      "DisplayName": "BLL",
+      "ColorIndex": 1
+    },
+    "a968fbb3-3e0e-406c-bc5d-458cf592656f": {
+      "ProjectGuid": "a968fbb3-3e0e-406c-bc5d-458cf592656f",
+      "DisplayName": "BE",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
