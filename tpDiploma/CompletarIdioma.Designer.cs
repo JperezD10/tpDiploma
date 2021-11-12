@@ -44,10 +44,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1, -9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(1, -11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(112, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(149, 146);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 56;
             this.pictureBox1.TabStop = false;
@@ -64,11 +64,12 @@
             "Baja",
             "Media",
             "Alta"});
-            this.cmbCompletarIdioma.Location = new System.Drawing.Point(521, 30);
-            this.cmbCompletarIdioma.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCompletarIdioma.Location = new System.Drawing.Point(695, 37);
+            this.cmbCompletarIdioma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCompletarIdioma.Name = "cmbCompletarIdioma";
-            this.cmbCompletarIdioma.Size = new System.Drawing.Size(113, 24);
+            this.cmbCompletarIdioma.Size = new System.Drawing.Size(149, 27);
             this.cmbCompletarIdioma.TabIndex = 57;
+            this.cmbCompletarIdioma.SelectedIndexChanged += new System.EventHandler(this.cmbCompletarIdioma_SelectedIndexChanged);
             // 
             // lblLenguajeLogin
             // 
@@ -76,20 +77,22 @@
             this.lblLenguajeLogin.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblLenguajeLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblLenguajeLogin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLenguajeLogin.Location = new System.Drawing.Point(359, 33);
-            this.lblLenguajeLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLenguajeLogin.Location = new System.Drawing.Point(479, 41);
             this.lblLenguajeLogin.Name = "lblLenguajeLogin";
-            this.lblLenguajeLogin.Size = new System.Drawing.Size(87, 16);
+            this.lblLenguajeLogin.Size = new System.Drawing.Size(104, 20);
             this.lblLenguajeLogin.TabIndex = 58;
             this.lblLenguajeLogin.Text = "Language";
             // 
             // GrillaATraducir
             // 
             this.GrillaATraducir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaATraducir.Location = new System.Drawing.Point(136, 101);
+            this.GrillaATraducir.Location = new System.Drawing.Point(181, 124);
+            this.GrillaATraducir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GrillaATraducir.Name = "GrillaATraducir";
-            this.GrillaATraducir.Size = new System.Drawing.Size(296, 264);
+            this.GrillaATraducir.RowHeadersWidth = 51;
+            this.GrillaATraducir.Size = new System.Drawing.Size(395, 325);
             this.GrillaATraducir.TabIndex = 59;
+            this.GrillaATraducir.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaATraducir_CellClick);
             // 
             // lblTraduccion
             // 
@@ -97,12 +100,12 @@
             this.lblTraduccion.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblTraduccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblTraduccion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTraduccion.Location = new System.Drawing.Point(518, 229);
-            this.lblTraduccion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTraduccion.Location = new System.Drawing.Point(691, 282);
             this.lblTraduccion.Name = "lblTraduccion";
-            this.lblTraduccion.Size = new System.Drawing.Size(107, 16);
+            this.lblTraduccion.Size = new System.Drawing.Size(129, 20);
             this.lblTraduccion.TabIndex = 58;
             this.lblTraduccion.Text = "Traduccion";
+            this.lblTraduccion.Click += new System.EventHandler(this.lblTraduccion_Click);
             // 
             // lblControlATraducir
             // 
@@ -110,10 +113,9 @@
             this.lblControlATraducir.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblControlATraducir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblControlATraducir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblControlATraducir.Location = new System.Drawing.Point(518, 138);
-            this.lblControlATraducir.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblControlATraducir.Location = new System.Drawing.Point(691, 170);
             this.lblControlATraducir.Name = "lblControlATraducir";
-            this.lblControlATraducir.Size = new System.Drawing.Size(99, 16);
+            this.lblControlATraducir.Size = new System.Drawing.Size(118, 20);
             this.lblControlATraducir.TabIndex = 58;
             this.lblControlATraducir.Text = "a traducir";
             // 
@@ -122,11 +124,12 @@
             this.txtTraduccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
             this.txtTraduccion.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtTraduccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.txtTraduccion.Location = new System.Drawing.Point(727, 226);
-            this.txtTraduccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTraduccion.Location = new System.Drawing.Point(969, 278);
+            this.txtTraduccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTraduccion.Name = "txtTraduccion";
-            this.txtTraduccion.Size = new System.Drawing.Size(154, 23);
+            this.txtTraduccion.Size = new System.Drawing.Size(204, 27);
             this.txtTraduccion.TabIndex = 60;
+            this.txtTraduccion.TextChanged += new System.EventHandler(this.txtTraduccion_TextChanged);
             // 
             // btnGuardarTraduccion
             // 
@@ -137,20 +140,21 @@
             this.btnGuardarTraduccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarTraduccion.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarTraduccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnGuardarTraduccion.Location = new System.Drawing.Point(612, 288);
-            this.btnGuardarTraduccion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarTraduccion.Location = new System.Drawing.Point(816, 354);
+            this.btnGuardarTraduccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardarTraduccion.Name = "btnGuardarTraduccion";
-            this.btnGuardarTraduccion.Size = new System.Drawing.Size(157, 35);
+            this.btnGuardarTraduccion.Size = new System.Drawing.Size(209, 43);
             this.btnGuardarTraduccion.TabIndex = 61;
             this.btnGuardarTraduccion.Text = "Guardar";
             this.btnGuardarTraduccion.UseVisualStyleBackColor = false;
+            this.btnGuardarTraduccion.Click += new System.EventHandler(this.btnGuardarTraduccion_Click);
             // 
             // CompletarIdioma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(984, 471);
+            this.ClientSize = new System.Drawing.Size(1312, 580);
             this.Controls.Add(this.btnGuardarTraduccion);
             this.Controls.Add(this.txtTraduccion);
             this.Controls.Add(this.GrillaATraducir);
@@ -160,6 +164,7 @@
             this.Controls.Add(this.cmbCompletarIdioma);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CompletarIdioma";
             this.Text = "CompletarIdioma";
             this.Load += new System.EventHandler(this.CompletarIdioma_Load);

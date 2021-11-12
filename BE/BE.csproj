@@ -47,6 +47,7 @@
     <Compile Include="Criticidad.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="Familia.cs" />
+    <Compile Include="Idioma.cs" />
     <Compile Include="IdiomaControl.cs" />
     <Compile Include="Materia.cs" />
     <Compile Include="Nota.cs" />

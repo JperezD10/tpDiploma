@@ -52,9 +52,7 @@ namespace tpDiploma
             //    p.nombre = permiso;
             //    agregar.agregarPermiso(p);
             //}
-            cmbIdioma.DataSource = GetIdioma.CargarIdiomas();
-            cmbIdioma.DisplayMember = "Idioma";
-            cmbIdioma.SelectedIndex = 0;
+            ListarIdiomas();
             listaBitacora = servicioDigitosVerificadores.validarDV();
             if (listaBitacora.Count > 0)
             {
@@ -68,7 +66,12 @@ namespace tpDiploma
             iniciarSesion();
         }
 
-
+        public void ListarIdiomas()
+        {
+            cmbIdioma.DataSource = GetIdioma.CargarIdiomas();
+            cmbIdioma.DisplayMember = "Idioma";
+            cmbIdioma.SelectedIndex = 0;
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //gestion de idioma
         {
@@ -85,7 +88,7 @@ namespace tpDiploma
                 {
                     if (BaseCorrompida)
                     {
-                        RestoreCorrupto r = new RestoreCorrupto();
+                        RestoreCorrupto r = new RestoreCorrupto(this);
                         r.ShowDialog();
                         this.Hide();
                     }

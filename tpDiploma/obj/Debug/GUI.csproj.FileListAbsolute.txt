@@ -121,3 +121,6 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.AB
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.CompletarIdioma.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.NotasIncripcionAlumno.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RestoreCorrupto.resources
+C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.CompletarIdioma.resources
+C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RestoreCorrupto.resources
+C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.AgregarIdioma.resources

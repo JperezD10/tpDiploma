@@ -32,6 +32,7 @@ namespace tpDiploma
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            login.ListarIdiomas();
             login.Show();
             this.Close();
         }
@@ -101,6 +102,9 @@ namespace tpDiploma
             btnCrearCursoPorAño.Text = gestoriIdioma.buscarTexto(btnCrearCursoPorAño.Name, idioma);
             btnRegistrarMaterias.Text = gestoriIdioma.buscarTexto(btnRegistrarMaterias.Name, idioma);
             btnRegistrarAlumno.Text = gestoriIdioma.buscarTexto(btnRegistrarAlumno.Name, idioma);
+            idiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(idiomaToolStripMenuItem.Name, idioma);
+            nuevoIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(nuevoIdiomaToolStripMenuItem.Name, idioma);
+            completarIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(completarIdiomaToolStripMenuItem.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)
@@ -170,6 +174,11 @@ namespace tpDiploma
         private void completarIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new CompletarIdioma(this));
+        }
+
+        private void nuevoIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new AgregarIdioma(this));
         }
     }
 }
