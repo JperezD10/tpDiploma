@@ -50,3 +50,6 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\BLL\obj\Debug\BLL.csproj.CoreCompileInp
 C:\Users\jperezdemonty\Desktop\tpDiploma\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\jperezdemonty\Desktop\tpDiploma\BLL\obj\Debug\BLL.dll
 C:\Users\jperezdemonty\Desktop\tpDiploma\BLL\obj\Debug\BLL.pdb
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.xml

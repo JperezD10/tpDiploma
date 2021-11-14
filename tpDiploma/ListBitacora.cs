@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
+using BLL;
 
 namespace tpDiploma
 {
     public partial class ListBitacora : Form, IObserver<string>
     {
-        BLL.BitacoraBLL gestorBitacora = new BLL.BitacoraBLL();
-        BLL.IdiomaBLL GetIdioma = new BLL.IdiomaBLL();
-        BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
+        BitacoraBLL gestorBitacora = new BitacoraBLL();
+        ReporteBLL servicioReporte = new ReporteBLL();
+        IdiomaBLL GetIdioma = new IdiomaBLL();
+        IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
 
         public string idioma;
+        List<Bitacora> _listaBitacora;
         public ListBitacora(MenuPrincipal m)
         {
             InitializeComponent();
@@ -63,8 +67,8 @@ namespace tpDiploma
             gridBitacora.DataSource = null;
             try
             {
-                var bitacora = gestorBitacora.listarBitacora(txtFechaDesde.Value, txtFechaHasta.Value, cmbCriticidad.Text, txtUsername.Text);
-                gridBitacora.DataSource = bitacora;
+                _listaBitacora = gestorBitacora.listarBitacora(txtFechaDesde.Value, txtFechaHasta.Value, cmbCriticidad.Text, txtUsername.Text);
+                gridBitacora.DataSource = _listaBitacora;
                 gridBitacora.ScrollBars = ScrollBars.Both;
                 hideColumn(gridBitacora, "ID_Bitacora");
                 hideColumn(gridBitacora, "DVH");
@@ -73,6 +77,28 @@ namespace tpDiploma
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_listaBitacora != null)
+                {
+                    SaveFileDialog sfd = new SaveFileDialog();
+                    sfd.Filter = "PDF (*.pdf)|*.pdf";
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        List<DataGridView> listaTablas = new List<DataGridView>();
+                        listaTablas.Add(gridBitacora);
+                        servicioReporte.reportePDF(listaTablas, sfd, idioma);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

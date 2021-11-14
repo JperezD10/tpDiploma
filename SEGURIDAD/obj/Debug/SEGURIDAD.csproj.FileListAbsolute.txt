@@ -14,3 +14,4 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\bin\Debug\SEGURIDAD.pdb
 C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csproj.CoreCompileInputs.cache
 C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.dll
 C:\Users\jperezdemonty\Desktop\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.pdb
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\SEGURIDAD\obj\Debug\SEGURIDAD.csproj.AssemblyReference.cache

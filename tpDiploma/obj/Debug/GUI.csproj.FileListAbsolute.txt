@@ -125,3 +125,6 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Completar
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RestoreCorrupto.resources
 C:\Users\jperezdemonty\Desktop\tpDiploma\tpDiploma\obj\Debug\tpDiploma.AgregarIdioma.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.AgregarIdioma.resources
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\itextsharp.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\itextsharp.xml
