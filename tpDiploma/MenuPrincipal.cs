@@ -102,6 +102,7 @@ namespace tpDiploma
             btnCrearCursoPorAño.Text = gestoriIdioma.buscarTexto(btnCrearCursoPorAño.Name, idioma);
             btnRegistrarMaterias.Text = gestoriIdioma.buscarTexto(btnRegistrarMaterias.Name, idioma);
             btnRegistrarAlumno.Text = gestoriIdioma.buscarTexto(btnRegistrarAlumno.Name, idioma);
+            btnBajaAlumno.Text = gestoriIdioma.buscarTexto(btnBajaAlumno.Name, idioma);
             idiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(idiomaToolStripMenuItem.Name, idioma);
             nuevoIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(nuevoIdiomaToolStripMenuItem.Name, idioma);
             completarIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(completarIdiomaToolStripMenuItem.Name, idioma);
@@ -179,6 +180,11 @@ namespace tpDiploma
         private void nuevoIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new AgregarIdioma(this));
+        }
+
+        private void btnBajaAlumno_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new BajaAlumno(this));
         }
     }
 }

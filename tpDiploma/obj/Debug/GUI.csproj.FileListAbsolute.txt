@@ -128,3 +128,4 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Ag
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\itextsharp.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\itextsharp.xml
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.BajaAlumno.resources

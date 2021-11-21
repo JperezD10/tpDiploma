@@ -168,6 +168,7 @@
             // cmbCriticidad
             // 
             this.cmbCriticidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
+            this.cmbCriticidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCriticidad.Font = new System.Drawing.Font("Arial", 10.2F);
             this.cmbCriticidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.cmbCriticidad.FormattingEnabled = true;

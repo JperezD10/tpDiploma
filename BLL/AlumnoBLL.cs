@@ -55,6 +55,16 @@ namespace BLL
             return result;
         }
 
+        public List<Alumno> ObtenerAlumnos(string nombre, string apellido, string dni)
+        {
+            return mapper.ObtenerAlumnos(nombre, apellido, dni);
+        }
+
+        public void BajaAlumno(Alumno alumno)
+        {
+            mapper.BajaAlumno(alumno.ID_Alumno);
+        }
+
         public bool AlumnoDisponible(string DNI)
         {
             bool salida = true;
