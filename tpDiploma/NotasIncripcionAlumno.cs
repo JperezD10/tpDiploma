@@ -28,6 +28,7 @@ namespace tpDiploma
         private Materia _materiaCalificar;
         private List<Materia> _materiasPorCalificar;
         private List<Nota> _notasOtorgadas = new List<Nota>();
+        private bool finalizable = false;
         public NotasIncripcionAlumno(ABMAlumnos a, Alumno alumno)
         {
             InitializeComponent();
@@ -110,6 +111,10 @@ namespace tpDiploma
             {
                 _cursoIngreso = (Curso)GrillaCursosDisponibles.Rows[e.RowIndex].DataBoundItem;
                 _materiasPorCalificar = gestorMateria.listarMateriasCalificar(_cursoIngreso.AnioSecundaria, _cursoIngreso.Turno);
+                if (_materiasPorCalificar.Count == 0)
+                {
+                    finalizable = true;
+                }
                 _notasOtorgadas = new List<Nota>();
                 ActualizarGrillas();
             }
@@ -170,6 +175,10 @@ namespace tpDiploma
                         Nota nota = new Nota(_alumno, _materiaCalificar, notaNumerica, previa);
                         _notasOtorgadas.Add(nota);
                         _materiasPorCalificar.Remove(_materiaCalificar);
+                        if (_materiasPorCalificar.Count==0)
+                        {
+                            finalizable = true;
+                        }
                         ActualizarGrillas();
                         txtNotaNumerica.Clear();
                     }
@@ -203,7 +212,7 @@ namespace tpDiploma
 
         private void btnFinalizarRegistroAlumno_Click(object sender, EventArgs e)
         {
-            if (_materiasPorCalificar==null || _materiasPorCalificar.Count > 0 || _notasOtorgadas.Count == 0)
+            if (_materiasPorCalificar==null || finalizable==false)
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbFaltanCalificarMaterias", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -221,6 +230,11 @@ namespace tpDiploma
                     throw;
                 }
             }
+        }
+
+        private void GrillaNotasPuestas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

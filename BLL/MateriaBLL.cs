@@ -42,5 +42,10 @@ namespace BLL
         {
             return mapper.ListarMateriasParaIngresoAlumno(cursoGrado, turno);
         }
+
+        public List<Materia> buscarMateriasPorCurso(int cursoGrado, string turno)
+        {
+            return mapper.BuscarMateriasPorCurso(cursoGrado, turno);
+        }
     }
 }

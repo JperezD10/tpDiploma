@@ -77,5 +77,10 @@ namespace BLL
                 salida = false;
             return salida;
         }
+
+        public List<Alumno> buscarAlumnosPorCurso(int grado, string turno)
+        {
+            return mapper.BuscarAlumnosPorCurso(grado, turno);
+        }
     }
 }

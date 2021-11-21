@@ -51,6 +51,7 @@
             this.nuevoIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnRegistrarNota = new System.Windows.Forms.Button();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -63,6 +64,7 @@
             this.panelLateral.Controls.Add(this.btnListBitacora);
             this.panelLateral.Controls.Add(this.btnCrearCursoPorAño);
             this.panelLateral.Controls.Add(this.btnRegistrarMaterias);
+            this.panelLateral.Controls.Add(this.btnRegistrarNota);
             this.panelLateral.Controls.Add(this.btnBajaAlumno);
             this.panelLateral.Controls.Add(this.btnRegistrarAlumno);
             this.panelLateral.Controls.Add(this.btnRegistrarProfesor);
@@ -72,7 +74,7 @@
             this.panelLateral.Location = new System.Drawing.Point(0, 0);
             this.panelLateral.Margin = new System.Windows.Forms.Padding(2);
             this.panelLateral.Name = "panelLateral";
-            this.panelLateral.Size = new System.Drawing.Size(135, 621);
+            this.panelLateral.Size = new System.Drawing.Size(135, 671);
             this.panelLateral.TabIndex = 0;
             this.panelLateral.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -95,7 +97,7 @@
             this.btnListBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListBitacora.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListBitacora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnListBitacora.Location = new System.Drawing.Point(11, 476);
+            this.btnListBitacora.Location = new System.Drawing.Point(11, 540);
             this.btnListBitacora.Margin = new System.Windows.Forms.Padding(2);
             this.btnListBitacora.Name = "btnListBitacora";
             this.btnListBitacora.Size = new System.Drawing.Size(107, 50);
@@ -113,7 +115,7 @@
             this.btnCrearCursoPorAño.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearCursoPorAño.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearCursoPorAño.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnCrearCursoPorAño.Location = new System.Drawing.Point(11, 403);
+            this.btnCrearCursoPorAño.Location = new System.Drawing.Point(11, 467);
             this.btnCrearCursoPorAño.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrearCursoPorAño.Name = "btnCrearCursoPorAño";
             this.btnCrearCursoPorAño.Size = new System.Drawing.Size(107, 46);
@@ -131,7 +133,7 @@
             this.btnRegistrarMaterias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarMaterias.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarMaterias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarMaterias.Location = new System.Drawing.Point(11, 324);
+            this.btnRegistrarMaterias.Location = new System.Drawing.Point(11, 388);
             this.btnRegistrarMaterias.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrarMaterias.Name = "btnRegistrarMaterias";
             this.btnRegistrarMaterias.Size = new System.Drawing.Size(107, 50);
@@ -185,7 +187,7 @@
             this.btnRegistrarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarProfesor.Location = new System.Drawing.Point(11, 251);
+            this.btnRegistrarProfesor.Location = new System.Drawing.Point(11, 315);
             this.btnRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrarProfesor.Name = "btnRegistrarProfesor";
             this.btnRegistrarProfesor.Size = new System.Drawing.Size(107, 50);
@@ -221,7 +223,7 @@
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnCerrarSesion.Location = new System.Drawing.Point(11, 549);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(11, 613);
             this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(107, 50);
@@ -354,16 +356,34 @@
             this.panelContenedor.Location = new System.Drawing.Point(135, 28);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(962, 593);
+            this.panelContenedor.Size = new System.Drawing.Size(962, 643);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
+            // 
+            // btnRegistrarNota
+            // 
+            this.btnRegistrarNota.BackColor = System.Drawing.Color.Black;
+            this.btnRegistrarNota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrarNota.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarNota.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnRegistrarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarNota.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarNota.Location = new System.Drawing.Point(11, 245);
+            this.btnRegistrarNota.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistrarNota.Name = "btnRegistrarNota";
+            this.btnRegistrarNota.Size = new System.Drawing.Size(107, 50);
+            this.btnRegistrarNota.TabIndex = 7;
+            this.btnRegistrarNota.Text = "Registrar nota";
+            this.btnRegistrarNota.UseVisualStyleBackColor = false;
+            this.btnRegistrarNota.Click += new System.EventHandler(this.btnRegistrarNota_Click);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(1097, 621);
+            this.ClientSize = new System.Drawing.Size(1097, 671);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panelSuperior);
             this.Controls.Add(this.panelLateral);
@@ -410,5 +430,6 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem completarIdiomaToolStripMenuItem;
         private System.Windows.Forms.Button btnBajaAlumno;
+        private System.Windows.Forms.Button btnRegistrarNota;
     }
 }

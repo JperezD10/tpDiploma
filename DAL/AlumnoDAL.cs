@@ -96,5 +96,24 @@ namespace DAL
 
             acceso.Escribir("BajaAlumno", parametro);
         }
+
+        public List<Alumno> BuscarAlumnosPorCurso(int grado, string turno)
+        {
+            List<Alumno> alumnos = new List<Alumno>();
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@Grado", grado),
+                new SqlParameter("@turno", turno),
+            };
+            DataTable dt = acceso.Leer("BuscarAlumnosPorCurso", parametro);
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Alumno alumno = new Alumno(fila["Nombre"].ToString(), fila["Apellido"].ToString(), fila["Email"].ToString(), fila["DNI"].ToString(), (bool)fila["Activo"]);
+                alumno.ID_Alumno = (int)fila["ID_Alumno"];
+                alumnos.Add(alumno);
+            }
+            return alumnos;
+        }
     }
 }

@@ -93,5 +93,24 @@ namespace DAL
             }
             return materias;
         }
+
+        public List<Materia> BuscarMateriasPorCurso(int grado, string turno)
+        {
+            List<Materia> materias = new List<Materia>();
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@Grado", grado),
+                new SqlParameter("@turno", turno),
+            };
+            DataTable dt = acceso.Leer("BuscarMateriasPorCurso", parametro);
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                Materia materia = new Materia((int)fila["Año"], fila["Descripcion"].ToString(), fila["Dia"].ToString(), (int)fila["HoraInicio"], (int)fila["HoraFin"]);
+                materia.ID_Materia = (int)fila["ID_Materia"];
+                materias.Add(materia);
+            }
+            return materias;
+        }
     }
 }

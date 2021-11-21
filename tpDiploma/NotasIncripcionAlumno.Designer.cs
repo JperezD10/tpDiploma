@@ -52,10 +52,10 @@ namespace tpDiploma
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -14);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 146);
+            this.pictureBox1.Size = new System.Drawing.Size(112, 119);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 67;
             this.pictureBox1.TabStop = false;
@@ -63,12 +63,13 @@ namespace tpDiploma
             // GrillaCursosDisponibles
             // 
             this.GrillaCursosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaCursosDisponibles.Location = new System.Drawing.Point(263, 133);
+            this.GrillaCursosDisponibles.Location = new System.Drawing.Point(197, 108);
+            this.GrillaCursosDisponibles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GrillaCursosDisponibles.Name = "GrillaCursosDisponibles";
             this.GrillaCursosDisponibles.ReadOnly = true;
             this.GrillaCursosDisponibles.RowHeadersWidth = 51;
             this.GrillaCursosDisponibles.RowTemplate.Height = 24;
-            this.GrillaCursosDisponibles.Size = new System.Drawing.Size(959, 139);
+            this.GrillaCursosDisponibles.Size = new System.Drawing.Size(719, 113);
             this.GrillaCursosDisponibles.TabIndex = 68;
             this.GrillaCursosDisponibles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaCursosDisponibles_CellClick);
             // 
@@ -78,9 +79,10 @@ namespace tpDiploma
             this.lblAñoCursoNuevoAlumno.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblAñoCursoNuevoAlumno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblAñoCursoNuevoAlumno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAñoCursoNuevoAlumno.Location = new System.Drawing.Point(471, 52);
+            this.lblAñoCursoNuevoAlumno.Location = new System.Drawing.Point(353, 42);
+            this.lblAñoCursoNuevoAlumno.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAñoCursoNuevoAlumno.Name = "lblAñoCursoNuevoAlumno";
-            this.lblAñoCursoNuevoAlumno.Size = new System.Drawing.Size(177, 20);
+            this.lblAñoCursoNuevoAlumno.Size = new System.Drawing.Size(149, 16);
             this.lblAñoCursoNuevoAlumno.TabIndex = 69;
             this.lblAñoCursoNuevoAlumno.Text = "seleccione curso";
             // 
@@ -91,22 +93,23 @@ namespace tpDiploma
             this.cmbGradoCurso.Font = new System.Drawing.Font("Arial", 10.2F);
             this.cmbGradoCurso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.cmbGradoCurso.FormattingEnabled = true;
-            this.cmbGradoCurso.Location = new System.Drawing.Point(730, 50);
-            this.cmbGradoCurso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbGradoCurso.Location = new System.Drawing.Point(548, 41);
+            this.cmbGradoCurso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbGradoCurso.Name = "cmbGradoCurso";
-            this.cmbGradoCurso.Size = new System.Drawing.Size(167, 27);
+            this.cmbGradoCurso.Size = new System.Drawing.Size(126, 24);
             this.cmbGradoCurso.TabIndex = 70;
             this.cmbGradoCurso.SelectedIndexChanged += new System.EventHandler(this.cmbGradoCurso_SelectedIndexChanged);
             // 
             // grillaMateriasPorCalificar
             // 
             this.grillaMateriasPorCalificar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaMateriasPorCalificar.Location = new System.Drawing.Point(48, 400);
+            this.grillaMateriasPorCalificar.Location = new System.Drawing.Point(36, 325);
+            this.grillaMateriasPorCalificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grillaMateriasPorCalificar.Name = "grillaMateriasPorCalificar";
             this.grillaMateriasPorCalificar.ReadOnly = true;
             this.grillaMateriasPorCalificar.RowHeadersWidth = 51;
             this.grillaMateriasPorCalificar.RowTemplate.Height = 24;
-            this.grillaMateriasPorCalificar.Size = new System.Drawing.Size(479, 266);
+            this.grillaMateriasPorCalificar.Size = new System.Drawing.Size(359, 216);
             this.grillaMateriasPorCalificar.TabIndex = 71;
             this.grillaMateriasPorCalificar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaMateriasPorCalificar_CellClick);
             // 
@@ -116,9 +119,10 @@ namespace tpDiploma
             this.lblSubject.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblSubject.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblSubject.Location = new System.Drawing.Point(147, 341);
+            this.lblSubject.Location = new System.Drawing.Point(110, 277);
+            this.lblSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(177, 20);
+            this.lblSubject.Size = new System.Drawing.Size(149, 16);
             this.lblSubject.TabIndex = 69;
             this.lblSubject.Text = "seleccione curso";
             // 
@@ -127,10 +131,10 @@ namespace tpDiploma
             this.txtNotaNumerica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
             this.txtNotaNumerica.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtNotaNumerica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.txtNotaNumerica.Location = new System.Drawing.Point(730, 464);
-            this.txtNotaNumerica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNotaNumerica.Location = new System.Drawing.Point(548, 377);
+            this.txtNotaNumerica.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNotaNumerica.Name = "txtNotaNumerica";
-            this.txtNotaNumerica.Size = new System.Drawing.Size(167, 27);
+            this.txtNotaNumerica.Size = new System.Drawing.Size(126, 23);
             this.txtNotaNumerica.TabIndex = 72;
             // 
             // lblNotaNumerica
@@ -139,9 +143,10 @@ namespace tpDiploma
             this.lblNotaNumerica.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblNotaNumerica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblNotaNumerica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblNotaNumerica.Location = new System.Drawing.Point(589, 466);
+            this.lblNotaNumerica.Location = new System.Drawing.Point(442, 379);
+            this.lblNotaNumerica.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNotaNumerica.Name = "lblNotaNumerica";
-            this.lblNotaNumerica.Size = new System.Drawing.Size(59, 20);
+            this.lblNotaNumerica.Size = new System.Drawing.Size(47, 16);
             this.lblNotaNumerica.TabIndex = 69;
             this.lblNotaNumerica.Text = "nota";
             // 
@@ -151,9 +156,10 @@ namespace tpDiploma
             this.lblNombreMateria.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblNombreMateria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblNombreMateria.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblNombreMateria.Location = new System.Drawing.Point(726, 400);
+            this.lblNombreMateria.Location = new System.Drawing.Point(544, 325);
+            this.lblNombreMateria.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombreMateria.Name = "lblNombreMateria";
-            this.lblNombreMateria.Size = new System.Drawing.Size(84, 20);
+            this.lblNombreMateria.Size = new System.Drawing.Size(68, 16);
             this.lblNombreMateria.TabIndex = 69;
             this.lblNombreMateria.Text = "nombre";
             // 
@@ -166,10 +172,10 @@ namespace tpDiploma
             this.btnSaveNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveNota.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnSaveNota.Location = new System.Drawing.Point(661, 549);
-            this.btnSaveNota.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveNota.Location = new System.Drawing.Point(496, 446);
+            this.btnSaveNota.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSaveNota.Name = "btnSaveNota";
-            this.btnSaveNota.Size = new System.Drawing.Size(149, 36);
+            this.btnSaveNota.Size = new System.Drawing.Size(112, 29);
             this.btnSaveNota.TabIndex = 73;
             this.btnSaveNota.Text = "Crear";
             this.btnSaveNota.UseVisualStyleBackColor = false;
@@ -178,13 +184,15 @@ namespace tpDiploma
             // GrillaNotasPuestas
             // 
             this.GrillaNotasPuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaNotasPuestas.Location = new System.Drawing.Point(934, 400);
+            this.GrillaNotasPuestas.Location = new System.Drawing.Point(700, 325);
+            this.GrillaNotasPuestas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GrillaNotasPuestas.Name = "GrillaNotasPuestas";
             this.GrillaNotasPuestas.ReadOnly = true;
             this.GrillaNotasPuestas.RowHeadersWidth = 51;
             this.GrillaNotasPuestas.RowTemplate.Height = 24;
-            this.GrillaNotasPuestas.Size = new System.Drawing.Size(479, 266);
+            this.GrillaNotasPuestas.Size = new System.Drawing.Size(359, 216);
             this.GrillaNotasPuestas.TabIndex = 71;
+            this.GrillaNotasPuestas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaNotasPuestas_CellClick);
             // 
             // lblNotasAsignadas
             // 
@@ -192,9 +200,10 @@ namespace tpDiploma
             this.lblNotasAsignadas.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblNotasAsignadas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblNotasAsignadas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblNotasAsignadas.Location = new System.Drawing.Point(1100, 341);
+            this.lblNotasAsignadas.Location = new System.Drawing.Point(825, 277);
+            this.lblNotasAsignadas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNotasAsignadas.Name = "lblNotasAsignadas";
-            this.lblNotasAsignadas.Size = new System.Drawing.Size(177, 20);
+            this.lblNotasAsignadas.Size = new System.Drawing.Size(149, 16);
             this.lblNotasAsignadas.TabIndex = 69;
             this.lblNotasAsignadas.Text = "seleccione curso";
             // 
@@ -207,10 +216,10 @@ namespace tpDiploma
             this.btnFinalizarRegistroAlumno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalizarRegistroAlumno.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizarRegistroAlumno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnFinalizarRegistroAlumno.Location = new System.Drawing.Point(593, 684);
-            this.btnFinalizarRegistroAlumno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFinalizarRegistroAlumno.Location = new System.Drawing.Point(445, 556);
+            this.btnFinalizarRegistroAlumno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFinalizarRegistroAlumno.Name = "btnFinalizarRegistroAlumno";
-            this.btnFinalizarRegistroAlumno.Size = new System.Drawing.Size(265, 42);
+            this.btnFinalizarRegistroAlumno.Size = new System.Drawing.Size(199, 34);
             this.btnFinalizarRegistroAlumno.TabIndex = 74;
             this.btnFinalizarRegistroAlumno.Text = "Finalizar";
             this.btnFinalizarRegistroAlumno.UseVisualStyleBackColor = false;
@@ -218,10 +227,10 @@ namespace tpDiploma
             // 
             // NotasIncripcionAlumno
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(1453, 750);
+            this.ClientSize = new System.Drawing.Size(1090, 609);
             this.Controls.Add(this.btnFinalizarRegistroAlumno);
             this.Controls.Add(this.btnSaveNota);
             this.Controls.Add(this.txtNotaNumerica);
@@ -236,6 +245,7 @@ namespace tpDiploma
             this.Controls.Add(this.GrillaCursosDisponibles);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "NotasIncripcionAlumno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
