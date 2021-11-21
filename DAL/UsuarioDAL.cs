@@ -152,13 +152,17 @@ namespace DAL
 
         public int ModificarUsuario(Usuario usuario)
         {
-            SqlParameter[] parametro = new SqlParameter[6];
-            parametro[0] = new SqlParameter("@Nombre", usuario.Nombre);
-            parametro[1] = new SqlParameter("@Apellido", usuario.Apellido);
-            parametro[2] = new SqlParameter("@Dni", usuario.DNI);
-            parametro[3] = new SqlParameter("@Email", usuario.Email);
-            parametro[4] = new SqlParameter("@FechaNacimiento", usuario.FechaNacimiento);
-            parametro[5] = new SqlParameter("@Direccion", usuario.Direccion);
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@idUsuario", usuario.ID_Usuario),
+                new SqlParameter("@Nombre", usuario.Nombre),
+                new SqlParameter("@Apellido", usuario.Apellido),
+                new SqlParameter("@Dni", usuario.DNI),
+                new SqlParameter("@Email", usuario.Email),
+                new SqlParameter("@FechaNacimiento", usuario.FechaNacimiento),
+                new SqlParameter("@Direccion", usuario.Direccion),
+            };
+            
             acceso.Escribir("ModificarUsuario", parametro);
             return usuario.ID_Usuario;
         }
