@@ -53,3 +53,5 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\BLL\obj\Debug\BLL.pdb
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.xml
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\Newtonsoft.Json.xml

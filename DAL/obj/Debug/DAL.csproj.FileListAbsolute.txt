@@ -42,3 +42,5 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.csproj.CoreCompileInp
 C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.dll
 C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.pdb
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\Newtonsoft.Json.xml

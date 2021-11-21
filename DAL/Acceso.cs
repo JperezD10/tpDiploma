@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace DAL
 {
@@ -42,6 +43,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
+                Serialize(ex);
                 throw ex;
             }
         }
@@ -60,6 +62,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
+                Serialize(ex);
                 throw ex;
             }
         }
@@ -70,9 +73,10 @@ namespace DAL
             {
                 sqlConnection.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Serialize(ex);
+                throw ex;
             }
         }
 
@@ -96,6 +100,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
+                Serialize(ex);
                 throw ex;
             }
             closeConnection();
@@ -119,10 +124,18 @@ namespace DAL
             catch (Exception ex)
             {
                 sqlTransaction.Rollback();
+                Serialize(ex);
                 return ex.Message;
             }
             closeConnection();
             return "";
+        }
+
+        private void Serialize(Exception ex)
+        {
+            string path = Directory.GetCurrentDirectory();
+            string json = JsonConvert.SerializeObject(ex);
+            File.WriteAllText($"{path}/errores.json", json);
         }
     }
 }
