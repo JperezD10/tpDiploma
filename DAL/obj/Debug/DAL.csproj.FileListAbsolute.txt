@@ -44,3 +44,5 @@ C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.dll
 C:\Users\jperezdemonty\Desktop\tpDiploma\DAL\obj\Debug\DAL.pdb
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\DIPLOMA.mdf
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\DAL\bin\Debug\DIPLOMA_log.ldf

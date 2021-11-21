@@ -34,11 +34,10 @@ namespace DAL
         {
             try
             {
-                //String strAppPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                //String strFilePath = Path.Combine(strAppPath, "SalaEnsayo");
-                //String strFullFilename = Path.Combine(strFilePath, "SalaEnsayo.mdf");
-                //sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";Integrated Security=True");
-                sqlConnection.ConnectionString = @"Data Source=.;Initial Catalog=DIPLOMA;Integrated Security=True";
+                String strAppPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                String strFilePath = Path.Combine(strAppPath, "DIPLOMA");
+                String strFullFilename = Path.Combine(strFilePath, "DIPLOMA.mdf");
+                sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";database=DIPLOMA;Integrated Security=True");
                 sqlConnection.Open();
             }
             catch (Exception ex)
@@ -55,8 +54,7 @@ namespace DAL
                 String strAppPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 String strFilePath = Path.Combine(strAppPath, "DIPLOMA");
                 String strFullFilename = Path.Combine(strFilePath, "DIPLOMA.mdf");
-                sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";Integrated Security=True");
-                sqlConnection.ConnectionString = @"Data Source=.;Initial Catalog=DIPLOMA;Integrated Security=True";
+                sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strFullFilename + ";database=DIPLOMA;Integrated Security=True");
                 sqlConnection.Open();
                 return sqlConnection;
             }

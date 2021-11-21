@@ -55,3 +55,5 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\itextsharp.xml
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\DIPLOMA.mdf
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BLL\bin\Debug\DIPLOMA_log.ldf

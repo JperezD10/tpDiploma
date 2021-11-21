@@ -132,3 +132,5 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.Ba
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\obj\Debug\tpDiploma.RegistrarNotaTrimestral.resources
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\DIPLOMA.mdf
+C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\tpDiploma\bin\Debug\DIPLOMA_log.ldf

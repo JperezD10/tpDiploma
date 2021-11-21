@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30523.141
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "tpDiploma\GUI.csproj", "{A91CC0CB-C7CD-4ED8-9D87-B17DA8F095D9}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4735D912-109E-444A-BDDE-EE61CE7AB4A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEGURIDAD", "SEGURIDAD\SEGURIDAD.csproj", "{60673E8E-E888-401F-AF26-12F4A48A20B6}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{DE4DCCD6-8EEC-4B88-8E97-D499598C5098}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,8 @@ Global
 		{60673E8E-E888-401F-AF26-12F4A48A20B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60673E8E-E888-401F-AF26-12F4A48A20B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60673E8E-E888-401F-AF26-12F4A48A20B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4DCCD6-8EEC-4B88-8E97-D499598C5098}.Debug|Any CPU.ActiveCfg = Debug
+		{DE4DCCD6-8EEC-4B88-8E97-D499598C5098}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
