@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -100,7 +101,12 @@ namespace tpDiploma
                 MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 salida = false;
             }
-            if (string.IsNullOrEmpty(email))
+            try
+            {
+                var addr = new MailAddress(email);
+                salida = addr.Address == email;
+            }
+            catch
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 salida = false;

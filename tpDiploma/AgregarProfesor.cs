@@ -10,6 +10,7 @@ using BLL;
 using BE;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace tpDiploma
 {
@@ -76,7 +77,12 @@ namespace tpDiploma
                 MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;
             }
-            if (string.IsNullOrEmpty(Email))
+            try
+            {
+                var addr = new MailAddress(Email);
+                result = addr.Address == Email;
+            }
+            catch
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;
