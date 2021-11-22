@@ -21,7 +21,6 @@ namespace DAL
                 new SqlParameter("@apellido", profe.Apellido),
                 new SqlParameter("@email", profe.Email),
                 new SqlParameter("@DNI", profe.DNI),
-                new SqlParameter("@SueldoMateria", profe.SueldoMateria),
                 new SqlParameter
                 {
                     ParameterName="@returnValue",
@@ -29,7 +28,7 @@ namespace DAL
                 }
             };
             Acceso.Escribir("Agregar_Profesor", parametros);
-            return (int)parametros[5].Value;
+            return (int)parametros[4].Value;
         }
     }
 }

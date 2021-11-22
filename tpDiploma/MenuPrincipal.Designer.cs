@@ -33,6 +33,7 @@
             this.btnListBitacora = new System.Windows.Forms.Button();
             this.btnCrearCursoPorAño = new System.Windows.Forms.Button();
             this.btnRegistrarMaterias = new System.Windows.Forms.Button();
+            this.btnRegistrarNota = new System.Windows.Forms.Button();
             this.btnBajaAlumno = new System.Windows.Forms.Button();
             this.btnRegistrarAlumno = new System.Windows.Forms.Button();
             this.btnRegistrarProfesor = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.nuevoIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.btnRegistrarNota = new System.Windows.Forms.Button();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -141,6 +141,24 @@
             this.btnRegistrarMaterias.Text = "Registrar materias";
             this.btnRegistrarMaterias.UseVisualStyleBackColor = false;
             this.btnRegistrarMaterias.Click += new System.EventHandler(this.btnRegistrarMaterias_Click);
+            // 
+            // btnRegistrarNota
+            // 
+            this.btnRegistrarNota.BackColor = System.Drawing.Color.Black;
+            this.btnRegistrarNota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRegistrarNota.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarNota.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnRegistrarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarNota.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
+            this.btnRegistrarNota.Location = new System.Drawing.Point(11, 245);
+            this.btnRegistrarNota.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistrarNota.Name = "btnRegistrarNota";
+            this.btnRegistrarNota.Size = new System.Drawing.Size(107, 50);
+            this.btnRegistrarNota.TabIndex = 7;
+            this.btnRegistrarNota.Text = "Registrar nota";
+            this.btnRegistrarNota.UseVisualStyleBackColor = false;
+            this.btnRegistrarNota.Click += new System.EventHandler(this.btnRegistrarNota_Click);
             // 
             // btnBajaAlumno
             // 
@@ -358,25 +376,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(962, 643);
             this.panelContenedor.TabIndex = 2;
-            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
-            // 
-            // btnRegistrarNota
-            // 
-            this.btnRegistrarNota.BackColor = System.Drawing.Color.Black;
-            this.btnRegistrarNota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRegistrarNota.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarNota.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.btnRegistrarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarNota.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnRegistrarNota.Location = new System.Drawing.Point(11, 245);
-            this.btnRegistrarNota.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRegistrarNota.Name = "btnRegistrarNota";
-            this.btnRegistrarNota.Size = new System.Drawing.Size(107, 50);
-            this.btnRegistrarNota.TabIndex = 7;
-            this.btnRegistrarNota.Text = "Registrar nota";
-            this.btnRegistrarNota.UseVisualStyleBackColor = false;
-            this.btnRegistrarNota.Click += new System.EventHandler(this.btnRegistrarNota_Click);
             // 
             // MenuPrincipal
             // 
@@ -395,6 +394,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MenuPrincipal_HelpRequested);
             this.panelLateral.ResumeLayout(false);
             this.panelLateral.PerformLayout();
             this.panelSuperior.ResumeLayout(false);

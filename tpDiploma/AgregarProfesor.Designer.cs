@@ -30,11 +30,9 @@ namespace tpDiploma
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarProfesor));
-            this.lblSueldoProfesor = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblApellidoRegistrarProfesor = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.Label();
-            this.txtSueldo = new System.Windows.Forms.TextBox();
             this.lblNombreRegistrarProfesor = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnGuardarProfesor = new System.Windows.Forms.Button();
@@ -45,18 +43,6 @@ namespace tpDiploma
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblSueldoProfesor
-            // 
-            this.lblSueldoProfesor.AutoSize = true;
-            this.lblSueldoProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSueldoProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblSueldoProfesor.Location = new System.Drawing.Point(206, 246);
-            this.lblSueldoProfesor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSueldoProfesor.Name = "lblSueldoProfesor";
-            this.lblSueldoProfesor.Size = new System.Drawing.Size(165, 16);
-            this.lblSueldoProfesor.TabIndex = 56;
-            this.lblSueldoProfesor.Text = "sueldo por materia";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -65,7 +51,7 @@ namespace tpDiploma
             this.label5.Location = new System.Drawing.Point(206, 184);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 16);
+            this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 57;
             this.label5.Text = "Email";
             // 
@@ -77,7 +63,7 @@ namespace tpDiploma
             this.lblApellidoRegistrarProfesor.Location = new System.Drawing.Point(206, 72);
             this.lblApellidoRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblApellidoRegistrarProfesor.Name = "lblApellidoRegistrarProfesor";
-            this.lblApellidoRegistrarProfesor.Size = new System.Drawing.Size(76, 16);
+            this.lblApellidoRegistrarProfesor.Size = new System.Drawing.Size(75, 16);
             this.lblApellidoRegistrarProfesor.TabIndex = 58;
             this.lblApellidoRegistrarProfesor.Text = "Apellido";
             // 
@@ -89,20 +75,9 @@ namespace tpDiploma
             this.lbl.Location = new System.Drawing.Point(206, 130);
             this.lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(35, 16);
+            this.lbl.Size = new System.Drawing.Size(34, 16);
             this.lbl.TabIndex = 60;
             this.lbl.Text = "DNI";
-            // 
-            // txtSueldo
-            // 
-            this.txtSueldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.txtSueldo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtSueldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.txtSueldo.Location = new System.Drawing.Point(392, 239);
-            this.txtSueldo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSueldo.Name = "txtSueldo";
-            this.txtSueldo.Size = new System.Drawing.Size(154, 23);
-            this.txtSueldo.TabIndex = 53;
             // 
             // lblNombreRegistrarProfesor
             // 
@@ -112,7 +87,7 @@ namespace tpDiploma
             this.lblNombreRegistrarProfesor.Location = new System.Drawing.Point(206, 28);
             this.lblNombreRegistrarProfesor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombreRegistrarProfesor.Name = "lblNombreRegistrarProfesor";
-            this.lblNombreRegistrarProfesor.Size = new System.Drawing.Size(69, 16);
+            this.lblNombreRegistrarProfesor.Size = new System.Drawing.Size(68, 16);
             this.lblNombreRegistrarProfesor.TabIndex = 61;
             this.lblNombreRegistrarProfesor.Text = "Nombre";
             // 
@@ -136,7 +111,7 @@ namespace tpDiploma
             this.btnGuardarProfesor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarProfesor.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarProfesor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnGuardarProfesor.Location = new System.Drawing.Point(392, 300);
+            this.btnGuardarProfesor.Location = new System.Drawing.Point(392, 257);
             this.btnGuardarProfesor.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarProfesor.Name = "btnGuardarProfesor";
             this.btnGuardarProfesor.Size = new System.Drawing.Size(154, 45);
@@ -194,12 +169,10 @@ namespace tpDiploma
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(800, 405);
-            this.Controls.Add(this.lblSueldoProfesor);
+            this.ClientSize = new System.Drawing.Size(788, 349);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblApellidoRegistrarProfesor);
             this.Controls.Add(this.lbl);
-            this.Controls.Add(this.txtSueldo);
             this.Controls.Add(this.lblNombreRegistrarProfesor);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnGuardarProfesor);
@@ -218,11 +191,9 @@ namespace tpDiploma
         }
 
         #endregion
-        private System.Windows.Forms.Label lblSueldoProfesor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblApellidoRegistrarProfesor;
         private System.Windows.Forms.Label lbl;
-        private System.Windows.Forms.TextBox txtSueldo;
         private System.Windows.Forms.Label lblNombreRegistrarProfesor;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnGuardarProfesor;

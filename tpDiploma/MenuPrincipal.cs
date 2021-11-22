@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,11 +63,6 @@ namespace tpDiploma
         private void btnRegistrarUsuario_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new CrearUsuario(this, null));
-        }
-
-        private void panelContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -191,6 +187,11 @@ namespace tpDiploma
         private void btnRegistrarNota_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new RegistrarNotaTrimestral(this));
+        }
+
+        private void MenuPrincipal_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "AyudaEscuela.chm");
         }
     }
 }

@@ -29,10 +29,10 @@ namespace tpDiploma
 
         private void btnGuardarProfesor_Click(object sender, EventArgs e)
         {
-            bool estadoFormulario = validarCampos(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text, txtSueldo.Text);
+            bool estadoFormulario = validarCampos(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text);
             if( estadoFormulario)
             {
-                Profesor profesor = new Profesor(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text, float.Parse(txtSueldo.Text));
+                Profesor profesor = new Profesor(txtNombre.Text, txtApellido.Text, txtDNI.Text, txtEmail.Text);
                 ProfesorMaterias pm = new ProfesorMaterias(this, profesor);
                 pm.ShowDialog();
             }
@@ -49,19 +49,24 @@ namespace tpDiploma
             txtNombre.Clear();
             txtDNI.Clear();
             txtEmail.Clear();
-            txtSueldo.Clear();
         }
 
-        private bool validarCampos(string nombre, string apellido, string DNI, string Email, string sueldo)
+        private bool validarCampos(string nombre, string apellido, string DNI, string Email)
         {
             string _patronDNI = @"\d{7,8}";
-            string _patronSueldo = @"\d";
             Regex regexDNI = new Regex(_patronDNI);
-            Regex regexSueldo = new Regex(_patronSueldo);
             MatchCollection matchDNI = regexDNI.Matches(DNI);
-            MatchCollection matchSueldo = regexSueldo.Matches(sueldo);
             bool result = true;
-
+            try
+            {
+                var addr = new MailAddress(Email);
+                result = addr.Address == Email;
+            }
+            catch
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                result = false;
+            }
             if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbNombreVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -75,21 +80,6 @@ namespace tpDiploma
             if (matchDNI.Count < 1)
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                result = false;
-            }
-            try
-            {
-                var addr = new MailAddress(Email);
-                result = addr.Address == Email;
-            }
-            catch
-            {
-                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                result = false;
-            }
-            if (matchSueldo.Count < 1)
-            {
-                MessageBox.Show(GetIdioma.buscarTexto("msbSueldoVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;
             }
 
@@ -109,7 +99,6 @@ namespace tpDiploma
         public void OnCompleted()
         {
             lblApellidoRegistrarProfesor.Text = GetIdioma.buscarTexto(lblApellidoRegistrarProfesor.Name, idioma);
-            lblSueldoProfesor.Text = GetIdioma.buscarTexto(lblSueldoProfesor.Name, idioma);
             lblNombreRegistrarProfesor.Text = GetIdioma.buscarTexto(lblNombreRegistrarProfesor.Name, idioma);
             btnGuardarProfesor.Text = GetIdioma.buscarTexto(btnGuardarProfesor.Name, idioma);
         }

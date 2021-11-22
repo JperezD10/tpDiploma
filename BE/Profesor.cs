@@ -8,12 +8,10 @@ namespace BE
 {
     public class Profesor: Persona
     {
-        public Profesor(string nombre, string apellido, string email, string DNI,float sueldoMateria) : base(nombre,apellido, email, DNI)
+        public Profesor(string nombre, string apellido, string email, string DNI) : base(nombre,apellido, email, DNI)
         {
-            SueldoMateria = sueldoMateria;
         }
 
-        public float SueldoMateria { get; set; }
         List<Materia> Materias;
 
         public void SetMaterias(List<Materia> materias) => this.Materias = materias;

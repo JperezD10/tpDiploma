@@ -50,7 +50,16 @@ namespace tpDiploma
             Regex regexDNI = new Regex(_patronDNI);
             MatchCollection matchDNI = regexDNI.Matches(DNI);
             bool result = true;
-
+            try
+            {
+                var addr = new MailAddress(Email);
+                result = addr.Address == Email;
+            }
+            catch
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                result = false;
+            }
             if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbNombreVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -64,16 +73,6 @@ namespace tpDiploma
             if (matchDNI.Count < 1)
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                result = false;
-            }
-            try
-            {
-                var addr = new MailAddress(Email);
-                result = addr.Address == Email;
-            }
-            catch
-            {
-                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 result = false;
             }
 

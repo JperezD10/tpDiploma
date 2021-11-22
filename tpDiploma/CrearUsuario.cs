@@ -86,6 +86,16 @@ namespace tpDiploma
             int edad = DateTime.Today.Year - nacimiento.Year;
             MatchCollection matchDNI = regex.Matches(dni);
 
+            try
+            {
+                var addr = new MailAddress(email);
+                salida = addr.Address == email;
+            }
+            catch
+            {
+                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                salida = false;
+            }
             if (string.IsNullOrEmpty(nombre))
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbNombreVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -101,16 +111,7 @@ namespace tpDiploma
                 MessageBox.Show(GetIdioma.buscarTexto("msbDNIVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 salida = false;
             }
-            try
-            {
-                var addr = new MailAddress(email);
-                salida = addr.Address == email;
-            }
-            catch
-            {
-                MessageBox.Show(GetIdioma.buscarTexto("msbEmailVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                salida = false;
-            }
+            
             if (string.IsNullOrEmpty(direccion))
             {
                 MessageBox.Show(GetIdioma.buscarTexto("msbDireccionVacio", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
