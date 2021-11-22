@@ -109,7 +109,7 @@ namespace tpDiploma
                 {
                     gestor.SumarIntentosLog(txtNombreUsuario.Text);
                     int ingresoNumero = gestor.MostrarIntentosLog(txtNombreUsuario.Text);
-                    if (ingresoNumero == 0)
+                    if (ingresoNumero <= 0)
                     {
                         gestor.BloquearUsuario(txtNombreUsuario.Text);
                         MessageBox.Show(AvisoBloqueo, "", MessageBoxButtons.OK, MessageBoxIcon.Information); ;

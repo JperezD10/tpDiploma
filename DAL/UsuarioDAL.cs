@@ -61,22 +61,65 @@ namespace DAL
             }
             return listaUsuarios;
         }
-        public void BloquearUsuario(string Username)
+        public int BloquearUsuario(string Username)
         {
-            SqlParameter[] parametro = new SqlParameter[1];
+            string usernameSinEncriptar = encriptado.desencriptar(Username);
+            SqlParameter[] parametro = new SqlParameter[2];
             parametro[0] = new SqlParameter("@Username", Username);
+            parametro[1] = new SqlParameter
+            {
+                ParameterName = "@returnValue",
+                Direction = ParameterDirection.ReturnValue
+            };
             acceso.Escribir("BloquearUsuario", parametro);
             BitacoraDAL accesoBitacora = new BitacoraDAL();
-            BE.Usuario_Sesion usuario_Sesion = BE.Usuario_Sesion.Instance;
-            BE.Bitacora bitacora = new BE.Bitacora()
+            Bitacora bitacora = new Bitacora()
             {
                 Accion = "Bloqueo de usuario",
                 Criticidad = "Media",
-                Descripcion = encriptado.encriptar($"El usuario {usuario_Sesion.Username} ha sido bloqueado"),
-                Usuario = encriptado.encriptar(usuario_Sesion.Username)
+                Descripcion = encriptado.encriptar($"El usuario {usernameSinEncriptar} ha sido bloqueado"),
+                Usuario = encriptado.encriptar("Sistema")
             };
             accesoBitacora.CrearBitacora(bitacora);
+            return (int)parametro[1].Value;
         }
+
+        public void DesbloquearUsuario(int idUsuario)
+        {
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@idUsuario", idUsuario)
+            };
+            acceso.Escribir("DesbloquearUsuario", parametros);
+        }
+
+        public List<Usuario> ObtenerUsuariosBloqueados()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            try
+            {
+                DataTable dataTable = acceso.Leer("ListarUsuariosBloqueados", null);
+                foreach (DataRow fila in dataTable.Rows)
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.ID_Usuario = (int)fila["ID_Usuario"];
+                    usuario.Nombre = fila["Nombre"].ToString();
+                    usuario.Apellido = fila["Apellido"].ToString();
+                    usuario.FechaNacimiento = (DateTime)fila["FechaNacimiento"];
+                    usuario.Email = fila["Email"].ToString();
+                    usuario.DNI = fila["DNI"].ToString();
+                    usuario.Direccion = encriptado.desencriptar(fila["Direccion"].ToString());
+                    usuario.Username = encriptado.desencriptar(fila["Username"].ToString());
+                    listaUsuarios.Add(usuario);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return listaUsuarios;
+        }
+
         public int MostrarIntentosRestantes(string Username)
         {
             int intentosRestantes = 0;

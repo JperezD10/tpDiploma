@@ -193,5 +193,10 @@ namespace tpDiploma
         {
             Help.ShowHelp(this, "AyudaEscuela.chm");
         }
+
+        private void usuariosBloqueadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new DesbloqueoUsuarios(this));
+        }
     }
 }

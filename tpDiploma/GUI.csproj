@@ -94,6 +94,12 @@
     <Compile Include="CompletarIdioma.Designer.cs">
       <DependentUpon>CompletarIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="DesbloqueoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesbloqueoUsuarios.Designer.cs">
+      <DependentUpon>DesbloqueoUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Materias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CompletarIdioma.resx">
       <DependentUpon>CompletarIdioma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesbloqueoUsuarios.resx">
+      <DependentUpon>DesbloqueoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>

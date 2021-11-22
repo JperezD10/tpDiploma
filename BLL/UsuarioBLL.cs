@@ -32,7 +32,8 @@ namespace BLL
         public void BloquearUsuario(string username)
         {
             username = encriptado.encriptar(username);
-            mapper.BloquearUsuario(username);
+            int idUsuario = mapper.BloquearUsuario(username);
+            digitosVerificadores.recalcularDV(idUsuario, "Usuario", true);
         }
         public int MostrarIntentosLog(string username)
         {
@@ -94,6 +95,25 @@ namespace BLL
             };
             int idBitacora = servicioBitacora.crearBitacora(bitacora);
             return idNuevoUsuario;
+        }
+
+        public List<Usuario> ObtenerUsuariosBloqueados()
+        {
+            return mapper.ObtenerUsuariosBloqueados();
+        }
+
+        public void DesbloquearUsuario(Usuario usuario)
+        {
+            mapper.DesbloquearUsuario(usuario.ID_Usuario);
+            digitosVerificadores.recalcularDV(usuario.ID_Usuario, "Usuario", true);
+            Bitacora bitacora = new Bitacora()
+            {
+                Accion = "Desbloqueo de usuario",
+                Criticidad = "Alta",
+                Descripcion = encriptado.encriptar($"Se ha desbloqueado a {usuario.Nombre} {usuario.Apellido}"),
+                Usuario = encriptado.encriptar(session_User.Username)
+            };
+            servicioBitacora.crearBitacora(bitacora);
         }
 
         public int ModificarUsuario(Usuario usuario)
