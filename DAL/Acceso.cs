@@ -131,7 +131,7 @@ namespace DAL
 
         private void Serialize(Exception ex)
         {
-            string path = Directory.GetCurrentDirectory();
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string json = JsonConvert.SerializeObject(ex);
             File.WriteAllText($"{path}/errores.json", json);
         }
