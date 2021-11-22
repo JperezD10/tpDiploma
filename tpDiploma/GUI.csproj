@@ -247,9 +247,9 @@
     <EmbeddedResource Include="RestoreCorrupto.resx">
       <DependentUpon>RestoreCorrupto.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AyudaEscuela.chm">
+    <Content Include="AyudaEscuela.chm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -280,6 +280,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\favico.ico" />
     <Content Include="Resources\pdf-icon-png-2082.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

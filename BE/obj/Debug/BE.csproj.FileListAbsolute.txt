@@ -15,7 +15,6 @@ C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BE\bin\Debug\BE.pdb
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BE\obj\Debug\BE.dll
 C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BE\obj\Debug\BE.pdb
-C:\Users\Juli\Desktop\UAI\3°\Diploma\tpDiploma\BE\obj\Debug\BE.csproj.AssemblyReference.cache
 C:\Users\jperezdemonty\Desktop\tpDiploma\BE\bin\Debug\BE.dll
 C:\Users\jperezdemonty\Desktop\tpDiploma\BE\bin\Debug\BE.pdb
 C:\Users\jperezdemonty\Desktop\tpDiploma\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
