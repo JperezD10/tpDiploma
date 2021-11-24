@@ -126,7 +126,7 @@ namespace tpDiploma
         }
         private void RegistrarNuevoUsuario()
         {
-            BE.Usuario newUser = new BE.Usuario()
+            Usuario newUser = new Usuario()
             {
                 Nombre = txtNombre.Text,
                 Apellido = txtApellido.Text,
@@ -139,8 +139,16 @@ namespace tpDiploma
             };
             try
             {
-                gestor.crearUsuario(newUser);
-                MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioCreado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (gestor.ValidarUsuarioDisponible(newUser))
+                {
+                    gestor.crearUsuario(newUser);
+                    MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioCreado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioOcupado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
             }
             catch (Exception ex)
             {

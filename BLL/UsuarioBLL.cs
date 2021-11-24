@@ -97,6 +97,12 @@ namespace BLL
             return idNuevoUsuario;
         }
 
+        public bool ValidarUsuarioDisponible(Usuario usuario)
+        {
+            usuario.Username = encriptado.encriptar(usuario.Username);
+            return mapper.ValidarUsuarioDisponible(usuario);
+        }
+
         public List<Usuario> ObtenerUsuariosBloqueados()
         {
             return mapper.ObtenerUsuariosBloqueados();

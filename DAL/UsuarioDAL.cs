@@ -173,7 +173,7 @@ namespace DAL
             }
         }
 
-        public int CrearUsuario(BE.Usuario newUser)
+        public int CrearUsuario(Usuario newUser)
         {
             SqlParameter[] parametro = new SqlParameter[9];
             parametro[0] = new SqlParameter("@Nombre", newUser.Nombre);
@@ -193,6 +193,20 @@ namespace DAL
             return (int)parametro[8].Value;
         }
 
+        public bool ValidarUsuarioDisponible(Usuario usuario)
+        {
+            bool salida = true;
+            SqlParameter[] parametro =
+            {
+                new SqlParameter("@username",usuario.Username)
+            };
+            DataTable tabla = acceso.Leer("ValidarUsuarioDisponible", parametro);
+            if (tabla.Rows.Count > 0)
+            {
+                salida = false;
+            }
+            return salida;
+        }
         public int ModificarUsuario(Usuario usuario)
         {
             SqlParameter[] parametro =
