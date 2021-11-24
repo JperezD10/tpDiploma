@@ -84,6 +84,23 @@ namespace DAL
             return (int)parametro[1].Value;
         }
 
+        public void EliminarUsuario(int idUsuario)
+        {
+            try
+            {
+                SqlParameter[] parametro =
+                {
+                    new SqlParameter("@idUsuario", idUsuario),
+                };
+                acceso.Escribir("EliminarUsuario", parametro);
+            }
+            catch (Exception ex)
+            {
+                acceso.Serialize(ex);
+                throw ex;
+            }
+        }
+
         public void DesbloquearUsuario(int idUsuario)
         {
             SqlParameter[] parametros =

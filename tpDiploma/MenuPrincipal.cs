@@ -33,6 +33,7 @@ namespace tpDiploma
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            Usuario_Sesion = null;
             login.ListarIdiomas();
             login.Show();
             this.Close();
@@ -197,6 +198,11 @@ namespace tpDiploma
         private void usuariosBloqueadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new DesbloqueoUsuarios(this));
+        }
+
+        private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new EliminarUsuario(this));
         }
     }
 }

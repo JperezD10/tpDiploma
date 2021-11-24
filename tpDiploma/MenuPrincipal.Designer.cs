@@ -51,8 +51,9 @@
             this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.usuariosBloqueadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
+            this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -273,7 +274,8 @@
             this.editarPerfilToolStripMenuItem,
             this.restaurarInformacionToolStripMenuItem,
             this.idiomaToolStripMenuItem,
-            this.usuariosBloqueadosToolStripMenuItem});
+            this.usuariosBloqueadosToolStripMenuItem,
+            this.eliminarUsuarioToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -357,7 +359,7 @@
             this.nuevoIdiomaToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.nuevoIdiomaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.nuevoIdiomaToolStripMenuItem.Name = "nuevoIdiomaToolStripMenuItem";
-            this.nuevoIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoIdiomaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.nuevoIdiomaToolStripMenuItem.Text = "Nuevo idioma";
             this.nuevoIdiomaToolStripMenuItem.Click += new System.EventHandler(this.nuevoIdiomaToolStripMenuItem_Click);
             // 
@@ -366,9 +368,17 @@
             this.completarIdiomaToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.completarIdiomaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.completarIdiomaToolStripMenuItem.Name = "completarIdiomaToolStripMenuItem";
-            this.completarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.completarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.completarIdiomaToolStripMenuItem.Text = "Completar Idioma";
             this.completarIdiomaToolStripMenuItem.Click += new System.EventHandler(this.completarIdiomaToolStripMenuItem_Click);
+            // 
+            // usuariosBloqueadosToolStripMenuItem
+            // 
+            this.usuariosBloqueadosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.usuariosBloqueadosToolStripMenuItem.Name = "usuariosBloqueadosToolStripMenuItem";
+            this.usuariosBloqueadosToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
+            this.usuariosBloqueadosToolStripMenuItem.Text = "Usuarios bloqueados";
+            this.usuariosBloqueadosToolStripMenuItem.Click += new System.EventHandler(this.usuariosBloqueadosToolStripMenuItem_Click);
             // 
             // panelContenedor
             // 
@@ -379,13 +389,13 @@
             this.panelContenedor.Size = new System.Drawing.Size(962, 643);
             this.panelContenedor.TabIndex = 2;
             // 
-            // usuariosBloqueadosToolStripMenuItem
+            // eliminarUsuarioToolStripMenuItem
             // 
-            this.usuariosBloqueadosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.usuariosBloqueadosToolStripMenuItem.Name = "usuariosBloqueadosToolStripMenuItem";
-            this.usuariosBloqueadosToolStripMenuItem.Size = new System.Drawing.Size(129, 20);
-            this.usuariosBloqueadosToolStripMenuItem.Text = "Usuarios bloqueados";
-            this.usuariosBloqueadosToolStripMenuItem.Click += new System.EventHandler(this.usuariosBloqueadosToolStripMenuItem_Click);
+            this.eliminarUsuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar usuario";
+            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 
@@ -442,5 +452,6 @@
         private System.Windows.Forms.Button btnBajaAlumno;
         private System.Windows.Forms.Button btnRegistrarNota;
         private System.Windows.Forms.ToolStripMenuItem usuariosBloqueadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarUsuarioToolStripMenuItem;
     }
 }

@@ -39,6 +39,14 @@ namespace BLL
             return servicioIdioma.buscarTexto("mensajeFamiliaYaExiste", idioma);
         }
 
+        //public void agregarPermiso(Permiso permiso)
+        //{
+        //    int id = permisomapper.agregarPermiso(permiso);
+        //    servicioDigitoVerificador.recalcularDV(id, "Permiso", true);
+        //    servicioDigitoVerificador.recalcularDVV("UsuarioPermiso");
+        //    servicioDigitoVerificador.recalcularDVV("Compuesto");
+        //    servicioDigitoVerificador.recalcularDVV("Permiso");
+        //}
         public string eliminarFamilia(Permiso familia, bool isFamilia, string idioma)
         {
             familia.nombre = encriptacion.encriptar(familia.nombre);

@@ -44,6 +44,7 @@ namespace tpDiploma
             //    "Asignar patente a usuario",
             //    "Listar bitacora",
             //    "Asignar familia a usuario",
+                    //"Eliminar Usuario",
             //};
             //PermisoBL agregar = new PermisoBL();
             //foreach (var permiso in PermisosSinEncriptar)

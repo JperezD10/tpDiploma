@@ -35,6 +35,19 @@ namespace BLL
             int idUsuario = mapper.BloquearUsuario(username);
             digitosVerificadores.recalcularDV(idUsuario, "Usuario", true);
         }
+        public void EliminarUsuario(int idUsuario)
+        {
+            mapper.EliminarUsuario(idUsuario);
+            digitosVerificadores.recalcularDVV("Usuario");
+            Bitacora bitacora = new Bitacora()
+            {
+                Accion = "Eliminacion de usuario",
+                Criticidad = "Alta",
+                Descripcion = encriptado.encriptar($"Se ha eliminado un usuario"),
+                Usuario = encriptado.encriptar(session_User.Username)
+            };
+            servicioBitacora.crearBitacora(bitacora);
+        }
         public int MostrarIntentosLog(string username)
         {
             username = encriptado.encriptar(username);

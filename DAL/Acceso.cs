@@ -129,7 +129,7 @@ namespace DAL
             return "";
         }
 
-        private void Serialize(Exception ex)
+        public void Serialize(Exception ex)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string json = JsonConvert.SerializeObject(ex);
