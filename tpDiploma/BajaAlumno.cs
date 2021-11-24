@@ -54,6 +54,7 @@ namespace tpDiploma
                 MessageBox.Show(GetIdioma.buscarTexto("msbAlumnoEliminado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _alumnos = gestorAlumno.ObtenerAlumnos(txtNombre.Text, txtApellido.Text, txtDNI.Text);
                 CargarGrilla();
+                _AlumnoEliminar = null;
             }
             else
             {
