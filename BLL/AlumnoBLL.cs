@@ -63,6 +63,14 @@ namespace BLL
         public void BajaAlumno(Alumno alumno)
         {
             mapper.BajaAlumno(alumno.ID_Alumno);
+            Bitacora b = new Bitacora
+            {
+                Accion = "Baja de alumno",
+                Criticidad = "Media",
+                Descripcion = encriptacion.encriptar($"Se dio de baja al alumno {alumno.Nombre} {alumno.Apellido}"),
+                Usuario = encriptacion.encriptar(session_User.Username)
+            };
+            servicioBitacora.crearBitacora(b);
         }
 
         public bool AlumnoDisponible(string DNI)
