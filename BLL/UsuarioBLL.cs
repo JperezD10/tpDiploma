@@ -137,6 +137,7 @@ namespace BLL
 
         public int ModificarUsuario(Usuario usuario)
         {
+            usuario.Direccion = encriptado.encriptar(usuario.Direccion);
             mapper.ModificarUsuario(usuario);
             digitosVerificadores.recalcularDV(usuario.ID_Usuario, "Usuario", true);
             digitosVerificadores.recalcularDVV("Usuario");

@@ -185,7 +185,7 @@ namespace DAL
                 usuario.FechaNacimiento = (DateTime)fila["FechaNacimiento"];
                 usuario.Email = fila["Email"].ToString();
                 usuario.DNI = fila["DNI"].ToString();
-                usuario.Direccion = fila["Direccion"].ToString();
+                usuario.Direccion = encriptado.desencriptar(fila["Direccion"].ToString());
                 usuario.Username = encriptado.desencriptar(fila["Username"].ToString());
             }
         }
