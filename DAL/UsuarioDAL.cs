@@ -215,7 +215,9 @@ namespace DAL
             bool salida = true;
             SqlParameter[] parametro =
             {
-                new SqlParameter("@username",usuario.Username)
+                new SqlParameter("@username",usuario.Username),
+                new SqlParameter("@mail", usuario.Email),
+                new SqlParameter("@dni", usuario.DNI)
             };
             DataTable tabla = acceso.Leer("ValidarUsuarioDisponible", parametro);
             if (tabla.Rows.Count > 0)
