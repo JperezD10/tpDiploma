@@ -81,6 +81,7 @@ namespace tpDiploma
                     int idUsuario = _listaUsuarios.Find(u => u.Username == cmbUsuarios.Text).ID_Usuario;
                     servicioUsuario.EliminarUsuario(idUsuario);
                     MessageBox.Show(GetIdioma.buscarTexto("msbUsuarioEliminado", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarUsuarios();
                 }
                 else
                     MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);

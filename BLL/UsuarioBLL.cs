@@ -39,6 +39,7 @@ namespace BLL
         {
             mapper.EliminarUsuario(idUsuario);
             digitosVerificadores.recalcularDVV("Usuario");
+            digitosVerificadores.recalcularDVV("UsuarioPermiso");
             Bitacora bitacora = new Bitacora()
             {
                 Accion = "Eliminacion de usuario",
@@ -92,7 +93,6 @@ namespace BLL
         public int crearUsuario(BE.Usuario newUser)
         {
             string contraseñaRandom = newUser.Contraseña;
-            newUser.Username = encriptado.encriptar(newUser.Username);
             newUser.Direccion = encriptado.encriptar(newUser.Direccion);
             newUser.Contraseña = encriptado.EncriptadoPermanente(newUser.Contraseña);
             int idNuevoUsuario= mapper.CrearUsuario(newUser);
