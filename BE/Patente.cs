@@ -8,6 +8,10 @@ namespace BE
 {
     public class Patente: Permiso
     {
-
+        public string nombre
+        {
+            get => base.nombre;
+            set => base.nombre = value;
+        }
     }
 }

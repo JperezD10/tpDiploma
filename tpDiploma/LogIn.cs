@@ -84,6 +84,8 @@ namespace tpDiploma
                 BaseCorrompida = true;
                 MessageBox.Show(GetIdioma.buscarTexto("msbBaseCorrompida", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                BaseCorrompida = false;
         }
 
         private void iniciarSesion()
@@ -96,7 +98,6 @@ namespace tpDiploma
                     {
                         RestoreCorrupto r = new RestoreCorrupto(this);
                         r.ShowDialog();
-                        this.Hide();
                     }
                     else
                     {

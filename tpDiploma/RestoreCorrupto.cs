@@ -82,14 +82,13 @@ namespace tpDiploma
                     if (result != "")
                     {
                         MessageBox.Show(result);
-                        this.Close();
-                        this.login.ValidarIntegridadBD();
-                        this.login.Show();
                     }
                     else
                     {
                         txtRutaRestore.Clear();
                         MessageBox.Show(GetIdioma.buscarTexto("mensajeRestoreExitoso", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.login.ValidarIntegridadBD();
+                        this.Close();
                     }
                 }
             }
