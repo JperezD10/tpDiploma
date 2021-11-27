@@ -54,7 +54,7 @@ namespace BLL
                         Accion = "Restore",
                         Criticidad = "Alta",
                         Descripcion = encriptacion.encriptar("Se ha realizado un restore de la base de datos"),
-                        Usuario = encriptacion.encriptar(Usuario_Sesion.Username)
+                        Usuario = encriptacion.encriptar("Sistema")
                     };
                     ServicioBitacora.crearBitacora(bitacora);
                     return "";

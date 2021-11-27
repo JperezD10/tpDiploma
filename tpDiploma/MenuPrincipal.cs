@@ -33,6 +33,10 @@ namespace tpDiploma
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            cerrarSesion();
+        }
+        public void cerrarSesion()
+        {
             Usuario_Sesion = null;
             login.ListarIdiomas();
             login.Show();
@@ -104,6 +108,8 @@ namespace tpDiploma
             idiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(idiomaToolStripMenuItem.Name, idioma);
             nuevoIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(nuevoIdiomaToolStripMenuItem.Name, idioma);
             completarIdiomaToolStripMenuItem.Text = gestoriIdioma.buscarTexto(completarIdiomaToolStripMenuItem.Name, idioma);
+            usuariosBloqueadosToolStripMenuItem.Text = gestoriIdioma.buscarTexto(usuariosBloqueadosToolStripMenuItem.Name, idioma);
+            eliminarUsuarioToolStripMenuItem.Text = gestoriIdioma.buscarTexto(eliminarUsuarioToolStripMenuItem.Name, idioma);
         }
 
         private void btnListBitacora_Click(object sender, EventArgs e)

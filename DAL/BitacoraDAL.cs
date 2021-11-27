@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using BE;
 
 namespace DAL
 {
@@ -12,27 +13,35 @@ namespace DAL
     {
         Acceso acceso = Acceso.Instance;
         SEGURIDAD.Encriptacion seguridad = new SEGURIDAD.Encriptacion();
-        public int CrearBitacora(BE.Bitacora bitacora)
+        public int CrearBitacora(Bitacora bitacora)
         {
-            SqlParameter[] parametros = 
+            try
             {
-                new SqlParameter("@Accion", bitacora.Accion),
-                new SqlParameter("@Descripcion", bitacora.Descripcion),
-                new SqlParameter("@Criticidad", bitacora.Criticidad),
-                new SqlParameter("@usuario", bitacora.Usuario),
-                new SqlParameter
+                SqlParameter[] parametros =
                 {
-                    ParameterName="@returnValue",
-                    Direction= ParameterDirection.ReturnValue
-                }
-            };
-            acceso.Escribir("RegistrarBitacora", parametros);
-            return (int)parametros[4].Value;
+                    new SqlParameter("@Accion", bitacora.Accion),
+                    new SqlParameter("@Descripcion", bitacora.Descripcion),
+                    new SqlParameter("@Criticidad", bitacora.Criticidad),
+                    new SqlParameter("@usuario", bitacora.Usuario),
+                    new SqlParameter
+                    {
+                        ParameterName="@returnValue",
+                        Direction= ParameterDirection.ReturnValue
+                    }
+                };
+                acceso.Escribir("RegistrarBitacora", parametros);
+                return (int)parametros[4].Value;
+            }
+            catch (Exception ex)
+            {
+                acceso.Serialize(ex);
+                throw ex;
+            }
         }
 
-        public List<BE.Bitacora> listarBitacora(DateTime fechaDesde, DateTime fechaHasta, string criticidad, string usuario)
+        public List<Bitacora> listarBitacora(DateTime fechaDesde, DateTime fechaHasta, string criticidad, string usuario)
         {
-            List<BE.Bitacora> resultado = new List<BE.Bitacora>();
+            List<Bitacora> resultado = new List<Bitacora>();
             DataTable dt = new DataTable();
             SqlParameter[] parametros =
             {
@@ -46,7 +55,7 @@ namespace DAL
 
             foreach (DataRow row in dt.Rows)
             {
-                BE.Bitacora b = new BE.Bitacora()
+                Bitacora b = new Bitacora()
                 {
                     Accion = row["Accion"].ToString(),
                     Descripcion = seguridad.desencriptar(row["Descripcion"].ToString()),

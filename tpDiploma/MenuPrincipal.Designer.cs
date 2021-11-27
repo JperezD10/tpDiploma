@@ -52,8 +52,8 @@
             this.nuevoIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosBloqueadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.panelLateral.SuspendLayout();
             this.panelSuperior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -380,6 +380,14 @@
             this.usuariosBloqueadosToolStripMenuItem.Text = "Usuarios bloqueados";
             this.usuariosBloqueadosToolStripMenuItem.Click += new System.EventHandler(this.usuariosBloqueadosToolStripMenuItem_Click);
             // 
+            // eliminarUsuarioToolStripMenuItem
+            // 
+            this.eliminarUsuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar usuario";
+            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
+            // 
             // panelContenedor
             // 
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -388,14 +396,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(962, 643);
             this.panelContenedor.TabIndex = 2;
-            // 
-            // eliminarUsuarioToolStripMenuItem
-            // 
-            this.eliminarUsuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
-            this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar usuario";
-            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 

@@ -20,10 +20,12 @@ namespace tpDiploma
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         ServicioBackupRestore servicioBackupRestore = new ServicioBackupRestore();
         public string idioma;
+        MenuPrincipal menu;
         public Restore(MenuPrincipal m)
         {
             InitializeComponent();
             Properties.Settings.Default.Idioma = m.idioma;
+            this.menu = m;
             serviceObservable.AddObserver(this);
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
         }
@@ -51,6 +53,7 @@ namespace tpDiploma
         private void btnRestore_Click(object sender, EventArgs e)
         {
             realizarRestore();
+            this.menu.cerrarSesion();
         }
 
         private void btnPathRestore_Click(object sender, EventArgs e)
