@@ -53,7 +53,7 @@ namespace tpDiploma
 
         private bool validarCampos(string nombre, string apellido, string DNI, string Email)
         {
-            string _patronDNI = @"\d{7,8}";
+            string _patronDNI = @"^\d{7,8}$";
             Regex regexDNI = new Regex(_patronDNI);
             MatchCollection matchDNI = regexDNI.Matches(DNI);
             bool result = true;
