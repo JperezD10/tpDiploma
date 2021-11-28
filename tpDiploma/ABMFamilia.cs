@@ -18,8 +18,11 @@ namespace tpDiploma
         BLL.IdiomaObservableBLL serviceObservable = new BLL.IdiomaObservableBLL();
         Usuario_Sesion usuario_Sesion = Usuario_Sesion.Instance;
         public string idioma;
+        List<Permiso> PatentesOtorgadas;
+        List<Permiso> PatentesSinOtorgar;
         Permiso patenteOtorgada;
         Permiso patenteSinOtorgar;
+        TreeNode SelectedNode;
         public ABMFamilia(MenuPrincipal m)
         {
             InitializeComponent();
@@ -32,9 +35,7 @@ namespace tpDiploma
         {
             btnCrearFamilia.Text = GetIdioma.buscarTexto(btnCrearFamilia.Name, idioma);
             lblNombreFamiliaCrear.Text = GetIdioma.buscarTexto(lblNombreFamiliaCrear.Name, idioma);
-            lblFamiliaListar.Text = GetIdioma.buscarTexto(lblFamiliaListar.Name, idioma);
             btnEliminarFamilia.Text = GetIdioma.buscarTexto(btnEliminarFamilia.Name, idioma);
-            lblPatentesDeLaFamilia.Text = GetIdioma.buscarTexto(lblPatentesDeLaFamilia.Name, idioma);
             lblPatentesSinOtorgar.Text = GetIdioma.buscarTexto(lblPatentesSinOtorgar.Name, idioma);
         }
 
@@ -66,9 +67,8 @@ namespace tpDiploma
                     MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 txtNombreFamilia.Clear();
-                limpiarGrilla(GrillaPatenteFamilia);
                 limpiarGrilla(GrillaPatentesSinOtorgar);
-                cargarFamilias();
+                llenarTreeView();
             }
             else
             {
@@ -79,38 +79,50 @@ namespace tpDiploma
 
         private void ABMFamilia_Load(object sender, EventArgs e)
         {
-            cargarFamilias();
+            llenarTreeView();
+            SelectedNode = null;
+            txtNombreFamilia.Clear();
         }
 
-        void cargarFamilias()
+        void llenarTreeView()
         {
-            cmbFamilias.Items.Clear();
+            int nodoActual = -1;
+            treeViewFamilias.Nodes.Clear();
+            treeViewFamilias.ExpandAll();
             List<Permiso> familias = servicioPermiso.listarFamiliasTodasOPorUsuario(null);
             foreach (Familia familia in familias)
             {
-                cmbFamilias.Items.Add(familia.nombre);
+                nodoActual++;
+                treeViewFamilias.Nodes.Add(familia.nombre);
+                treeViewFamilias.SelectedNode = treeViewFamilias.Nodes[nodoActual];
+                List<Permiso> listaPatentes = servicioPermiso.listarPatentesPorFamiliaODistinta(familia, "OBTENER_PATENTE_X_FAMILIA");
+                foreach (Permiso patente in listaPatentes)
+                {
+                    treeViewFamilias.SelectedNode.Nodes.Add(patente.nombre);
+                }
             }
-        }
-
-        private void cmbFamilias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listarPatentesPorFamilia();
-            listarPatentesQueNoSeanDeLaFamilia();
+            GrillaPatentesSinOtorgar.DataSource = null;
         }
 
         private void listarPatentesPorFamilia()
         {
-            Permiso familia = new Familia();
-            familia.nombre = cmbFamilias.SelectedItem.ToString();
-            List<Permiso> listaPatentes = servicioPermiso.listarPatentesPorFamiliaODistinta(familia, "OBTENER_PATENTE_X_FAMILIA");
-            setDataGridPatentes(listaPatentes, GrillaPatenteFamilia);
+            if (SelectedNode != null)
+            {
+                Permiso familia = new Familia();
+                familia.nombre = SelectedNode.Text;
+                PatentesOtorgadas = servicioPermiso.listarPatentesPorFamiliaODistinta(familia, "OBTENER_PATENTE_X_FAMILIA");
+            }
         }
         private void listarPatentesQueNoSeanDeLaFamilia()
         {
-            Permiso familia = new Familia();
-            familia.nombre = cmbFamilias.SelectedItem.ToString();
-            List<Permiso> listaPatentes = servicioPermiso.listarPatentesPorFamiliaODistinta(familia, "OBTENER_PATENTSE_QUITANDO_PATENTES_FAMILIA");
-            setDataGridPatentes(listaPatentes, GrillaPatentesSinOtorgar);
+            if (SelectedNode !=null)
+            {
+                Permiso familia = new Familia();
+                familia.nombre = SelectedNode.Text;
+                PatentesSinOtorgar = servicioPermiso.listarPatentesPorFamiliaODistinta(familia, "OBTENER_PATENTSE_QUITANDO_PATENTES_FAMILIA");
+                setDataGridPatentes(PatentesSinOtorgar, GrillaPatentesSinOtorgar);
+            }
+            
         }
         private void setDataGridPatentes(List<Permiso> listaPatentes, DataGridView dataGridView)
         {
@@ -147,15 +159,16 @@ namespace tpDiploma
             {
                 if (comprobarPatentePorUsuario("Asignar patente a familia").Equals(true))
                 {
-                    if (patenteSinOtorgar != null && cmbFamilias.SelectedIndex != -1)
+                    if (patenteSinOtorgar != null && SelectedNode!= null)
                     {
                         Permiso familia = new Familia()
                         {
-                            nombre = cmbFamilias.SelectedItem.ToString()
+                            nombre = SelectedNode.Text
                         };
                         servicioPermiso.asignarPatenteAFamilia(patenteSinOtorgar, familia, idioma);
                         listarPatentesPorFamilia();
                         listarPatentesQueNoSeanDeLaFamilia();
+                        llenarTreeView();
                         patenteSinOtorgar = null;
                     }
                     else
@@ -180,11 +193,11 @@ namespace tpDiploma
             {
                 if (comprobarPatentePorUsuario("Asignar patente a familia"))
                 {
-                    if (patenteOtorgada != null && cmbFamilias.SelectedIndex != -1)
+                    if (patenteOtorgada != null && SelectedNode != null)
                     {
                         Permiso familia = new Familia()
                         {
-                            nombre = cmbFamilias.SelectedItem.ToString()
+                            nombre = SelectedNode.Text
                         };
                         string result = servicioPermiso.desasignarPatenteAFamilia(patenteOtorgada, familia, idioma);
                         if (result != "")
@@ -193,6 +206,7 @@ namespace tpDiploma
                         }
                         listarPatentesPorFamilia();
                         listarPatentesQueNoSeanDeLaFamilia();
+                        llenarTreeView();
                         patenteOtorgada = null;
                     }
                     else
@@ -210,19 +224,6 @@ namespace tpDiploma
                 MessageBox.Show(e.Message);
             }
         }
-
-        private void GrillaPatenteFamilia_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                patenteOtorgada = (Patente)GrillaPatenteFamilia.Rows[e.RowIndex].DataBoundItem;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         private void GrillaPatentesSinOtorgar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -267,9 +268,8 @@ namespace tpDiploma
                             MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         txtNombreFamilia.Clear();
-                        limpiarGrilla(GrillaPatenteFamilia);
                         limpiarGrilla(GrillaPatentesSinOtorgar);
-                        cargarFamilias();
+                        llenarTreeView();
                     }
                     else
                     {
@@ -284,6 +284,21 @@ namespace tpDiploma
             catch (Exception)
             {
 
+            }
+        }
+
+        private void treeViewFamilias_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Level == 0)
+            {
+                SelectedNode = e.Node;
+                listarPatentesPorFamilia();
+                listarPatentesQueNoSeanDeLaFamilia();
+                txtNombreFamilia.Text = e.Node.Text;
+            }
+            else if (e.Node.Level == 1)
+            {
+                patenteOtorgada = PatentesOtorgadas.Find(p => p.nombre == e.Node.Text);
             }
         }
     }

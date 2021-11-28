@@ -35,16 +35,12 @@ namespace tpDiploma
             this.txtNombreFamilia = new System.Windows.Forms.TextBox();
             this.lblNombreFamiliaCrear = new System.Windows.Forms.Label();
             this.btnEliminarFamilia = new System.Windows.Forms.Button();
-            this.lblFamiliaListar = new System.Windows.Forms.Label();
-            this.cmbFamilias = new System.Windows.Forms.ComboBox();
-            this.GrillaPatenteFamilia = new System.Windows.Forms.DataGridView();
             this.GrillaPatentesSinOtorgar = new System.Windows.Forms.DataGridView();
-            this.lblPatentesDeLaFamilia = new System.Windows.Forms.Label();
             this.lblPatentesSinOtorgar = new System.Windows.Forms.Label();
             this.btnDesasignarPermiso = new System.Windows.Forms.Button();
             this.btnAsignarPermiso = new System.Windows.Forms.Button();
+            this.treeViewFamilias = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaPatenteFamilia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaPatentesSinOtorgar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +53,7 @@ namespace tpDiploma
             this.btnCrearFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearFamilia.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearFamilia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnCrearFamilia.Location = new System.Drawing.Point(546, 115);
+            this.btnCrearFamilia.Location = new System.Drawing.Point(256, 110);
             this.btnCrearFamilia.Margin = new System.Windows.Forms.Padding(2);
             this.btnCrearFamilia.Name = "btnCrearFamilia";
             this.btnCrearFamilia.Size = new System.Drawing.Size(147, 26);
@@ -82,7 +78,7 @@ namespace tpDiploma
             this.txtNombreFamilia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
             this.txtNombreFamilia.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtNombreFamilia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.txtNombreFamilia.Location = new System.Drawing.Point(713, 60);
+            this.txtNombreFamilia.Location = new System.Drawing.Point(423, 55);
             this.txtNombreFamilia.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreFamilia.Name = "txtNombreFamilia";
             this.txtNombreFamilia.Size = new System.Drawing.Size(154, 23);
@@ -93,10 +89,10 @@ namespace tpDiploma
             this.lblNombreFamiliaCrear.AutoSize = true;
             this.lblNombreFamiliaCrear.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreFamiliaCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblNombreFamiliaCrear.Location = new System.Drawing.Point(543, 63);
+            this.lblNombreFamiliaCrear.Location = new System.Drawing.Point(253, 58);
             this.lblNombreFamiliaCrear.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombreFamiliaCrear.Name = "lblNombreFamiliaCrear";
-            this.lblNombreFamiliaCrear.Size = new System.Drawing.Size(128, 16);
+            this.lblNombreFamiliaCrear.Size = new System.Drawing.Size(127, 16);
             this.lblNombreFamiliaCrear.TabIndex = 48;
             this.lblNombreFamiliaCrear.Text = "NOMBRE FAMILIA";
             // 
@@ -109,7 +105,7 @@ namespace tpDiploma
             this.btnEliminarFamilia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarFamilia.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarFamilia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.btnEliminarFamilia.Location = new System.Drawing.Point(720, 115);
+            this.btnEliminarFamilia.Location = new System.Drawing.Point(430, 110);
             this.btnEliminarFamilia.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarFamilia.Name = "btnEliminarFamilia";
             this.btnEliminarFamilia.Size = new System.Drawing.Size(147, 26);
@@ -118,69 +114,15 @@ namespace tpDiploma
             this.btnEliminarFamilia.UseVisualStyleBackColor = false;
             this.btnEliminarFamilia.Click += new System.EventHandler(this.btnEliminarFamilia_Click);
             // 
-            // lblFamiliaListar
-            // 
-            this.lblFamiliaListar.AutoSize = true;
-            this.lblFamiliaListar.Font = new System.Drawing.Font("Felix Titling", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFamiliaListar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblFamiliaListar.Location = new System.Drawing.Point(135, 60);
-            this.lblFamiliaListar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFamiliaListar.Name = "lblFamiliaListar";
-            this.lblFamiliaListar.Size = new System.Drawing.Size(128, 16);
-            this.lblFamiliaListar.TabIndex = 48;
-            this.lblFamiliaListar.Text = "NOMBRE FAMILIA";
-            // 
-            // cmbFamilias
-            // 
-            this.cmbFamilias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.cmbFamilias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFamilias.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.cmbFamilias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.cmbFamilias.FormattingEnabled = true;
-            this.cmbFamilias.Items.AddRange(new object[] {
-            "",
-            "Baja",
-            "Media",
-            "Alta"});
-            this.cmbFamilias.Location = new System.Drawing.Point(289, 57);
-            this.cmbFamilias.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbFamilias.Name = "cmbFamilias";
-            this.cmbFamilias.Size = new System.Drawing.Size(113, 24);
-            this.cmbFamilias.TabIndex = 55;
-            this.cmbFamilias.SelectedIndexChanged += new System.EventHandler(this.cmbFamilias_SelectedIndexChanged);
-            // 
-            // GrillaPatenteFamilia
-            // 
-            this.GrillaPatenteFamilia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaPatenteFamilia.Location = new System.Drawing.Point(138, 224);
-            this.GrillaPatenteFamilia.Name = "GrillaPatenteFamilia";
-            this.GrillaPatenteFamilia.ReadOnly = true;
-            this.GrillaPatenteFamilia.Size = new System.Drawing.Size(288, 222);
-            this.GrillaPatenteFamilia.TabIndex = 56;
-            this.GrillaPatenteFamilia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaPatenteFamilia_CellClick);
-            // 
             // GrillaPatentesSinOtorgar
             // 
             this.GrillaPatentesSinOtorgar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaPatentesSinOtorgar.Location = new System.Drawing.Point(589, 224);
+            this.GrillaPatentesSinOtorgar.Location = new System.Drawing.Point(512, 217);
             this.GrillaPatentesSinOtorgar.Name = "GrillaPatentesSinOtorgar";
             this.GrillaPatentesSinOtorgar.ReadOnly = true;
-            this.GrillaPatentesSinOtorgar.Size = new System.Drawing.Size(278, 222);
+            this.GrillaPatentesSinOtorgar.Size = new System.Drawing.Size(278, 309);
             this.GrillaPatentesSinOtorgar.TabIndex = 56;
             this.GrillaPatentesSinOtorgar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaPatentesSinOtorgar_CellClick);
-            // 
-            // lblPatentesDeLaFamilia
-            // 
-            this.lblPatentesDeLaFamilia.AutoSize = true;
-            this.lblPatentesDeLaFamilia.Font = new System.Drawing.Font("Felix Titling", 10.2F);
-            this.lblPatentesDeLaFamilia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
-            this.lblPatentesDeLaFamilia.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPatentesDeLaFamilia.Location = new System.Drawing.Point(181, 189);
-            this.lblPatentesDeLaFamilia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPatentesDeLaFamilia.Name = "lblPatentesDeLaFamilia";
-            this.lblPatentesDeLaFamilia.Size = new System.Drawing.Size(180, 16);
-            this.lblPatentesDeLaFamilia.TabIndex = 57;
-            this.lblPatentesDeLaFamilia.Text = "patentes de la familia";
             // 
             // lblPatentesSinOtorgar
             // 
@@ -188,10 +130,10 @@ namespace tpDiploma
             this.lblPatentesSinOtorgar.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.lblPatentesSinOtorgar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.lblPatentesSinOtorgar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPatentesSinOtorgar.Location = new System.Drawing.Point(640, 189);
+            this.lblPatentesSinOtorgar.Location = new System.Drawing.Point(563, 182);
             this.lblPatentesSinOtorgar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPatentesSinOtorgar.Name = "lblPatentesSinOtorgar";
-            this.lblPatentesSinOtorgar.Size = new System.Drawing.Size(178, 16);
+            this.lblPatentesSinOtorgar.Size = new System.Drawing.Size(177, 16);
             this.lblPatentesSinOtorgar.TabIndex = 57;
             this.lblPatentesSinOtorgar.Text = "patentes sin otorgar";
             // 
@@ -205,7 +147,7 @@ namespace tpDiploma
             this.btnDesasignarPermiso.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.btnDesasignarPermiso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.btnDesasignarPermiso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDesasignarPermiso.Location = new System.Drawing.Point(482, 264);
+            this.btnDesasignarPermiso.Location = new System.Drawing.Point(398, 306);
             this.btnDesasignarPermiso.Margin = new System.Windows.Forms.Padding(2);
             this.btnDesasignarPermiso.Name = "btnDesasignarPermiso";
             this.btnDesasignarPermiso.Size = new System.Drawing.Size(52, 45);
@@ -224,7 +166,7 @@ namespace tpDiploma
             this.btnAsignarPermiso.Font = new System.Drawing.Font("Felix Titling", 10.2F);
             this.btnAsignarPermiso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(154)))), ((int)(((byte)(79)))));
             this.btnAsignarPermiso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAsignarPermiso.Location = new System.Drawing.Point(482, 347);
+            this.btnAsignarPermiso.Location = new System.Drawing.Point(398, 389);
             this.btnAsignarPermiso.Margin = new System.Windows.Forms.Padding(2);
             this.btnAsignarPermiso.Name = "btnAsignarPermiso";
             this.btnAsignarPermiso.Size = new System.Drawing.Size(52, 48);
@@ -233,20 +175,25 @@ namespace tpDiploma
             this.btnAsignarPermiso.UseVisualStyleBackColor = false;
             this.btnAsignarPermiso.Click += new System.EventHandler(this.btnAsignarPermiso_Click);
             // 
+            // treeViewFamilias
+            // 
+            this.treeViewFamilias.Location = new System.Drawing.Point(67, 217);
+            this.treeViewFamilias.Name = "treeViewFamilias";
+            this.treeViewFamilias.Size = new System.Drawing.Size(264, 309);
+            this.treeViewFamilias.TabIndex = 61;
+            this.treeViewFamilias.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFamilias_NodeMouseClick);
+            // 
             // ABMFamilia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(62)))));
-            this.ClientSize = new System.Drawing.Size(1025, 540);
+            this.ClientSize = new System.Drawing.Size(878, 608);
+            this.Controls.Add(this.treeViewFamilias);
             this.Controls.Add(this.btnAsignarPermiso);
             this.Controls.Add(this.btnDesasignarPermiso);
             this.Controls.Add(this.lblPatentesSinOtorgar);
-            this.Controls.Add(this.lblPatentesDeLaFamilia);
             this.Controls.Add(this.GrillaPatentesSinOtorgar);
-            this.Controls.Add(this.GrillaPatenteFamilia);
-            this.Controls.Add(this.cmbFamilias);
-            this.Controls.Add(this.lblFamiliaListar);
             this.Controls.Add(this.lblNombreFamiliaCrear);
             this.Controls.Add(this.txtNombreFamilia);
             this.Controls.Add(this.pictureBox1);
@@ -260,7 +207,6 @@ namespace tpDiploma
             this.Text = "CrearFamilia";
             this.Load += new System.EventHandler(this.ABMFamilia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaPatenteFamilia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaPatentesSinOtorgar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,13 +220,10 @@ namespace tpDiploma
         private System.Windows.Forms.TextBox txtNombreFamilia;
         private System.Windows.Forms.Label lblNombreFamiliaCrear;
         private System.Windows.Forms.Button btnEliminarFamilia;
-        private System.Windows.Forms.Label lblFamiliaListar;
-        private System.Windows.Forms.ComboBox cmbFamilias;
-        private System.Windows.Forms.DataGridView GrillaPatenteFamilia;
         private System.Windows.Forms.DataGridView GrillaPatentesSinOtorgar;
-        private System.Windows.Forms.Label lblPatentesDeLaFamilia;
         private System.Windows.Forms.Label lblPatentesSinOtorgar;
         private System.Windows.Forms.Button btnDesasignarPermiso;
         private System.Windows.Forms.Button btnAsignarPermiso;
+        private System.Windows.Forms.TreeView treeViewFamilias;
     }
 }

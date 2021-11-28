@@ -52,9 +52,9 @@ namespace DAL
                     listaPatentes.Add(cargarEntidadPatente(dataRow));
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
             return listaPatentes;
         }
@@ -155,9 +155,9 @@ namespace DAL
                     return (int)dataRow["Contador"];
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
             return -1;
         }
@@ -174,9 +174,9 @@ namespace DAL
                     return (int)dataRow["Contador"];
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
             return -1;
         }
@@ -246,9 +246,9 @@ namespace DAL
                     return (int)dataRow["Contador"];
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
             return -1;
         }
@@ -266,9 +266,9 @@ namespace DAL
                     return (int)dataRow["Contador"];
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
             return -1;
         }
