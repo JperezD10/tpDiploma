@@ -170,6 +170,7 @@ namespace tpDiploma
                         listarPatentesQueNoSeanDeLaFamilia();
                         llenarTreeView();
                         patenteSinOtorgar = null;
+                        SelectedNode = null;
                     }
                     else
                     {
@@ -208,6 +209,7 @@ namespace tpDiploma
                         listarPatentesQueNoSeanDeLaFamilia();
                         llenarTreeView();
                         patenteOtorgada = null;
+                        SelectedNode = null;
                     }
                     else
                     {
