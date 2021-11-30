@@ -240,7 +240,10 @@ namespace BLL
             }
             return desasignarPermisoAUsuarioPasoFinal(permiso, usuario, isFamilia, flag, idioma);
         }
-
+        public void DesasignarFamiliaDeFamilia(Permiso FamiliaPadre, Permiso FamiliaHija)
+        {
+            permisomapper.DesasignarFamiliaDeFamilia(FamiliaPadre, FamiliaHija);
+        }
         public string desasignarPermisoAUsuarioPasoFinal(Permiso permiso, Usuario usuario, bool isFamilia, int flag, string idioma)
         {
             if (flag >= 0)

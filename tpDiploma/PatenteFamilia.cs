@@ -22,9 +22,7 @@ namespace tpDiploma
         Usuario_Sesion Usuario_Sesion = Usuario_Sesion.Instance;
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         public string idioma;
-        Permiso familiaOtorgada;
-        Permiso familiaSinOtorgar;
-        Permiso patenteSinOtorgar;
+        Permiso permisoSinOtorgar;
         Familia _FamiliaArbol;
         Patente _PatenteArbol;
         TreeNode SelectedNode;
@@ -84,6 +82,7 @@ namespace tpDiploma
             else
             {
                 List<Permiso> lista = new List<Permiso>();
+                lista.Add(permiso);
                 foreach (var item in permiso.listaPermisos)
                 {
                     if (!item.isFamilia)
@@ -197,49 +196,34 @@ namespace tpDiploma
             dataGridView.Columns[column].HeaderText = name;
         }
 
-        private void btnAsignarFamilia_Click(object sender, EventArgs e)
-        {
-            //asignarFamilia();
-            if (familiaSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
-            {
-                if (familiaSinOtorgar is Familia)
-                {
-                    Familia FamiliaPadre = new Familia()
-                    {
-                        nombre = SelectedNode.Text
-                    };
-                    servicioPermiso.AsignarFamiliaAFamilia((Familia)familiaSinOtorgar, FamiliaPadre);
-                    //servicioPermiso.asignarPermisoAUsuario(familiaSinOtorgar, usuario, true);
-                    familiaSinOtorgar = null;
-                }
-                else
-                {
-                    MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
-
         private void asignarFamilia()
         {
             try
             {
                 if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
                 {
-                    if (familiaSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
+                    if (permisoSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        if (familiaSinOtorgar is Familia)
+                        if (permisoSinOtorgar is Familia)
                         {
                             Encriptacion encriptacion = new Encriptacion();
                             Usuario usuario = new Usuario()
                             {
                                 Username = encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
                             };
-                            servicioPermiso.asignarPermisoAUsuario(familiaSinOtorgar, usuario, true);
-                            familiaSinOtorgar = null;
-                        }
-                        else
-                        {
-                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaPatente", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //aca tengo que validar si es a familia o a usuario
+                            if (_FamiliaArbol != null)
+                            {
+                                servicioPermiso.AsignarFamiliaAFamilia((Familia)permisoSinOtorgar, _FamiliaArbol);
+                            }
+                            else
+                            {
+                                servicioPermiso.asignarPermisoAUsuario(permisoSinOtorgar, usuario, true);
+                            }
+                            _FamiliaArbol = null;
+                            SelectedNode = null;
+                            permisoSinOtorgar = null;
+                            llenarPermisos();
                         }
                     }
                     else
@@ -258,11 +242,6 @@ namespace tpDiploma
             }
         }
 
-        private void btnDesasignarFamilia_Click(object sender, EventArgs e)
-        {
-            desasignarFamiliaAUsuario();
-        }
-
         private bool comprobarPatentePorUsuario(string nombrePatente)
         {
             Permiso patente = new Patente();
@@ -275,21 +254,22 @@ namespace tpDiploma
             {
                 if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
                 {
-                    if (familiaOtorgada != null && cmbUsuarios.SelectedIndex != -1)
+                    if (_FamiliaArbol != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        if (familiaOtorgada is Familia)
+                        if (_FamiliaArbol is Familia)
                         {
                             Encriptacion encriptado = new Encriptacion();
                             Usuario usuario = new Usuario()
                             {
                                 Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
                             };
-                            string result = servicioPermiso.desasignarPermisoAUsuario(familiaOtorgada, usuario, true, idioma);
+                            string result = servicioPermiso.desasignarPermisoAUsuario(_FamiliaArbol, usuario, true, idioma);
                             if (result != "")
                             {
                                 MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            familiaOtorgada = null;
+                            _FamiliaArbol = null;
+                            SelectedNode = null;
                         }
                         else
                         {
@@ -319,7 +299,14 @@ namespace tpDiploma
 
         private void btnAsignarPermiso_Click(object sender, EventArgs e)
         {
-            asignarPermisoAUsuario();
+            if (permisoSinOtorgar is Familia)
+            {
+                asignarFamilia();
+            }
+            else
+            {
+                asignarPermisoAUsuario();
+            }
         }
 
         private void asignarPermisoAUsuario()
@@ -328,30 +315,22 @@ namespace tpDiploma
             {
                 if (comprobarPatentePorUsuario("Asignar patente a usuario").Equals(true))
                 {
-                    if (patenteSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
+                    if (permisoSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        if (patenteSinOtorgar is Patente)
+                        if (_FamiliaArbol == null)
                         {
-                            if (_FamiliaArbol == null)
+                            Usuario usuario = new Usuario()
                             {
-                                Usuario usuario = new Usuario()
-                                {
-                                    Username = Encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
-                                };
-                                servicioPermiso.asignarPermisoAUsuario(patenteSinOtorgar, usuario, false);
-                                patenteSinOtorgar = null;
-                            }
-                            else
-                            {
-                                servicioPermiso.asignarPatenteAFamilia(patenteSinOtorgar, _FamiliaArbol,idioma);
-                                patenteSinOtorgar = null;
-                            }
-                            llenarPermisos();
+                                Username = Encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
+                            };
+                            servicioPermiso.asignarPermisoAUsuario(permisoSinOtorgar, usuario, false);
                         }
                         else
                         {
-                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaFamilia", idioma),"", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            servicioPermiso.asignarPatenteAFamilia(permisoSinOtorgar, _FamiliaArbol,idioma);
                         }
+                        permisoSinOtorgar = null;
+                        llenarPermisos();
                     }
                     else
                     {
@@ -371,7 +350,14 @@ namespace tpDiploma
 
         private void btnDesasignarPermiso_Click(object sender, EventArgs e)
         {
-            desasignarPermisoAUsuario();
+            if (_PatenteArbol != null)
+            {
+                desasignarPermisoAUsuario();
+            }
+            else
+            {
+                
+            }
         }
 
         private void desasignarPermisoAUsuario()
@@ -394,7 +380,6 @@ namespace tpDiploma
                                 MessageBox.Show(result);
                             }
                             _PatenteArbol = null;
-                            llenarPermisos();
                         }
                         else if(_FamiliaArbol != null)
                         {
@@ -408,12 +393,8 @@ namespace tpDiploma
                                 MessageBox.Show(result);
                             }
                             _FamiliaArbol = null;
-                            llenarPermisos();
                         }
-                        else
-                        {
-                            MessageBox.Show(GetIdioma.buscarTexto("mensajeEstaSeleccionadaFamilia", idioma), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        llenarPermisos();
                     }
                     else
                     {
@@ -434,7 +415,7 @@ namespace tpDiploma
         {
             try
             {
-                patenteSinOtorgar = (Patente)GrillaPermisosNoAsignados.Rows[e.RowIndex].DataBoundItem;
+                permisoSinOtorgar = (Permiso)GrillaPermisosNoAsignados.Rows[e.RowIndex].DataBoundItem;
             }
             catch (Exception)
             {
@@ -445,10 +426,10 @@ namespace tpDiploma
         private void TreeViewPermisosUsuario_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             SelectedNode = e.Node;
-            var encuentro = _listaTodasFamilias.Find(f => f.nombre == SelectedNode.Text);
-            if (encuentro != null)
+            var FamiliaEncontrada = _listaTodasFamilias.Find(f => f.nombre == SelectedNode.Text);
+            if (FamiliaEncontrada != null)
             {
-                _FamiliaArbol = encuentro;
+                _FamiliaArbol = FamiliaEncontrada;
                 _PatenteArbol = null;
             }
             else

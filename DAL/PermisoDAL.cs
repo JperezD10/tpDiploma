@@ -165,10 +165,12 @@ namespace DAL
             else
             {
                 List<Permiso> lista = new List<Permiso>();
+                lista.Add(permiso);
                 foreach (var item in permiso.listaPermisos)
                 {
-                    if (!item.isFamilia) { 
-                    lista.Add(item);
+                    if (!item.isFamilia) 
+                    { 
+                        lista.Add(item);
                     }
                     else
                     {
@@ -340,6 +342,22 @@ namespace DAL
             }
         }
 
+        public void DesasignarFamiliaDeFamilia(Permiso familiaPadre, Permiso FamiliaHija)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@idFamiliaHija", familiaPadre.codigoPermiso),
+                    new SqlParameter("@idFamiliaPadre",FamiliaHija.codigoPermiso)
+                };
+                Acceso.Escribir("DESASIGNAR_FAMILIA_A_FAMILIA", sqlParameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public int asignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia)
         {
             try
