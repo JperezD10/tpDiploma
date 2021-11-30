@@ -95,9 +95,16 @@ namespace BLL
             }
         }
 
-        public List<Permiso> listarFamiliasTodasOPorUsuario(Usuario user)
+        public List<Permiso> listarPermisosPorUsuario(Usuario usuario)
         {
-            List<Permiso> listaFamilias = new List<Permiso>();
+            List<Permiso> listaPermisos = new List<Permiso>();
+            listaPermisos = permisomapper.listarPermisosPorUsuario(usuario);
+            return listaPermisos;
+        }
+
+        public List<Familia> listarFamiliasTodasOPorUsuario(Usuario user)
+        {
+            List<Familia> listaFamilias = new List<Familia>();
             try
             {
                 listaFamilias = permisomapper.listarFamiliasTodasOPorUsuario(user);
@@ -111,6 +118,12 @@ namespace BLL
 
             }
             return listaFamilias;
+        }
+
+        public List<Permiso> listarTodosLosPermiso()
+        {
+            return permisomapper.listarTodosLosPermiso();
+
         }
         public List<Permiso> listarPatentesPorFamiliaODistinta(Permiso familia, string sp)
         {
@@ -131,22 +144,18 @@ namespace BLL
             return listaPatentes;
         }
 
-        public List<Permiso> listarPatentesTodasOPorUsuario(Usuario user)
+        public List<Permiso> ListarPermisosNoAsignadosAUsuario(Usuario user)
         {
-            List<Permiso> listaPatentes = new List<Permiso>();
+            List<Permiso> listaPermisos = new List<Permiso>();
             try
             {
-                listaPatentes = permisomapper.listarPatentesTodasOPorUsuario(user);
-                foreach (Permiso p in listaPatentes)
-                {
-                    p.nombre = encriptacion.desencriptar(p.nombre);
-                }
+                listaPermisos = permisomapper.listarPermisosNoAsignadosUsuario(user);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
-            return listaPatentes;
+            return listaPermisos;
         }
         public List<Permiso> obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
         {
@@ -190,6 +199,14 @@ namespace BLL
                 Usuario = encriptacion.encriptar(session_User.Username)
             };
             ServicioBitacora.crearBitacora(b);
+        }
+
+        public void AsignarFamiliaAFamilia(Familia familiaHija, Familia FamiliaPadre)
+        {
+            familiaHija.nombre = encriptacion.encriptar(familiaHija.nombre);
+            FamiliaPadre.nombre = encriptacion.encriptar(FamiliaPadre.nombre);
+            int lastID = permisomapper.asignarFamiliaAFamilia(familiaHija, FamiliaPadre);
+            servicioDigitoVerificador.recalcularDV(lastID, "Compuesto", true);
         }
 
         public string desasignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia, string idioma)

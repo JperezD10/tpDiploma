@@ -89,7 +89,7 @@ namespace tpDiploma
             int nodoActual = -1;
             treeViewFamilias.Nodes.Clear();
             treeViewFamilias.ExpandAll();
-            List<Permiso> familias = servicioPermiso.listarFamiliasTodasOPorUsuario(null);
+            List<Familia> familias = servicioPermiso.listarFamiliasTodasOPorUsuario(null);
             foreach (Familia familia in familias)
             {
                 nodoActual++;

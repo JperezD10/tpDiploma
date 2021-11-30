@@ -1,4 +1,5 @@
 ﻿using BE;
+using SEGURIDAD;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,10 +13,10 @@ namespace DAL
     public class PermisoDAL
     {
         Acceso Acceso = Acceso.Instance;
-
-        private Permiso cargarEntidadPatente(DataRow dataRow)
+        Encriptacion Encriptacion = new Encriptacion();
+        private Patente cargarEntidadPatente(DataRow dataRow)
         {
-            Permiso patente = new Patente();
+            Patente patente = new Patente();
             if (dataRow != null)
             {
                 patente.codigoPermiso = int.Parse(dataRow["ID_Permiso"].ToString());
@@ -26,9 +27,9 @@ namespace DAL
             return patente;
         }
 
-        private Permiso cargarEntidadFamilia(DataRow dataRow)
+        private Familia cargarEntidadFamilia(DataRow dataRow)
         {
-            Permiso familia = new Familia();
+            Familia familia = new Familia();
             if (dataRow != null)
             {
                 familia.codigoPermiso = dataRow["ID_Permiso"] != DBNull.Value ? (int)dataRow["ID_Permiso"] : 0;
@@ -59,9 +60,103 @@ namespace DAL
             return listaPatentes;
         }
 
-        public List<Permiso> listarFamiliasTodasOPorUsuario(Usuario user)
+        private Permiso cargarEntidadPermiso(DataRow dataRow)
         {
-            List<Permiso> listaFamilias = new List<Permiso>();
+            Permiso permiso = null;
+            if (dataRow != null)
+            {
+                bool familia = Boolean.Parse(dataRow["IsFamilia"].ToString());
+                if (familia)
+                {
+                    permiso = new Familia();
+                }
+                else
+                {
+                    permiso = new Patente();
+                }
+
+                permiso.codigoPermiso = int.Parse(dataRow["ID_Permiso"].ToString());
+                permiso.nombre = Encriptacion.desencriptar(dataRow["Permiso"].ToString());
+                permiso.isFamilia = familia;
+
+                if (familia)
+                {
+                    List<Permiso> listaPermisosDeFamilia = obtenerPermisosDeFamilia(permiso);
+                    permiso.listaPermisos = listaPermisosDeFamilia;
+                }
+            }
+            return permiso;
+        }
+
+        private List<Permiso> obtenerPermisosDeFamilia(Permiso permiso)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@idPermiso", permiso.codigoPermiso);
+            DataTable dataTable = Acceso.Leer("OBTENER_PERMISOS_DE_FAMILIA", sqlParameters);
+            List<Permiso> listaPermisos = new List<Permiso>();
+
+            if (dataTable.Rows.Count > 0) {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    listaPermisos.Add(cargarEntidadPermiso(dataRow));
+                }
+            }
+            return listaPermisos;
+        }
+
+        public List<Permiso> listarTodosLosPermiso()
+        {
+           
+            DataTable dataTable = Acceso.Leer("LISTAR_TODOS_LOS_PERMISOS", null);
+            List<Permiso> listaPermisos = new List<Permiso>();
+            Dictionary<int, Permiso> dictPermisos = new Dictionary<int, Permiso>();
+            if (dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    var permiso = cargarEntidadPermiso(dataRow);
+                    List<Permiso> lista = extraerPermisosArbol(permiso);
+                    foreach (var item in lista)
+                    {
+                        dictPermisos[item.codigoPermiso] =item;
+                    }
+                }
+            }
+
+            foreach (var item in dictPermisos)
+            {
+                listaPermisos.Add(item.Value);
+            }
+
+            return listaPermisos;
+        }
+
+        private List<Permiso> extraerPermisosArbol(Permiso permiso)
+        {
+            if (!permiso.isFamilia)
+            {
+                return new List<Permiso> { permiso };
+            }
+            else
+            {
+                List<Permiso> lista = new List<Permiso>();
+                foreach (var item in permiso.listaPermisos)
+                {
+                    if (!item.isFamilia) { 
+                    lista.Add(item);
+                    }
+                    else
+                    {
+                        lista.AddRange(extraerPermisosArbol(item));
+                    }
+                }
+                return lista;
+            }
+        }
+
+        public List<Familia> listarFamiliasTodasOPorUsuario(Usuario user)
+        {
+            List<Familia> listaFamilias = new List<Familia>();
             DataTable dataTable = new DataTable();
             if (user != null)
             {
@@ -83,16 +178,17 @@ namespace DAL
             return listaFamilias;
         }
 
-        public List<Permiso> listarPatentesTodasOPorUsuario(Usuario user)
+        public List<Permiso> listarPermisosNoAsignadosUsuario(Usuario user)
         {
             List<Permiso> listaPatentes = new List<Permiso>();
             DataTable dataTable = new DataTable();
             if (user != null)
             {
-                SqlParameter[] sqlParameters = new SqlParameter[2];
-                sqlParameters[0] = new SqlParameter("@isFamilia", false);
-                sqlParameters[1] = new SqlParameter("@user", user.Username);
-                dataTable = Acceso.Leer("OBTENER_PERMISOS_X_USUARIO", sqlParameters);
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@username", user.Username);
+                
+                
+                dataTable = Acceso.Leer("OBTENER_PERMISOS_NO_ASIGNADO_USUARIO", sqlParameters);
             }
             else
             {
@@ -102,7 +198,7 @@ namespace DAL
             }
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                listaPatentes.Add(cargarEntidadPatente(dataRow));
+                listaPatentes.Add(cargarEntidadPermiso(dataRow));
             }
             return listaPatentes;
         }
@@ -121,7 +217,31 @@ namespace DAL
             }
         }
 
-        public List<Permiso> listarPermisosQuitandoPermisosDeUsuario(Usuario user, bool isFamilia)
+        public List<Permiso> listarPermisosPorUsuario(Usuario user)
+        {
+            List<Permiso> listaPermisos = new List<Permiso>();
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@username", user.Username);
+             
+                DataTable tabla = Acceso.Leer("OBTENER_PERMISOS_POR_USUARIO", sqlParameters);
+                
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    var permiso = cargarEntidadPermiso(fila);
+                    listaPermisos.Add(permiso);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return listaPermisos;
+        }
+
+            public List<Permiso> listarPermisosQuitandoPermisosDeUsuario(Usuario user, bool isFamilia)
         {
             List<Permiso> listaPermisos = new List<Permiso>();
             DataTable dataTable = obtenerPermisosExluyentesAlUsuario(user, isFamilia);
@@ -286,6 +406,26 @@ namespace DAL
                     Direction = ParameterDirection.ReturnValue
                 };
                 Acceso.Escribir("SP_FAMILIA_AGREGAR_PATENTE", sqlParameters);
+                return (int)sqlParameters[2].Value;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int asignarFamiliaAFamilia(Permiso familiaHija, Permiso familiaPadre)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[3];
+                sqlParameters[0] = new SqlParameter("@familiaHija", familiaHija.nombre);
+                sqlParameters[1] = new SqlParameter("@familiaPadre", familiaPadre.nombre);
+                sqlParameters[2] = new SqlParameter
+                {
+                    ParameterName = "@returnValue",
+                    Direction = ParameterDirection.ReturnValue
+                };
+                Acceso.Escribir("ASIGNAR_FAMILIA_A_FAMILIA", sqlParameters);
                 return (int)sqlParameters[2].Value;
             }
             catch (Exception ex)
