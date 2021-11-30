@@ -120,10 +120,27 @@ namespace BLL
             return listaFamilias;
         }
 
+        public List<Familia> listarTodasLasFamilias()
+        {
+            List<Familia> Familias = permisomapper.listarTodasLasFamilias();
+            foreach (Familia familia in Familias)
+            {
+                familia.nombre = encriptacion.desencriptar(familia.nombre);
+            }
+            return Familias;
+        }
+        public List<Patente> listarTodasLasPatentes()
+        {
+            List<Patente> patentes = permisomapper.listarTodasLasPatentes();
+            foreach (Patente patente in patentes)
+            {
+                patente.nombre = encriptacion.desencriptar(patente.nombre);
+            }
+            return patentes;
+        }
         public List<Permiso> listarTodosLosPermiso()
         {
             return permisomapper.listarTodosLosPermiso();
-
         }
         public List<Permiso> listarPatentesPorFamiliaODistinta(Permiso familia, string sp)
         {

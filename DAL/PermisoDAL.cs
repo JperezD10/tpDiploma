@@ -103,7 +103,32 @@ namespace DAL
             }
             return listaPermisos;
         }
+        public List<Patente> listarTodasLasPatentes()
+        {
 
+            DataTable dataTable = Acceso.Leer("OBTENER_TODAS_LAS_PATENTES", null);
+            List<Patente> listaPatentes = new List<Patente>();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                var patente = cargarEntidadPatente(dataRow);
+                listaPatentes.Add(patente);
+            }
+
+            return listaPatentes;
+        }
+        public List<Familia> listarTodasLasFamilias()
+        {
+
+            DataTable dataTable = Acceso.Leer("OBTENER_TODAS_LAS_FAMILIAS", null);
+            List<Familia> listaFamilia = new List<Familia>();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                var familia = cargarEntidadFamilia(dataRow);
+                listaFamilia.Add(familia);
+            }
+
+            return listaFamilia;
+        }
         public List<Permiso> listarTodosLosPermiso()
         {
            
