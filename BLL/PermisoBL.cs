@@ -243,6 +243,7 @@ namespace BLL
         public void DesasignarFamiliaDeFamilia(Permiso FamiliaPadre, Permiso FamiliaHija)
         {
             permisomapper.DesasignarFamiliaDeFamilia(FamiliaPadre, FamiliaHija);
+            servicioDigitoVerificador.recalcularDVV("Compuesto");
         }
         public string desasignarPermisoAUsuarioPasoFinal(Permiso permiso, Usuario usuario, bool isFamilia, int flag, string idioma)
         {

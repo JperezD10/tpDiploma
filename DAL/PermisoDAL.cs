@@ -348,8 +348,8 @@ namespace DAL
             {
                 SqlParameter[] sqlParameters =
                 {
-                    new SqlParameter("@idFamiliaHija", familiaPadre.codigoPermiso),
-                    new SqlParameter("@idFamiliaPadre",FamiliaHija.codigoPermiso)
+                    new SqlParameter("@idFamiliaHija", FamiliaHija.codigoPermiso),
+                    new SqlParameter("@idFamiliaPadre",familiaPadre.codigoPermiso)
                 };
                 Acceso.Escribir("DESASIGNAR_FAMILIA_A_FAMILIA", sqlParameters);
             }

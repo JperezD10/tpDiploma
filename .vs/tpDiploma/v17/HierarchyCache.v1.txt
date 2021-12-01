@@ -239,10 +239,6 @@ i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\t
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmalumnos.cs
 ++ABMFamilia.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmfamilia.cs
-++ABMFamilia.Designer.cs
-i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmfamilia.designer.cs
-++ABMFamilia.resx
-i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmfamilia.resx
 ++AgregarIdioma.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\agregaridioma.cs
 ++AgregarProfesor.cs
@@ -275,6 +271,10 @@ i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\t
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\notasincripcionalumno.cs
 ++PatenteFamilia.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\patentefamilia.cs
+++PatenteFamilia.Designer.cs
+i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\patentefamilia.designer.cs
+++PatenteFamilia.resx
+i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\patentefamilia.resx
 ++ProfesorMaterias.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\profesormaterias.cs
 ++Program.cs
@@ -301,6 +301,10 @@ i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\t
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmalumnos.designer.cs
 ++ABMAlumnos.resx
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmalumnos.resx
+++ABMFamilia.Designer.cs
+i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmfamilia.designer.cs
+++ABMFamilia.resx
+i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\abmfamilia.resx
 ++AgregarIdioma.Designer.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\agregaridioma.designer.cs
 ++AgregarIdioma.resx
@@ -355,10 +359,6 @@ i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\t
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\notasincripcionalumno.designer.cs
 ++NotasIncripcionAlumno.resx
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\notasincripcionalumno.resx
-++PatenteFamilia.Designer.cs
-i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\patentefamilia.designer.cs
-++PatenteFamilia.resx
-i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\patentefamilia.resx
 ++ProfesorMaterias.Designer.cs
 i:{a91cc0cb-c7cd-4ed8-9d87-b17da8f095d9}:c:\users\juli\desktop\uai\3°\diploma\tpdiploma\tpdiploma\profesormaterias.designer.cs
 ++ProfesorMaterias.resx
