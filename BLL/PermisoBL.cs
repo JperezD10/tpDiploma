@@ -224,6 +224,14 @@ namespace BLL
             FamiliaPadre.nombre = encriptacion.encriptar(FamiliaPadre.nombre);
             int lastID = permisomapper.asignarFamiliaAFamilia(familiaHija, FamiliaPadre);
             servicioDigitoVerificador.recalcularDV(lastID, "Compuesto", true);
+            Bitacora b = new Bitacora
+            {
+                Accion = "Asignación de permiso",
+                Criticidad = "Alta",
+                Descripcion = encriptacion.encriptar($"El permiso {encriptacion.desencriptar(familiaHija.nombre)} fue asignado"),
+                Usuario = encriptacion.encriptar(session_User.Username)
+            };
+            ServicioBitacora.crearBitacora(b);
         }
 
         public string desasignarPermisoAUsuario(Permiso permiso, Usuario usuario, bool isFamilia, string idioma)
@@ -244,6 +252,14 @@ namespace BLL
         {
             permisomapper.DesasignarFamiliaDeFamilia(FamiliaPadre, FamiliaHija);
             servicioDigitoVerificador.recalcularDVV("Compuesto");
+            Bitacora b = new Bitacora
+            {
+                Accion = "Desasignación de permiso",
+                Criticidad = "Alta",
+                Descripcion = encriptacion.encriptar($"El permiso {FamiliaHija.nombre}  ha sido desasignado"),
+                Usuario = encriptacion.encriptar(session_User.Username)
+            };
+            ServicioBitacora.crearBitacora(b);
         }
         public string desasignarPermisoAUsuarioPasoFinal(Permiso permiso, Usuario usuario, bool isFamilia, int flag, string idioma)
         {
