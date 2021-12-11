@@ -23,7 +23,6 @@ namespace tpDiploma
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
         public string idioma;
         Permiso permisoSinOtorgar;
-        Familia _FamiliaArbol;
         Familia _FamiliaPadreArbol;
         Patente _PatenteArbol;
         TreeNode SelectedNode;
@@ -36,7 +35,6 @@ namespace tpDiploma
             Properties.Settings.Default.Idioma = m.idioma;
             serviceObservable.AddObserver(this);
             serviceObservable.Notify(Properties.Settings.Default.Idioma);
-            _FamiliaArbol = null;
             _FamiliaPadreArbol = null;
             SelectedNode = null;
         }
@@ -187,7 +185,6 @@ namespace tpDiploma
             dataGridView.ClearSelection();
             hideColumn(dataGridView, "codigoPermiso");
             hideColumn(dataGridView, "DVH");
-            hideColumn(dataGridView, "isFamilia");
             changeHeaderText(dataGridView, "nombre", "Permiso");
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -215,15 +212,7 @@ namespace tpDiploma
                             {
                                 Username = encriptacion.encriptar(cmbUsuarios.SelectedItem.ToString())
                             };
-                            if (_FamiliaArbol != null)
-                            {
-                                servicioPermiso.AsignarFamiliaAFamilia((Familia)permisoSinOtorgar, _FamiliaArbol);
-                            }
-                            else
-                            {
-                                servicioPermiso.asignarPermisoAUsuario(permisoSinOtorgar, usuario, true);
-                            }
-                            _FamiliaArbol = null;
+                            servicioPermiso.asignarPermisoAUsuario(permisoSinOtorgar, usuario, true);
                             SelectedNode = null;
                             permisoSinOtorgar = null;
                             llenarPermisos();
@@ -257,26 +246,18 @@ namespace tpDiploma
             {
                 if (comprobarPatentePorUsuario("Asignar familia a usuario").Equals(true))
                 {
-                    if (_FamiliaArbol != null && cmbUsuarios.SelectedIndex != -1)
+                    if (_FamiliaPadreArbol != null && cmbUsuarios.SelectedIndex != -1)
                     {
                         Encriptacion encriptado = new Encriptacion();
                         Usuario usuario = new Usuario()
                         {
                             Username = encriptado.encriptar(cmbUsuarios.SelectedItem.ToString())
                         };
-                        if (_FamiliaPadreArbol!= null) //si la familia tiene padre borro la familia
+                        string result = servicioPermiso.desasignarPermisoAUsuario(_FamiliaPadreArbol, usuario, true, idioma);
+                        if (result != "")
                         {
-                            servicioPermiso.DesasignarFamiliaDeFamilia(_FamiliaPadreArbol, _FamiliaArbol);
+                            MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        else //sino le desasigno la familia al usuario
-                        {
-                            string result = servicioPermiso.desasignarPermisoAUsuario(_FamiliaArbol, usuario, true, idioma);
-                            if (result != "")
-                            {
-                                MessageBox.Show(result, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        _FamiliaArbol = null;
                         _PatenteArbol = null;
                         SelectedNode = null;
                         llenarPermisos();
@@ -324,7 +305,7 @@ namespace tpDiploma
                 {
                     if (permisoSinOtorgar != null && cmbUsuarios.SelectedIndex != -1)
                     {
-                        if (_FamiliaArbol == null)
+                        if (_FamiliaPadreArbol == null)
                         {
                             Usuario usuario = new Usuario()
                             {
@@ -334,7 +315,7 @@ namespace tpDiploma
                         }
                         else
                         {
-                            servicioPermiso.asignarPatenteAFamilia(permisoSinOtorgar, _FamiliaArbol,idioma);
+                            servicioPermiso.asignarPatenteAFamilia(permisoSinOtorgar, _FamiliaPadreArbol, idioma);
                         }
                         permisoSinOtorgar = null;
                         llenarPermisos();
@@ -389,7 +370,7 @@ namespace tpDiploma
                                 MessageBox.Show(result);
                             }
                             _PatenteArbol = null;
-                            _FamiliaArbol = null;
+                            _FamiliaPadreArbol = null;
                         }
                         llenarPermisos();
                     }
@@ -426,10 +407,9 @@ namespace tpDiploma
             var FamiliaEncontrada = _listaTodasFamilias.Find(f => f.nombre == SelectedNode.Text);
             if (FamiliaEncontrada != null)
             {
-                _FamiliaArbol = FamiliaEncontrada;
-                if (SelectedNode.Parent != null)
+                if (SelectedNode.Parent == null)
                 {
-                    _FamiliaPadreArbol = _listaTodasFamilias.Find(f => f.nombre == SelectedNode.Parent.Text);
+                    _FamiliaPadreArbol = FamiliaEncontrada;
                 }
                 _PatenteArbol = null;
             }
@@ -437,7 +417,6 @@ namespace tpDiploma
             {
                 var patente = _listaTodasPatente.Find(f => f.nombre == SelectedNode.Text);
                 _PatenteArbol = patente;
-                _FamiliaArbol = null;
                 _FamiliaPadreArbol = null;
             }
         }

@@ -88,7 +88,6 @@ namespace tpDiploma
         {
             int nodoActual = -1;
             treeViewFamilias.Nodes.Clear();
-            treeViewFamilias.ExpandAll();
             List<Familia> familias = servicioPermiso.listarFamiliasTodasOPorUsuario(null);
             foreach (Familia familia in familias)
             {
@@ -101,6 +100,7 @@ namespace tpDiploma
                     treeViewFamilias.SelectedNode.Nodes.Add(patente.nombre);
                 }
             }
+            treeViewFamilias.ExpandAll();
             GrillaPatentesSinOtorgar.DataSource = null;
         }
 
