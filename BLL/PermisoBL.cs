@@ -119,6 +119,11 @@ namespace BLL
             }
             return listaFamilias;
         }
+        public List<Permiso> listarFamiliasconPatentes()
+        {
+            List<Permiso> listaFamilias = permisomapper.listarTodasLasFamiliasConPatentes();
+            return listaFamilias;
+        }
 
         public List<Familia> listarTodasLasFamilias()
         {
@@ -141,6 +146,14 @@ namespace BLL
         public List<Permiso> listarTodosLosPermiso()
         {
             return permisomapper.listarTodosLosPermiso();
+        }
+        public List<Permiso> ListarPermisosFueraDeFamilia(Permiso permiso)
+        {
+            return permisomapper.obtenerPermisosFueraDeFamilia(permiso);
+        }
+        public List<Permiso> ListarPermisosDeFamilia(Permiso permiso)
+        {
+            return permisomapper.obtenerPermisosDeFamilia(permiso);
         }
         public List<Permiso> listarPatentesPorFamiliaODistinta(Permiso familia, string sp)
         {

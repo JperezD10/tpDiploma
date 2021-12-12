@@ -88,7 +88,7 @@ namespace DAL
             return permiso;
         }
 
-        private List<Permiso> obtenerPermisosDeFamilia(Permiso permiso)
+        public List<Permiso> obtenerPermisosDeFamilia(Permiso permiso)
         {
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@idPermiso", permiso.codigoPermiso);
@@ -96,6 +96,22 @@ namespace DAL
             List<Permiso> listaPermisos = new List<Permiso>();
 
             if (dataTable.Rows.Count > 0) {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    listaPermisos.Add(cargarEntidadPermiso(dataRow));
+                }
+            }
+            return listaPermisos;
+        }
+        public List<Permiso> obtenerPermisosFueraDeFamilia(Permiso permiso)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@IDFAMILIA", permiso.codigoPermiso);
+            DataTable dataTable = Acceso.Leer("OBTENER_PERMISOS_FUERA_DE_FAMILIA", sqlParameters);
+            List<Permiso> listaPermisos = new List<Permiso>();
+
+            if (dataTable.Rows.Count > 0)
+            {
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     listaPermisos.Add(cargarEntidadPermiso(dataRow));
@@ -127,6 +143,20 @@ namespace DAL
                 listaFamilia.Add(familia);
             }
 
+            return listaFamilia;
+        }
+        public List<Permiso> listarTodasLasFamiliasConPatentes()
+        {
+
+            DataTable dataTable = Acceso.Leer("OBTENER_TODAS_LAS_FAMILIAS", null);
+            List<Permiso> listaFamilia = new List<Permiso>();
+            if (dataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    listaFamilia.Add(cargarEntidadPermiso(dataRow));
+                }
+            }
             return listaFamilia;
         }
         public List<Permiso> listarTodosLosPermiso()
@@ -205,30 +235,6 @@ namespace DAL
             return listaFamilias;
         }
 
-        public List<Permiso> listarPermisosNoAsignadosUsuario(Usuario user)
-        {
-            List<Permiso> listaPatentes = new List<Permiso>();
-            DataTable dataTable = new DataTable();
-            if (user != null)
-            {
-                SqlParameter[] sqlParameters = new SqlParameter[1];
-                sqlParameters[0] = new SqlParameter("@username", user.Username);
-                
-                
-                dataTable = Acceso.Leer("OBTENER_PERMISOS_NO_ASIGNADO_USUARIO", sqlParameters);
-            }
-            else
-            {
-                SqlParameter[] sqlParameters = new SqlParameter[1];
-                sqlParameters[0] = new SqlParameter("@isFamilia", false);
-                dataTable = Acceso.Leer("OBTENER_PERMISOS_GENERAL", sqlParameters);
-            }
-            foreach (DataRow dataRow in dataTable.Rows)
-            {
-                listaPatentes.Add(cargarEntidadPermiso(dataRow));
-            }
-            return listaPatentes;
-        }
         public DataTable obtenerPermisosExluyentesAlUsuario(Usuario user, bool isFamilia)
         {
             try
@@ -264,27 +270,6 @@ namespace DAL
             catch (Exception)
             {
 
-            }
-            return listaPermisos;
-        }
-
-            public List<Permiso> listarPermisosQuitandoPermisosDeUsuario(Usuario user, bool isFamilia)
-        {
-            List<Permiso> listaPermisos = new List<Permiso>();
-            DataTable dataTable = obtenerPermisosExluyentesAlUsuario(user, isFamilia);
-            if (isFamilia == true)
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    listaPermisos.Add(cargarEntidadFamilia(dataRow));
-                }
-            }
-            else
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    listaPermisos.Add(cargarEntidadPatente(dataRow));
-                }
             }
             return listaPermisos;
         }
