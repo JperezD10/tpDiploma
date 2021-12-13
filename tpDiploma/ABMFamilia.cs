@@ -176,6 +176,7 @@ namespace tpDiploma
                         llenarTreeView(servicioPermiso.listarFamiliasconPatentes());
                         permisoSinOtorgar = null;
                         SelectedNode = null;
+                        txtNombreFamilia.Clear();
                     }
                     else
                     {
@@ -219,6 +220,7 @@ namespace tpDiploma
                         llenarTreeView(servicioPermiso.listarFamiliasconPatentes());
                         permisoOtorgado = null;
                         SelectedNode = null;
+                        txtNombreFamilia.Clear();
                     }
                     else
                     {
@@ -343,19 +345,30 @@ namespace tpDiploma
                     }
                 }
             }
+            QuitarPadreSeleccionado(SelectedNode, permisosNoAsignados);
             if (permisoOtorgado != null)
             {
                 List<Permiso> permisosPadre = servicioPermiso.obtenerFamiliaDelPermiso(permisoOtorgado);
                 foreach (var item in permisosPadre)
                 {
                     var permisoPadreNoMostrar = permisosNoAsignados.Find(p => p.nombre == item.nombre);
-                    if(permisoPadreNoMostrar != null)
+                    if (permisoPadreNoMostrar != null)
                         permisosNoAsignados.Remove(permisoPadreNoMostrar);
                 }
             }
             setDataGridPatentes(permisosNoAsignados, GrillaPatentesSinOtorgar);
             llenarTreeView(servicioPermiso.listarFamiliasconPatentes());
         }
+        private void QuitarPadreSeleccionado(TreeNode nodoActual, List<Permiso> permisosNoAsignados)
+        {
+            if (nodoActual.Parent != null)
+            {
+                var permisoAQuitar = permisosNoAsignados.Find(p => p.nombre == nodoActual.Parent.Text);
+                permisosNoAsignados.Remove(permisoAQuitar);
+                QuitarPadreSeleccionado(nodoActual.Parent, permisosNoAsignados);
+            }
+        }
+
         private List<TreeNode> crearArbolFromPermisos(List<Permiso> listaPermisos)
         {
             List<TreeNode> nodeList = new List<TreeNode>();
