@@ -147,9 +147,9 @@ namespace BLL
         {
             return permisomapper.listarTodosLosPermiso();
         }
-        public List<Permiso> ListarPermisosFueraDeFamilia(Permiso permiso)
+        public List<Permiso> obtenerFamiliaDelPermiso(Permiso permiso)
         {
-            return permisomapper.obtenerPermisosFueraDeFamilia(permiso);
+            return permisomapper.obtenerFamiliaDelPermiso(permiso);
         }
         public List<Permiso> ListarPermisosDeFamilia(Permiso permiso)
         {

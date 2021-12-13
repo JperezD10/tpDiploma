@@ -103,11 +103,11 @@ namespace DAL
             }
             return listaPermisos;
         }
-        public List<Permiso> obtenerPermisosFueraDeFamilia(Permiso permiso)
+        public List<Permiso> obtenerFamiliaDelPermiso(Permiso permiso)
         {
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@IDFAMILIA", permiso.codigoPermiso);
-            DataTable dataTable = Acceso.Leer("OBTENER_PERMISOS_FUERA_DE_FAMILIA", sqlParameters);
+            sqlParameters[0] = new SqlParameter("@IDPERMISO", permiso.codigoPermiso);
+            DataTable dataTable = Acceso.Leer("OBTENER_FAMILIA_DEL_PERMISO", sqlParameters);
             List<Permiso> listaPermisos = new List<Permiso>();
 
             if (dataTable.Rows.Count > 0)

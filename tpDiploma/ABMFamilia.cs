@@ -302,11 +302,6 @@ namespace tpDiploma
             List<Permiso> listaPermisos = servicioPermiso.ListarPermisosDeFamilia(Familia);
             return listaPermisos;
         }
-        List<Permiso> obtenerPermisosFueraDeFamilia(Familia Familia)
-        {
-            List<Permiso> listaPermisos = servicioPermiso.ListarPermisosFueraDeFamilia(Familia);
-            return listaPermisos;
-        }
         void llenarPermisos()
         {
             List<Permiso> todosLosPermisos = servicioPermiso.listarTodosLosPermiso();
@@ -346,6 +341,16 @@ namespace tpDiploma
                     {
                         permisosNoAsignados.Add(permiso);
                     }
+                }
+            }
+            if (permisoOtorgado != null)
+            {
+                List<Permiso> permisosPadre = servicioPermiso.obtenerFamiliaDelPermiso(permisoOtorgado);
+                foreach (var item in permisosPadre)
+                {
+                    var permisoPadreNoMostrar = permisosNoAsignados.Find(p => p.nombre == item.nombre);
+                    if(permisoPadreNoMostrar != null)
+                        permisosNoAsignados.Remove(permisoPadreNoMostrar);
                 }
             }
             setDataGridPatentes(permisosNoAsignados, GrillaPatentesSinOtorgar);
