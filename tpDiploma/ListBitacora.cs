@@ -16,6 +16,8 @@ namespace tpDiploma
     {
         BitacoraBLL gestorBitacora = new BitacoraBLL();
         ReporteBLL servicioReporte = new ReporteBLL();
+        PermisoBL servicioPermiso = new PermisoBL();
+        Usuario_Sesion usuario_Sesion = Usuario_Sesion.Instance;
         IdiomaBLL GetIdioma = new IdiomaBLL();
         IdiomaObservableBLL serviceObservable = new IdiomaObservableBLL();
 
@@ -67,17 +69,35 @@ namespace tpDiploma
             gridBitacora.DataSource = null;
             try
             {
-                _listaBitacora = gestorBitacora.listarBitacora(txtFechaDesde.Value, txtFechaHasta.Value, cmbCriticidad.Text, txtUsername.Text);
-                gridBitacora.DataSource = _listaBitacora;
-                gridBitacora.ScrollBars = ScrollBars.Both;
-                hideColumn(gridBitacora, "ID_Bitacora");
-                hideColumn(gridBitacora, "DVH");
-                gridBitacora.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                if (comprobarPatentePorUsuario("Listar bitacora").Equals(true))
+                {
+                    _listaBitacora = gestorBitacora.listarBitacora(txtFechaDesde.Value, txtFechaHasta.Value, cmbCriticidad.Text, txtUsername.Text);
+                    gridBitacora.DataSource = _listaBitacora;
+                    gridBitacora.ScrollBars = ScrollBars.Both;
+                    hideColumn(gridBitacora, "ID_Bitacora");
+                    hideColumn(gridBitacora, "DVH");
+                    gridBitacora.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+                else
+                {
+                    showPermisoInsuficiente();
+                }
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+        private bool comprobarPatentePorUsuario(string nombrePatente)
+        {
+            Permiso patente = new Patente();
+            patente.nombre = nombrePatente;
+            return servicioPermiso.comprobarPatentePorUsuario(patente, usuario_Sesion);
+        }
+
+        private void showPermisoInsuficiente()
+        {
+            MessageBox.Show(GetIdioma.buscarTexto("mensajePermisoInsuficiente", idioma));
         }
 
         private void btnPDF_Click(object sender, EventArgs e)

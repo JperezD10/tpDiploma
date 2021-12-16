@@ -293,8 +293,6 @@ namespace BLL
             int flag = permisomapper.comprobarQuitarPatenteAFamilia(patente, familia);
             if (flag >= 0)
             {
-                if (flag > 0)
-                {
                     permisomapper.desasignarPatenteAFamilia(patente, familia);
                     servicioDigitoVerificador.recalcularDVV("Compuesto");
                     Bitacora b = new Bitacora
@@ -306,11 +304,6 @@ namespace BLL
                     };
                     ServicioBitacora.crearBitacora(b);
                     return "";
-                }
-                else
-                {
-                    return servicioIdioma.buscarTexto("mensajeNoSePuedeDesasignar", idioma);
-                }
             }
             else
             {
