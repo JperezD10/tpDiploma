@@ -245,10 +245,10 @@ namespace BLL
         }
         public string desasignarPermisoAUsuarioPasoFinal(Permiso permiso, Usuario usuario, bool isFamilia, int flag, string idioma)
         {
-            if (flag >= 0)
-            {
-                if (flag > 0)
-                {
+            //if (flag >= 0)
+            //{
+            //    if (flag > 0)
+            //    {
                     permisomapper.desasignarPermisoAUsuario(permiso, usuario, isFamilia);
                     servicioDigitoVerificador.recalcularDVV("UsuarioPermiso");
                     Bitacora b = new Bitacora
@@ -260,17 +260,13 @@ namespace BLL
                     };
                     ServicioBitacora.crearBitacora(b);
                     return "";
-                }
-                else
-                {
-                    BLL.IdiomaBLL servicioIdioma = new IdiomaBLL();
-                    return servicioIdioma.buscarTexto("mensajeNoSePuedeDesasignar", idioma);
-                }
-            }
-            else
-            {
-                return "Failed comprobacion";
-            }
+                //}
+                //else
+                //{
+                //    BLL.IdiomaBLL servicioIdioma = new IdiomaBLL();
+                //    return servicioIdioma.buscarTexto("mensajeNoSePuedeDesasignar", idioma);
+                //}
+            //}
         }
 
         public string asignarPatenteAFamilia(Permiso patente, Permiso familia, string idioma)
